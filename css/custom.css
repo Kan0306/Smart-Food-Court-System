@@ -1,0 +1,195 @@
+@charset "utf-8";
+/** ADD YOUR AWESOME CODES HERE **/
+@import url(animate.css);
+@import url(font-awesome.min.css);
+@import url(superslides.css);
+@import url(baguetteBox.min.css);
+
+@font-face
+{
+	font-family: 'SegoeUI_Regular';
+	src: url('../fonts/segoeui.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Semibold';
+	src: url('../fonts/seguisb.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Bold';
+	src: url('../fonts/segoeuib.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_SemiItalic';
+	src: url('../fonts/seguisbi.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'Bebas_Bold';
+	src: url('../fonts/BebasNeueBold.ttf')  format('truetype');
+}
+
+.logo_area
+{
+	position: absolute;
+	width: 219px;
+	height: 219px;
+	left: 20px;
+	top: -70px;
+}
+
+header
+{
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	top: 87px;
+	background: #FE7A19;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+header ul
+{
+	font-family: 'Bebas_Bold';
+	font-size: 20pt;
+	list-style-type: none;
+	text-align: center;
+}
+header ul li
+{
+	color: #fff;
+	display: inline-table;
+	width: 150px;
+	height: 90px;
+	line-height: 90px;
+}
+header ul li a
+{
+	color: #fff;
+	text-decoration: none;
+	display: block;
+}
+header ul li a:hover
+{
+	background: #ff4f00;
+	color: #000;
+	text-decoration: none;
+}
+header .search
+{
+	position: relative;
+	float: right;
+	top: -90px;
+}
+header input[type=text]
+{
+	border: none;
+	font-size: 13pt;
+	position: absolute;
+	right: 70px;
+	top: 10px;
+	width: 150px;
+	height: 33px;
+}
+header .search button
+{
+	float: right;
+	border: none;
+	position: absolute;
+	top: 10px;
+	right: 0;
+	background: #fff;
+	margin-right: 30px;
+	cursor: pointer;
+	width: 40px;
+	height: 33px;
+}
+
+body {
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.80857;
+	background: url('/self/background.png');
+	margin: 0;
+	padding: 0;
+	font-family: 'SegoeUI_Regular';
+}
+
+.contact-imfo-box .container{
+    padding: 0;
+    margin-left: 15px;
+}
+
+.top-navbar .container{
+    background: #FE7A19;
+    margin-right: 0;
+}
+
+.contact-imfo-box{
+    background: #D9D9D9;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.contact-imfo-box i{
+	display: block;
+	float: left;
+	width: 10px;
+	height: 10px;
+	line-height: 30px;
+	text-align: left;
+	color: #828282;
+	font-size: 10px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	border-radius: 50%;
+    margin-right: 5px;
+	margin-left: 5px;
+}
+
+.contact-imfo-box p {
+    margin: 0px;
+    color: #828282;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: "SegoeUI_Regular";
+	font-style: italic;
+
+}
+.lead {
+    font-size: 18px;
+    line-height: 30px;
+    color: #767676;
+    margin: 0;
+	padding: 0;
+}
+
+#language-icon{
+    content: url('/self/vietnam.png');
+    width: 20px;
+    height: 20px;
+    float: right;
+    position: absolute;
+    top: 8px;
+    right: 130px;
+}
+
+
+#line{
+    background: #1488DB;
+    padding: 2px;
+    margin: 0;
+}
+
+
+
+
+
+
+
+
