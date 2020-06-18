@@ -1,0 +1,108 @@
+@charset "utf-8";
+@font-face
+{
+	font-family: 'SegoeUI_Regular';
+	src: url('../fonts/segoeui.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Semibold';
+	src: url('../fonts/seguisb.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Bold';
+	src: url('../fonts/segoeuib.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_SemiItalic';
+	src: url('../fonts/seguisbi.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'Bebas_Bold';
+	src: url('../fonts/BebasNeueBold.ttf')  format('truetype');
+}
+.head_background
+{
+	position: absolute;
+	left: 0%;
+	right: 0%;
+	top: 0%;
+	bottom: 14.7%;
+	background: url(../images/wood-top.png) no-repeat center;
+}
+.logo_area
+{
+	position: absolute;
+	width: 219px;
+	height: 219px;
+	left: 20px;
+	top: -70px;
+}
+body
+{
+	margin: 0;
+	padding: 0;
+	font-family: 'SegoeUI_Regular';
+	
+}
+header
+{
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	top: 87px;
+	background: #FE7A19;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+header ul
+{
+	font-family: 'Bebas_Bold';
+	font-size: 20pt;
+	list-style-type: none;
+	text-align: center;
+}
+header ul li
+{
+	color: #fff;
+	display: inline-table;
+	width: 150px;
+	height: 90px;
+	line-height: 90px;
+}
+header ul li a
+{
+	color: #fff;
+	text-decoration: none;
+	display: block;
+}
+header ul li a:hover
+{
+	background: #ff4f00;
+	color: #000;
+}
+header .search
+{
+	position: relative;
+	float: right;
+	top: -90px;
+}
+header input[type=text]
+{
+	border: none;
+	font-size: 13pt;
+	width: 150px;
+	height: 33px;
+}
+header .search button
+{
+	float: right;
+	border: none;
+	background: #fff;
+	margin-right: 30px;
+	cursor: pointer;
+	width: 40px;
+	height: 35px;
+}
