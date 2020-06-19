@@ -104,6 +104,7 @@ body
 	padding: 0;
 	font-family: 'SegoeUI_Regular';
 	background: url(../images/background.png);
+	background-attachment: fixed;
 }
 #half_circle
 {
@@ -205,7 +206,7 @@ header .search button
 	width: 40px;
 	height: 33px;
 }
-.menu_area
+.back_area
 {
 	top: 50px;
 	position: relative;
