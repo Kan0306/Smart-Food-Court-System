@@ -107,6 +107,42 @@ header .search button
 	height: 33px;
 }
 
+.head_background{
+    background-image: url(../images/wood-top.png);
+    padding: 0px;
+}
+
+.payment-header{
+    background-image: url(../online-payment-image/image\ 22.png);
+    background-size:  contain;
+    background-repeat: no-repeat;
+    width: 40vw;
+    height: 20vw;
+
+    margin-left: 30vw;
+    margin-top: 20vh;
+    margin-right: 30vw;
+}
+
+.title {
+	margin-top: -9vh;
+	margin-left: 12.5vw;
+	height: 14vh;
+	width: 30vw;
+	color:#fff;
+	font-family: "Bebas_Bold";
+	font-style: normal;
+	font-size: 3.5vw;
+	text-align: left;
+    text-decoration: none;
+}
+.wallet{
+    margin-left: 14.5vw;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+    width: 11vw;
+}
+
 body {
     color: #666666;
     font-size: 15px;
@@ -188,15 +224,14 @@ body {
 
 .track_lists{
 	right: 8vw;
-	top: 40vh;
 }
 .track_lists ul
 {
 	float: left;	
     margin-right: 6vw;
     margin-left: 6vw;  
-    margin-top: 15vh;
-	
+    margin-top: 1vh;
+	width: 90vw;
 	font-family: Segoe UI;
 	font-style: normal;
 	font-weight: normal;
@@ -223,294 +258,96 @@ body {
 	color: #000;
 	text-decoration: none;
 }
-.cart {
-	position: absolute;
-	right: 8vw;
 
-    margin-top: 18vh;
-}
-
-.item-area{
+.payment-area{
 	right: auto;
 	display: flex;
-	flex-direction: row;
-	background-color: #fff;
-	margin-top: 35vh;
-	margin-left: 8vw;
-	margin-right: 8vw;
-	padding: 2vw;
-	color: #FE7A19;
-}
-	
-.item-detail {
-	color: #000;
-	display: flex;
 	flex-direction: column;
-	font-family: Segoe UI;
-	font-style: normal;
-	
-	text-decoration: none;
-	background-origin: padding-box;
-	border-top: #FE7A19;
-
-}
-.item-title {
-	font-weight: bold;
-	font-size: 4.5vw;
-	margin-left: 0.6vw;
-	width: 30vw;
-}
-
-.item-des {
-	font-size: 1.2vw;
-	margin-left: 0.6vw;
-	right: 9vw;
-}
-.item-title1{
-	display: flex;
-	flex-direction: row;
-	font-weight: 600;
-	font-size: 2.3vw;
-	line-height: 4.5vw;
-	margin-left: 0.6vw;
-	width: 30vw;
-}
-.item-price{	
-	margin-left: 0.6vw;
-	width: 30vw;
-	text-align: right;
-	color: #FE7A19;
-	font-weight: bold;
-	font-size: 2.3vw;
-}
-.item-detail select {
-	border: 2px dashed #1488DB;	
-	width: 15vw;
-	height: 7vh;
+    background-color:rgb(251,232,218);
+    position: relative;
+	margin-top: 1vh;
 	margin-left: 12vw;
-	text-align: right;
-}
-.item-detail select option{
-	font-size: 2.3vw;
-	margin-left: 0.6vw;
-	width: 30vw;
-}
-.item-title1 input {
-	border: 2px dashed #1488DB;	
-	width: 13vw;
-	height: 7vh;
-	margin-left: 7vw;
-	text-align: left;
-}
-.item-detail button {
-	border: 3px  #FE7A19;	
-	font-size: 1.5vw;
-	border-style: solid;
-	border-radius: 15px;
-	background-color: #fff;
-	color: #FE7A19;
-	margin-top: 3vh;
-	height: 9vh;
-	width: 30vw;
-}
-
-.order a {
-	display: block;
-	margin-top: 3vh;
-	border-radius: 15px;
-	background-color: #FE7A19;
-	height: 9vh;
-	width: 30vw;
-	padding: 1vh;
-	color:#fff;
-	font-family: Segoe UI;
-	font-style: normal;
-	font-size: 1.5vw;
-	text-align: center;
-	text-decoration: none;
-}
-.item-image {
-	display: flex;
-	flex-direction: column;
+    margin-bottom: 5vh;
 	padding: 2vw;
-	margin-left: 0.6vw;
-	margin-right: unset;
-	margin-top: 2vh;
+	color: #FE7A19;
 }
-.rate {
+	
+.payment-group {
+	color: #000;
 	display: flex;
 	flex-direction: row;
 	font-family: Segoe UI;
 	font-style: normal;
+	text-decoration: none;
+}
+.payment-choice{
+    border-radius: 8px;
 	font-size: 1.5vw;
-	color: #000;
+	background-color: #fff;
+	color: #FE7A19;
+    margin-top: 2vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    width: 20vw;
+}
+.payment-choice:hover {
+    border: 2px  #FE7A19;	
+	border-style: solid;
+	border-radius: 8px;
+
+	font-size: 1.5vw;
+	background-color: #fff;
+	color: #FE7A19;
+    margin-top: 2vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    width: 20vw;
+}
+.payment-choice img {
+    width: 15vw;
+}
+.payment-choice input[type="radio"] {
+    margin-left: 1vw;
+    width: 2vw;
+    height: 1.5em;
 }
 
-.number{
-	float: left;
-	margin-left: 0.6vw;
+.back a {
+	display: block;
+    margin-top: 8vh;    
+    margin-left: 20vw;
+    border: 2px #1488DB;
+    border-style: solid;
+    border-radius: 30px;
+    background-color:#fff;    
+	height: 8vh;
+	width: 15vw;
+	color:#1488DB;
 	font-family: Segoe UI;
 	font-style: normal;
-	font-size: 1.6vw;
-	color: #1488DB;
-}
-.star{
-	margin-left: 0px;
-	margin-top: 1vw;
-	margin-bottom: 1vw;
-}
-.like {
-	margin-left: 22vw;
-	margin-top: 1.5vh;
-	margin-right: 0.6vw;
-}
-.sns{
-	margin-top: 0.75vh;
-	margin-left: 0.5vw;
-	margin-right: 0.5vw;
-	margin-bottom: 1vw;
-}
-.comment-area{
-	right: auto;
-	display: flex;
-	flex-direction: column;
-	background-color: #fff;
-	margin-top: 15vh;
-	margin-left: 0vw;
-	margin-right: 0vw;
-	padding: 2vw;
+	font-size: 2vw;
+    text-align: center;
+	text-decoration: none;
 }
 
-.comment-tag{
+.next a {
 	display: block;
-	margin-top: -10vh;
-	margin-left: -2vw;
-	margin-bottom: 5vh;
-	background-color: #FE7A19;
-	height: 14vh;
-	width: 40vw;
-	padding: 1vh;
+    margin-top: 8vh;    
+    margin-left: 5vw;
+
+    border-radius: 30px;
+    background-color:#1488DB;    
+	height: 8vh;
+	width: 15vw;
 	color:#fff;
-	font-family: "Bebas_Bold";
+	font-family: Segoe UI;
 	font-style: normal;
-	font-size: 3.5vw;
-	text-align: left;
+	font-size: 2vw;
+    text-align: center;
 	text-decoration: none;
 }
 
 
-.stall-menu{
-	right: auto;
-	background-color: #fff;
-	margin-top: 15vh;
-	margin-bottom: 10vh;
-	padding: 2vw;
-}
-
-.stall-menu .stall-name{
-	display: block;
-	margin-top: -10vh;
-	margin-left: -2vw;
-	margin-bottom: 5vh;
-	background-color: #FE7A19;
-	height: 14vh;
-	width: 40vw;
-	padding: 1vh;
-	color:#fff;
-	font-family: "Bebas_Bold";
-	font-style: normal;
-	font-size: 3.5vw;
-	text-align: left;
-	text-decoration: none;
-}
-
-.food-items{
-	display: flex;
-}
-
-.food-image{
-	text-align: center;
-}
-
-.food-items .all{
-	float: right;
-	position: absolute;
-	margin-top: 15px;
-	right: 50px;
-}
-
-.item{
-	display: inline-block;
-	margin-top: 60px;
-	margin-bottom: 30px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 40px;
-}
-
-.description, .food-name{
-	padding-left: 1vw;
-	padding-right: 1vw;
-	font-size: 1vw;
-	font-family: 'SegoeUI_Regular';
-}
-
-.description{
-	height: 100px;
-}
-
-.food-name{
-	font-size: 25px;
-	text-decoration: #000000;
-	font-weight: 800;
-	font-family: 'Bebas_Bold';
-}
-
-.food-price {
-	padding-left: 20px;
-	color: #FE7A19;
-	font-size: 40px;
-	font-family: 'Bebas_Bold';
-}
-.fooditem-bottom .row, .up-button{
-	position: relative;
-}
-
-.order-button{
-	position: absolute;
-	right: 20px;
-	top: 320px;
-	font-family: "SegoeUI_Regular";
-	background: #FE7A19;
-	border: none;
-	margin-left: 5vw;
-	color:#000;
-}
-
-.next-slice-button{
-	position: absolute;
-	right: 20px;
-	top: 320px;
-	font-family: "SegoeUI_Regular";
-	background: #FE7A19;
-	border: none;
-	margin-left: 0;
-	color: #FE7A19;
-}
-
-.next-slice-button{
-	position: absolute;
-	right: 0;
-	top: 180px;
-	background: none;
-	color: #FE7A19;
-}
-
-.next-page {
-	text-align: center;
-	padding: 15px 30px;
-	color: #FE7A19;
-}
 .pagination {
 	display: inline-block;
 }
@@ -574,6 +411,7 @@ body {
 	color: #FFFFFF;
 }
 
+
 .footer-side{
 	margin-top: 10vh;
 }
@@ -595,6 +433,7 @@ body {
 .copyright{
 	color: #FE7A19;
 	padding-left: 30px;
+
 }
 
 .line{
