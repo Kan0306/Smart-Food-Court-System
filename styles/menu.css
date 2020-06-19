@@ -70,7 +70,7 @@ header ul li a
 	text-decoration: none;
 	display: block;
 }
-header ul li a:hover
+header .active, header ul li a:hover
 {
 	background: #ff4f00;
 	color: #000;
@@ -88,7 +88,7 @@ header input[type=text]
 	font-size: 13pt;
 	position: absolute;
 	right: 70px;
-	top: 10px;
+	top: 15px;
 	width: 150px;
 	height: 33px;
 }
@@ -97,7 +97,7 @@ header .search button
 	float: right;
 	border: none;
 	position: absolute;
-	top: 10px;
+	top: 15px;
 	right: 0;
 	background: #fff;
 	margin-right: 30px;
@@ -163,7 +163,11 @@ body {
     margin: 0px;
 	padding: 0;
 }
-
+.lead a:hover
+{
+	color: #fff;
+	text-decoration: none;
+}
 .stall-list{
 	position: relative;
 	max-width: 1200px;
@@ -229,6 +233,18 @@ body {
 	padding-top: 40px;
 	color: #FE7A19;
 	text-decoration: none;
+	font-size: 18px;
+}
+.homepage-menu .path .cart_icon
+{
+	border: 1pt dashed;
+	border-color: #FE7A19;
+	border-radius: 25px;
+	background: #FDCF76;
+	margin-left: 1150px;
+	margin-top: -30px;
+	width: 50px;
+	height: 50px;
 }
 
 .homepage-menu a{
@@ -244,9 +260,9 @@ body {
 .stall-menu .stall-name{
 	display: block;
 	position: absolute;
-	top: -30px;
+	top: -1px;
 	padding-left: 40px;
-	padding-right: 200px;
+	padding-right: 150px;
 	/* margin-right: 200px; */
 	padding-top: auto;
 	padding-bottom: auto;
@@ -255,7 +271,11 @@ body {
 	font-size: 30px;
 	color: #FFFFFF;
 }
-
+.stall-name:hover
+{
+	color: #FDCF76;
+	text-decoration: none;
+}
 .food-items{
 	display: flex;
 }
@@ -273,17 +293,21 @@ body {
 
 .item{
 	display: inline-block;
-	margin-top: 60px;
+	margin-top: 40px;
 	margin-bottom: 30px;
 	margin-left: auto;
 	margin-right: auto;
 	padding-left: 40px;
 }
-
+.item .infomation
+{
+	background: #FDCF76;
+	width: 250px;
+}
 .description, .food-name{
 	padding-left: 20px;
 	padding-right: 20px;
-	font-family: 'SegoeUI_Regular';
+	font-family: 'SegoeUI_Semibold';
 }
 
 .description{
@@ -291,17 +315,23 @@ body {
 }
 
 .food-name{
-	font-size: 25px;
-	text-decoration: #000000;
+	font-size: 20px;
 	font-weight: 800;
-	font-family: 'Bebas_Bold';
+	font-family: 'SegoeUI_Bold';
+}
+.food-name:hover
+{
+	text-decoration: none;
+	color: #000;
 }
 
 .food-price {
-	padding-left: 20px;
+	margin-top: -10px;
+	padding-bottom: 10px;
+	padding-left: 35px;
 	color: #FE7A19;
-	font-size: 40px;
-	font-family: 'Bebas_Bold';
+	font-size: 30px;
+	font-family: 'SegoeUI_Bold';
 }
 .fooditem-bottom .row, .up-button{
 	position: relative;
@@ -310,8 +340,8 @@ body {
 .order-button, .next-slice-button{
 	position: absolute;
 	right: 20px;
-	top: 320px;
-	font-family: "SegoeUI_Regular";
+	top: 260px;
+	font-family: "SegoeUI_Semibold";
 	background: #FE7A19;
 	border: none;
 	margin-left: 0;
@@ -346,16 +376,22 @@ body {
 }
 
 .pagination a:hover:not(.active) {	
-	background-color: #ddd;	
+	background-color: #FDCF76;	
 	border-radius: 5px;
+	text-decoration: none;
+	color: #000;
 }
 
 .footer-logo{
-	padding: 50px 50px;
+	padding: 10px 80px;
 }
 
 .footer-above .text{
 	margin: 80px 20px;
+}
+
+.footer-side{
+	margin-top: 40px;
 }
 
 .redirection-list{
@@ -369,6 +405,9 @@ body {
 
 .list-inline-item a img{
 	width: 30px;
+	left: 0%;
+	bottom: 0%;
+	margin-left: 20px;
 }
 
 .row div ul, .catalogue-title ul li{
@@ -378,7 +417,10 @@ body {
 	font-size: 20px;
 	color: #FE7A19;
 }
-
+.catalogue
+{
+	margin-left: -150px;
+}
 .catalogue li{
 	display: inline;
 	padding: 20px;
@@ -390,11 +432,10 @@ body {
 .catalogue li a{
 	color: #FFFFFF;
 }
-
-.footer-side{
-	margin-top: 60px;
+.catalogue li a:hover{
+	color: #FDCF76;
+	text-decoration: none;
 }
-
 #menu a{
 	color: #fff;
 	text-decoration: none;
@@ -407,7 +448,10 @@ body {
 
 .copyright{
 	color: #FE7A19;
-	padding-left: 30px;
+	position: relative;
+	left: 80px;
+	bottom: 0%;
+	padding-top: 30px;
 }
 
 .line{
