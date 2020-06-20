@@ -1,0 +1,530 @@
+@charset "utf-8";
+/** ADD YOUR AWESOME CODES HERE **/
+@import url(animate.css);
+@import url(font-awesome.min.css);
+@import url(superslides.css);
+@import url(baguetteBox.min.css);
+
+@font-face
+{
+	font-family: 'SegoeUI_Regular';
+	src: url('../fonts/segoeui.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Semibold';
+	src: url('../fonts/seguisb.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Bold';
+	src: url('../fonts/segoeuib.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_SemiItalic';
+	src: url('../fonts/seguisbi.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'Bebas_Bold';
+	src: url('../fonts/BebasNeueBold.ttf')  format('truetype');
+}
+
+html{
+	height: 100%;
+}
+
+body {
+    color: pink;
+    font-size: 15px;
+    line-height: 1.80857;
+    background: pink;
+    margin: 0;
+	padding: 0;
+	font-family: 'SegoeUI_Regular';
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position:center;
+}
+
+.line{
+    background: #1488DB;
+    padding: 2px;
+    margin: 0;
+}
+
+.contact-imfo-box{
+	background: #D9D9D9;
+}
+
+.contact-imfo-box .container{
+    padding: 10px;
+    margin-left: 15px;
+}
+
+.contact-imfo-box i{
+	display: block;
+	float: left;
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	text-align: left;
+	color: #828282;
+	font-size: 10px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	border-radius: 50%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.contact-imfo-box p {
+    margin: 0px;
+    color: #828282;
+	text-align: left;
+	line-height: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: "SegoeUI_Regular";
+	font-style: italic;
+}
+
+.lead {
+    font-size: 18px;
+    line-height: 30px;
+    color: #767676;
+    margin: 0px;
+	padding: 0;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.logo_area
+{
+	position: absolute;
+	width: 219px;
+	height: 219px;
+	left: 20px;
+	top: -70px;
+}
+
+.HeaderMenu
+{
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	top: 87px;
+	background: #FE7A19;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.HeaderMenu ul
+{
+	font-family: 'Bebas_Bold';
+	font-size: 20pt;
+	list-style-type: none;
+	text-align: center;
+}
+
+.HeaderMenu ul li
+{
+		lor: #fff;
+	display: inline-table;
+	width: 150px;
+	height: 90px;
+	line-height: 90px;
+}
+
+.HeaderMenu ul li a
+{
+	color: #fff;
+	text-decoration: none;
+	display: block;
+}
+
+.HeaderMenu ul li a:hover
+{
+	background: pi;
+	color: #000;
+	text-decoration: none;
+}
+
+.HeaderMenu .search
+{
+	position: relative;
+	float: right;
+	top: -90px;
+}
+
+.HeaderMenu input[type=text]
+{
+	border: none;
+	font-size: 13pt;
+	position: absolute;
+	right: 70px;
+	top: 10px;
+	width: 150px;
+	height: 33px;
+}
+
+.HeaderMenu .search button
+{
+	float: right;
+	border: none;
+	position: absolute;
+	top: 10px;
+	right: 0;
+	background: #fff;
+	margin-right: 30px;
+	cursor: pointer;
+	width: 40px;
+	height: 33px;
+}
+
+.footer-logo{
+	padding: 50px 50px;
+}
+
+.footer-above .text{
+	margin: 80px 20px;
+}
+
+.redirection-list{
+	margin: 0;
+}
+
+.redirection-list ul li{
+	display: inline;
+	margin: 60px;
+}
+
+.list-inline-item a img{
+	width: 30px;
+}
+
+.row div ul, .catalogue-title ul li{
+	list-style-type: none;
+	padding: 10px 50px;
+	font-family: "Bebas_Bold";
+	font-size: 20px;
+	color: #FE7A19;
+}
+
+.catalogue li{
+	display: inline;
+	padding: 20px;
+	font-family: "SegoeUI_Regular";
+	font-size: 15px;
+	color: #FFFFFF;
+}
+
+.catalogue li a{
+	color: #FFFFFF;
+}
+
+.footer-side{
+	margin-top: 60px;
+}
+
+#menu a{
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	font-family: 'Bebas_Bold';
+	font-size: 35px;
+	list-style-type: none;
+	text-align: center;
+}
+
+.copyright{
+	color: #FE7A19;
+	padding-left: 30px;
+}
+
+
+#orange-half-circle{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+
+#up-button-image{
+	display: block;
+	position: absolute;
+	width: 25%;
+	margin-left: 650px;
+
+}	
+
+*{
+    box-sizing:border-box;
+}
+
+footer{
+    width:100%;
+    background:url('../self/background.png');
+    color: #FFF;
+}
+
+footer:after{
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+}
+
+footer>ul{
+    float:left;
+    list-style-type:none;
+    width: 50%;
+}
+
+footer>ul>li{
+	padding-bottom: 5px;
+}
+
+footer>ul>li>a{
+	color: white;
+}
+
+
+.bill{
+	padding-bottom: 100px;
+	background-color:pink;
+}
+
+#half_circle
+{
+	position: relative;
+	margin-top: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 30%;
+}
+
+.order_icon
+{
+	position: relative;
+	left: 700px;
+	top: -180px;
+}
+
+.order_name
+{
+	position: relative;
+	text-align: center;
+	font-family: 'Bebas_Bold';
+	top: -170px;
+	font-size: 35px;
+}
+
+#OID{
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.success
+{
+	position: relative;
+	text-align: center;
+	font-family: 'Bebas_Bold';
+	top: -170px;
+	font-size: 35px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+.thongtindonhangcommon{
+    width:1024px;
+    background:url('../self/Group 206.png');
+	color: red;
+	font-family: 'Bebas_Bold';
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.thongtindonhang:after{
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+	 height: 0;
+	 font-family: 'Bebas_Bold';
+}
+
+.thongtindonhang>ul{
+    float:left;
+    list-style-type:none;
+	width: 50%;
+	font-family: 'Bebas_Bold';
+}
+
+.thongtindonhang>ul>li{
+	padding-bottom: 5px;
+	font-family: 'Bebas_Bold';
+}
+
+#trai{
+	text-align:left;
+}
+
+#phai{
+	text-align:right;
+}
+
+.successcover{
+	position: relative;
+	text-align: center;
+	font-family: 'Bebas_Bold';
+	top: -100px;
+	font-size: 35px;
+}
+
+.padding {
+	padding: 2rem !important
+}
+
+.card {
+    margin-bottom: 30px;
+    border: none;
+    -webkit-box-shadow: 0px 1px 2px 1px rgba(0, 0, 247, 0.22);
+    -moz-box-shadow: 0px 1px 2px 1px rgba(0, 0, 255, 0.22);
+	box-shadow: 0px 1px 2px 1px rgba(0, 0, 255, 0.22)
+}
+
+.card-header {
+    background-color: rgb(105, 100, 100);
+	border-bottom: 1px solid #0000ff
+}
+
+h3 {
+    font-size: 20px
+}
+
+h5 {
+    font-size: 15px;
+    line-height: 26px;
+    color: #3d405c;
+    margin: 0px 0px 15px 0px;
+    font-family: 'Circular Std Medium'
+}
+
+.text-dark {
+    color: #3d405c !important
+}
+
+.text-red{
+	color: red;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+.chitietdonhangcommon{
+	margin-top:100px;
+	width:1024px;
+	margin-left: auto;
+	margin-right: auto;
+    background:url('../self/Group 206.png');
+	color: rgb(0, 0, 0);
+	font-family: 'Bebas_Bold';
+	padding-bottom:500px;
+}
+
+.checkstate{
+    width:1024px;
+    /* background:url('../self/Group 206.png'); */
+	color: rgb(255, 255, 255);
+	font-family: 'Bebas_Bold';
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:100px;
+}
+
+.cover{
+	position: relative;
+	text-align: center;
+	font-family: 'Bebas_Bold';
+	top: -55px;
+	font-size: 35px;
+}
+
+.foot_logo_area
+{
+	position: absolute;
+	width: 219px;
+	height: 219px;
+	left: 20px;
+	top: 2670px;
+}
+
+.foot ul
+{
+	padding-left: 300px;
+	font-family: 'SegoeUI_Regular';
+	font-size: 20pt;
+	list-style-type: none;
+	text-align: left;
+}
+
+.foot ul li
+{
+		lor: #fff;
+	display: inline-table;
+	width: 150px;
+}
+
+#increase{
+	width:300px;
+}
+
+#vertical{
+	border-left: 3px solid orange;
+	line-height:12px;
+	text-align: center;
+}
+.foot ul li a
+{
+	color: #fff;
+	text-decoration: none;
+	display: block;
+}
+
+.foot ul li a:hover
+{
+	background: pi;
+	color: #000;
+	text-decoration: none;
+}
+
+.foot input[type=text]
+{
+	border: none;
+	font-size: 13pt;
+	position: absolute;
+	right: 70px;
+	top: 10px;
+	width: 150px;
+	height: 33px;
+}
+
+.socialmediaicons{
+	width: 50%;
+}
+
