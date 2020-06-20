@@ -1,6 +1,13 @@
-.signup {
+.signupform {
     position: relative;
-    background: #FCE8DA;
+    width: 500px; 
+    margin-left: 800px;
+    background-color:#ffffff; 
+    height: 550px; 
+    border-radius: 10px; 
+    padding: 5px; 
+    padding-left: 40px; 
+    padding-right: 40px;
 }
 .signupbtn {
     width: 100%;
@@ -11,4 +18,19 @@
     border: none;
     cursor: pointer;
     opacity: 0.9;
-  }
+}
+.nen_cam_nhat {
+    height: 700px;
+    width: 100%;
+    background: url('../images/nen_cam_nhat.png');
+}
+.nen_cam_dam {
+    height: 600px;
+    width: 100%;
+    background: url('../images/nen_cam_dam.png');
+}
+.dan_dong {
+    /*Class này tạo ra để dãn dòng; vì tui gà*/
+    padding: 15px;
+    margin: 0;
+}
