@@ -9,6 +9,18 @@
     padding-left: 40px; 
     padding-right: 40px;
 }
+.signinbtn {
+    width: 50%;
+    background-color: #FE7A19;
+    color: white;
+    padding: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    opacity: 0.9;
+    display: block;
+    margin: auto;
+}
 .signupbtn {
     width: 100%;
     background-color: #4CAF50;
@@ -33,4 +45,18 @@
     /*Class này tạo ra để dãn dòng; vì tui gà*/
     padding: 15px;
     margin: 0;
+}
+.flex-col-c {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	-ms-align-items: center;
+	align-items: center;
 }
