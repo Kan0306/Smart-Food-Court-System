@@ -1,0 +1,392 @@
+@charset "utf-8";
+/** ADD YOUR AWESOME CODES HERE **/
+@import url(animate.css);
+@import url(font-awesome.min.css);
+@import url(superslides.css);
+@import url(baguetteBox.min.css);
+
+@font-face
+{
+	font-family: 'SegoeUI_Regular';
+	src: url('../fonts/segoeui.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Semibold';
+	src: url('../fonts/seguisb.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Bold';
+	src: url('../fonts/segoeuib.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_SemiItalic';
+	src: url('../fonts/seguisbi.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'Bebas_Bold';
+	src: url('../fonts/BebasNeueBold.ttf')  format('truetype');
+}
+
+html{
+	height: 100%;
+}
+
+body {
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.80857;
+    background: url('../self/background.png');
+    margin: 0;
+	padding: 0;
+	font-family: 'SegoeUI_Regular';
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position:center;
+}
+
+.line{
+    background: #1488DB;
+    padding: 2px;
+    margin: 0;
+}
+
+.contact-imfo-box{
+	background: #D9D9D9;
+}
+
+.contact-imfo-box .container{
+    padding: 10px;
+    margin-left: 15px;
+}
+
+.contact-imfo-box i{
+	display: block;
+	float: left;
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	text-align: left;
+	color: #828282;
+	font-size: 10px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	border-radius: 50%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.contact-imfo-box p {
+    margin: 0px;
+    color: #828282;
+	text-align: left;
+	line-height: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: "SegoeUI_Regular";
+	font-style: italic;
+}
+
+.lead {
+    font-size: 18px;
+    line-height: 30px;
+    color: #767676;
+    margin: 0px;
+	padding: 0;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.logo_area
+{
+	position: absolute;
+	width: 219px;
+	height: 219px;
+	left: 20px;
+	top: -70px;
+}
+
+.HeaderMenu
+{
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	top: 87px;
+	background: #FE7A19;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.HeaderMenu ul
+{
+	font-family: 'Bebas_Bold';
+	font-size: 20pt;
+	list-style-type: none;
+	text-align: center;
+}
+
+.HeaderMenu ul li
+{
+	color: #fff;
+	display: inline-table;
+	width: 150px;
+	height: 90px;
+	line-height: 90px;
+}
+
+.HeaderMenu ul li a
+{
+	color: #fff;
+	text-decoration: none;
+	display: block;
+}
+
+.HeaderMenu ul li a:hover
+{
+	background: #ff4f00;
+	color: #000;
+	text-decoration: none;
+}
+
+.HeaderMenu .search
+{
+	position: relative;
+	float: right;
+	top: -90px;
+}
+
+.HeaderMenu input[type=text]
+{
+	border: none;
+	font-size: 13pt;
+	position: absolute;
+	right: 70px;
+	top: 10px;
+	width: 150px;
+	height: 33px;
+}
+
+.HeaderMenu .search button
+{
+	float: right;
+	border: none;
+	position: absolute;
+	top: 10px;
+	right: 0;
+	background: #fff;
+	margin-right: 30px;
+	cursor: pointer;
+	width: 40px;
+	height: 33px;
+}
+
+.stall-list{
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 30px;
+	top: 87px;
+	text-align: center;
+}
+
+.stall-list p, .stall-list a {
+    color: #FDCF76;
+    text-align: center;
+    font-weight: 600;
+	font-size: 20px;
+	text-decoration: none;
+	font-family: "SegoeUI_Regular";
+}
+
+.stall-list a:hover{
+	color: black;
+}
+
+.stall-menu{
+	background: #FFFFFF;
+	margin-top: 80px;
+	position: relative;
+}
+
+.food-items{
+	margin-bottom:60px;
+	display: flex;
+}
+
+.food-image{
+	background-color: red;
+	text-align: center;
+}
+
+.food-items .all{
+	background-color: red;
+	float: right;
+	margin-top: 15px;
+	right: 50px;
+}
+
+.item{
+	background-color: red;
+	display: inline-block;
+	margin-top: 60px;
+	margin-bottom: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 40px;
+}
+
+.footer-logo{
+	padding: 50px 50px;
+}
+
+.footer-above .text{
+	margin: 80px 20px;
+}
+
+.redirection-list{
+	margin: 0;
+}
+
+.redirection-list ul li{
+	display: inline;
+	margin: 60px;
+}
+
+.list-inline-item a img{
+	width: 30px;
+}
+
+.row div ul, .catalogue-title ul li{
+	list-style-type: none;
+	padding: 10px 50px;
+	font-family: "Bebas_Bold";
+	font-size: 20px;
+	color: #FE7A19;
+}
+
+.catalogue li{
+	display: inline;
+	padding: 20px;
+	font-family: "SegoeUI_Regular";
+	font-size: 15px;
+	color: #FFFFFF;
+}
+
+.catalogue li a{
+	color: #FFFFFF;
+}
+
+.footer-side{
+	margin-top: 60px;
+}
+
+#menu a{
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	font-family: 'Bebas_Bold';
+	font-size: 35px;
+	list-style-type: none;
+	text-align: center;
+}
+
+.copyright{
+	color: #FE7A19;
+	padding-left: 30px;
+}
+
+#orange-half-circle{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+
+#up-button-image{
+	display: block;
+	position: absolute;
+	left: 100px;
+	width: 25%;
+}
+
+.two{
+	background-color:pink;
+}
+
+.uudai1 .uudai{
+	margin-top: 100px;
+	margin-bottom:100px;
+	padding-left: auto;
+	padding-right: auto;
+	text-align: center;
+}
+
+.dsuudai{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.rowuudai {
+	display: flex;
+  }
+  
+ .columnuudai {
+	flex: 33.33%;
+	padding: 5px;
+  }
+
+ .caption {
+	color:rgb(255, 0, 43);
+  	display: block;
+  	width: 100%;
+  	text-align: center; 
+  	font-weight: 600;
+  	font-size: 20px;
+	text-decoration: none;
+	font-family: "SegoeUI_Regular";
+}
+
+.maps{
+	text-align: center;
+	padding-bottom: 100px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+footer{
+    width:100%;
+    background:url('../self/background.png');
+    color: #FFF;
+}
+
+footer:after{
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+}
+
+footer>ul{
+    float:left;
+    list-style-type:none;
+    width: 25%;
+}
+
+footer>ul>li{
+	padding-bottom: 5px;
+}
+
+footer>ul>li>a{
+	color: white;
+}
+
