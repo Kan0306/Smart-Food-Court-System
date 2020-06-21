@@ -73,7 +73,39 @@
     margin: 0px;
 	padding: 0;
 }
+.account {
+	position: absolute;
+	right: 0px;
+}
+.account a:hover
+{
+	text-decoration: none;
+}
 
+.acc-options
+{
+	display: none;
+	top: 7px;
+}
+.acc-options ul
+{
+	list-style-type: none;
+	text-align: right;	
+}
+.acc-options ul li
+{
+	font-family: 'SegoeUI_Semibold';
+	font-size: 13px;
+}
+.acc-options ul li a
+{
+	color: #000;
+}
+.acc-options ul li a:hover
+{
+	color: #1488DB;
+	text-decoration: none;
+}
 .line{
 	background: #1488DB;
 	position: relative;
@@ -339,6 +371,6 @@ body
 #up-button-image{
 	display: block;
 	position: absolute;
-	left: 100px;
+	left: 118px;
 	width: 25%;
 }

@@ -117,8 +117,43 @@ body {
 }
 
 .contact-imfo-box .container{
+	display: flex;
     padding: 10px;
-    margin-left: 15px;
+	margin-left: 15px;
+	position: relative;
+}
+
+.account {
+	position: absolute;
+	right: 0px;
+}
+.account a:hover
+{
+	text-decoration: none;
+}
+.acc-options
+{
+	display: none;
+	top: 7px;
+}
+.acc-options ul
+{
+	list-style-type: none;
+	text-align: right;	
+}
+.acc-options ul li
+{
+	font-family: 'SegoeUI_Semibold';
+	font-size: 13px;
+}
+.acc-options ul li a
+{
+	color: #000;
+}
+.acc-options ul li a:hover
+{
+	color: #1488DB;
+	text-decoration: none;
 }
 
 .contact-imfo-box{
@@ -147,7 +182,7 @@ body {
 }
 
 .contact-imfo-box p {
-    margin: 0px;
+    margin: 0px 0px 0px 20px;
     color: #828282;
 	text-align: left;
 	line-height: 10px;
@@ -199,6 +234,7 @@ body {
 
 .stall-list a:hover{
 	color: black;
+	text-decoration: none;
 }
 
 .main-menu{
@@ -232,8 +268,12 @@ body {
 	padding-left: 50px;
 	padding-top: 40px;
 	color: #FE7A19;
-	text-decoration: none;
 	font-size: 18px;
+}
+.homepage-menu .path a:hover
+{
+	text-decoration: none;
+	color: #000;
 }
 .homepage-menu .path .cart_icon
 {
@@ -245,10 +285,21 @@ body {
 	margin-top: -30px;
 	width: 50px;
 	height: 50px;
+	position: relative;
 }
 
 .homepage-menu a{
 	color: #FE7A19;
+}
+
+.cart_icon .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background:red;
+  color: #FFFFFF;
 }
 
 .stall-menu{
@@ -281,6 +332,8 @@ body {
 }
 
 .food-image{
+	width: 250px;
+	height: 132px;
 	text-align: center;
 }
 
@@ -301,23 +354,24 @@ body {
 }
 .item .infomation
 {
+	position: relative;
 	background: #FDCF76;
 	width: 250px;
 }
-.description, .food-name{
+.description{
+	height: 100px;
 	padding-left: 20px;
 	padding-right: 20px;
 	font-family: 'SegoeUI_Semibold';
 }
 
-.description{
-	height: 100px;
-}
-
 .food-name{
 	font-size: 20px;
 	font-weight: 800;
+	padding-left: 20px;
+	padding-right: 20px;
 	font-family: 'SegoeUI_Bold';
+	
 }
 .food-name:hover
 {
@@ -333,25 +387,19 @@ body {
 	font-size: 30px;
 	font-family: 'SegoeUI_Bold';
 }
-.fooditem-bottom .row, .up-button{
+.up-button{
 	position: relative;
 }
 
-.order-button, .next-slice-button{
+.order-button{
 	position: absolute;
-	right: 20px;
+	right: 0px;
 	top: 260px;
 	font-family: "SegoeUI_Semibold";
 	background: #FE7A19;
 	border: none;
+	color: #000;
 	margin-left: 0;
-}
-
-.next-slice-button{
-	position: absolute;
-	right: 0;
-	top: 180px;
-	background: none;
 }
 
 .next-page {

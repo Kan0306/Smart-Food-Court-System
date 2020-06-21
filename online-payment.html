@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+    <title>Thanh toán online</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+	<meta name="author" content="">
+       
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/font-awesome.min.css">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Purecss -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/online-payment.css">
+    
+
+</head>
+    
+<body>
+    <!--=============== Start Contact info================ -->
+    <div id="line"></div>
+	<div class="contact-imfo-box">
+		<div class="container">
+			<div class="row no-gutters">
+                <div class="col-xl-3">
+					<i class="fa fa-map-marker"></i>
+					<div class="overflow-hidden">
+
+						<p class="lead">
+							Đại học Bách Khoa - Cơ sở Dĩ An
+						</p>
+					</div>
+				</div>
+				<div class="col-xl-2">
+					<i class="fa fa-phone"></i>
+					<div class="overflow-hidden">
+						<p class="lead">
+							(028)38-647-XXX
+						</p>
+					</div>
+				</div>
+				<div class="col-xl-2">
+					<i class="fa fa-envelope"></i>
+					<div class="overflow-hidden">
+						<p class="lead">
+							foodcourt@hcmut.edu.vn
+						</p>
+					</div>
+                </div>
+                <div class="col-xl-4">
+                </div>
+                <div class="col-xl-1">
+                    <div class="row account">
+                        <a id="acc" href="#">
+							<p class="lead" onclick="showAccOptions()">customer09</p>
+							<div id ="op-active" class="acc-options">
+								<ul>
+									<li><a href="#">Thông tin tài khoản</a></li>
+									<li><a href="#">Cài đặt</a></li>
+									<li><a href="#">Đăng xuất</a></li>
+								</ul>
+							</div>
+                        </a>
+                        <i class="fa fa-user"></i>
+					</div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!--=============== End Contact info ===============-->
+
+	<!--=============== Start Header Menu Area ===============-->
+	<div class="head_background">
+	    <header>
+		    <div id="menu_bar"></div>
+			    <ul>
+				    <li><a href="#">Trang chủ</a></li>
+				    <li><a href="#">Giới thiệu</a></li>
+				    <li><a href="#">Thực đơn</a></li>
+				    <li><a href="#">Ưu đãi</a></li>				
+			    </ul>
+			<div class="search">
+				<form>
+					<input type="text" placeholder="  Tìm kiếm">
+					<button><img src="images/search.png"></button> 
+				</form>
+			</div>
+			<div class="logo_area">
+				<a href="#"><img src="images/logo.png" alt=""></a>
+            </div>
+        </header>
+        <div class ="payment-header">
+					<img id="orange-half-circle" src="images/image 22.png" style="padding-top: 40px">
+					<div class="order-icon">
+						<a href="#"><img src="images/wallet.png" style="width: 50%; padding-top: 10px"></a>
+						<div id="menu">
+                            <a href="#">THANH TOÁN</a>
+						</div>
+					</div>
+        </div>
+    </div>
+    <!--=============== End Header Menu Area ===============-->
+
+    <!--=============== Start Track List Area ===============-->
+    <div class="track_lists">
+        <ul>
+        <li><a href="#">Thanh toán ></a></li>
+        <li><a href="menu.html" >  Thanh toán bằng dịch vụ khác </a></li>
+        </ul>
+    </div>
+   
+    <!--=============== End Track List Area ===============-->
+
+
+    <!--================ Start Other Items =============-->
+    <div class="payment-area">
+        <form >
+            <div class="payment-group">
+                <div class = "payment-choice">
+                    <input name="choice" type="radio" value="Momo" /> 
+                    <img src="images/logo-momo.png" alt="Momo">
+                </div>
+                <div class = "payment-choice" style="padding-top: 7vh; padding-bottom: 5vh;" >
+                    <input name="choice" type="radio" value="SamsungPay" />
+                    <img src="images/FAVPNG_google-pay-samsung-pay-mobile-payment-android_qaA3muxY.png" alt="SamsungPay">
+                </div>
+                <div class = "payment-choice" style="padding-top: 5vh;">
+                    <input name="choice" type="radio" value="ApplePay" />
+                    <img src="images/FAVPNG_apple-pay-mobile-payment-google-pay_6kBektnz.png" alt="ApplePay">
+                </div>
+            </div>
+            <div class="payment-group">
+                <div class = "payment-choice">
+                    <input name="choice" type="radio" value="ZaloPay" />
+                    <img src="images/image 109.png" alt="ZaloPay">
+                </div>
+                <div class = "payment-choice" style="padding-top: 11.5vh;">
+                    <input name="choice" type="radio" value="Moca" />
+                    <img src="images/image 110.png" alt="Moca">
+                </div>
+                <div class = "payment-choice" style="padding-top: 9vh;">
+                    <input name="choice" type="radio" value="OnePay" />
+                    <img src="images/image 111.png" alt="OnePay"> 
+                </div>
+            </div>   
+            <div class="payment-group">
+                <div class="back">
+                    <a href="#">Trở lại</a>
+                </div>
+                <div class="next">
+                    <a href="#">Tiếp tục</a>
+                </div>
+            </div>         
+        </form>
+        
+        
+    </div>
+   
+
+    <!--================= End Other Items ==============-->
+
+    <!--================Footer =================-->
+	<div class="footer-above">
+		<div class="row">
+			<div class="footer-logo">
+				<img src="images/logo.png" alt="">
+			</div>
+			<div class="row footer-side">
+				<div class="catalogue-title">
+					<ul> 
+						<li>DANH MỤC</li>
+						<li>TRỢ GIÚP</li>
+						<li>THÔNG TIN</li>
+					</ul>
+				</div>
+				<div>
+					<ul> 
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Trang chủ</a></li>
+								<li><a href="#">Giới thiệu</a></li>
+								<li><a href="#">Thực đơn</a></li>
+								<li><a href="#">Ưu đãi thành viên</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Hỗ trợ</a></li>
+								<li><a href="#">Liên hệ với chúng tôi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Chính sách bảo mật</a></li>
+								<li><a href="#">Điều khoản sử dụng</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+        </div>
+        <div class="footer-bottom">
+            <div class="row">
+                <div class="col-xl-4 copyright">
+                    Copyright © 2020 BK Food Court. All rights reserved.
+                </div>
+                <div class="col-xl-5">
+                    <div class="up-button">
+                        <a href="#"><img id="up-button-image" src="images/Subtraction 3.png"></a>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <ul class="list-inline f-social">
+                        <li class="list-inline-item"><a href="#"><img src="images/facebook (2).png"></a></li>
+                        <li class="list-inline-item"><a href="#"><img src="images/google-plus.png"></a></li>
+                        <li class="list-inline-item"><a href="#"><img src="images/twitter.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</div>
+	
+    <!--================Footer =================-->
+    <script src="js/order.js"></script>
+</body>
+</html>

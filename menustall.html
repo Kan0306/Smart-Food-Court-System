@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">  
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Yummy Mix </title>
         <link rel="stylesheet" type="text/css" href="styles/menustall.css">
@@ -46,12 +47,18 @@
                     <div class="col-xl-4">
                     </div>
                     <div class="col-xl-1">
-                        <div class="row">
-                            <a href="#"><p class="lead">customer09</p></a>
+                        <div class="row account">
+                            <a id="acc" href="#">
+                                <p class="lead" onclick="showAccOptions()">customer09</p>
+                                <div id ="op-active" class="acc-options">
+                                    <ul>
+                                        <li><a href="#">Thông tin tài khoản</a></li>
+                                        <li><a href="#">Cài đặt</a></li>
+                                        <li><a href="#">Đăng xuất</a></li>
+                                    </ul>
+                                </div>
+                            </a>
                             <i class="fa fa-user"></i>
-                        </div>
-                        <div class="overflow-hidden">
-                            <p class="lead"></p>
                         </div>
                     </div>
                 </div>
@@ -92,11 +99,12 @@
         <!--================ Header Menu Area =================-->
 
         <!--================ Menu Area =================-->
-        <section class="menu_area">
+        <section class="back_area">
                 <div class="text_heading">
                     <a href="#">Trang chủ</a> > <a href="menu.html"> Thực đơn</a> > <a href="menustall.html"> Yummy Mix</a>
                     <div class="cart_icon">
                         <img src="images/shopping-cart.png" style="padding-left: 7px; padding-top: 8px"/>
+                        <span class="badge">0</span>
                     </div>
                 </div>
                 <div class="item_type">
@@ -371,6 +379,7 @@
 			</div>
 		</div>
     </div>
-	<!--================Footer =================-->
+    <!--================Footer =================-->
+    <script src="js/order.js"></script>
     </body>
 </html>

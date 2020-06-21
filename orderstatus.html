@@ -45,12 +45,18 @@
                     <div class="col-xl-4">
                     </div>
                     <div class="col-xl-1">
-                        <div class="row">
-                            <a href="#"><p class="lead">customer09</p></a>
+                        <div class="row account">
+                            <a id="acc" href="#">
+                                <p class="lead" onclick="showAccOptions()">customer09</p>
+                                <div id ="op-active" class="acc-options">
+                                    <ul>
+                                        <li><a href="#">Thông tin tài khoản</a></li>
+                                        <li><a href="#">Cài đặt</a></li>
+                                        <li><a href="#">Đăng xuất</a></li>
+                                    </ul>
+                                </div>
+                            </a>
                             <i class="fa fa-user"></i>
-                        </div>
-                        <div class="overflow-hidden">
-                            <p class="lead"></p>
                         </div>
                     </div>
                 </div>
@@ -168,6 +174,7 @@
 			</div>
 		</div>
     </div>
-	<!--================Footer =================-->
+    <!--================Footer =================-->
+    <script src="js/order.js"></script>
     </body>
 </html>
