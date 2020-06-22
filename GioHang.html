@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/item_info.css">
-    <link rel="stylesheet" href="styles/online-payment.css">
+	<link rel="stylesheet" href="styles/online-payment.css">
+	<link rel="stylesheet" href="styles/giohang.css">
 
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -105,14 +106,14 @@
     
     
     <!--=============== Start Item Area ===================-->
-    <div style="background-color: white; width: 1000px; height: 1000px; margin-left: 40px; margin-right: 40px;">
+    <div style="background-color: white; width: 500px; height: 1000px; margin-left: 40px; float: left;">
         <div class="item-image" style="float: left;">
             <img src="item-image/item.png"  style="width: 400px; height: auto;">
         </div>
         <br>
         
         <div class="item-detail" style="float: left; margin-left: 40px; margin-right: 40px;">
-            <div class="item-title">Mì Spaghetti</div>
+            <label style="font-size: 30px;">Mì Spaghetti</label>
             <div class="item-title1">
                 Giá:
                 <div class="item-price">
@@ -134,13 +135,41 @@
         </div>
     </div>
     <!--=============== End Item Area   ===================-->
+    <!--=============== Cart total price area   ===================-->
+	<form  class="signupform" action="will_do.php" method="post" style="height: 450px;">
+		
+
+		<hr style="border-top: 1px solid red;">
+		<br>
+		<input type="text" name="name" placeholder="Nhập mã ưu đãi"
+		style="padding-bottom: 15px;padding-top: 15px;width: 100%;margin-top: 4px;margin-bottom: 10px;padding-left: 5px;">
+		<br>
+		<div>
+			<button type="submit" style="margin-top: 15px;" class="signinbtn">Áp dụng</button>
+		</div>
+		<hr style="border-top: 1px solid red;">
+
+		<div>
+			<button type="submit" style="margin-top: 15px; background-color: #FE7A19;" class="signinbtn">THANH TOÁN</button>
+		</div>
+		<div>
+			<button type="submit" style="margin-top: 15px; background-color: #ffffff; color: #FE7A19;" class="signinbtn">Tiếp tục đặt hàng</button>
+		</div>
+		<br>
+		
+		
+			
+	</form>
+
+    <!--=============== End cart total price   ===================-->
 
     
+    <br>
 
     <!--================ Start Other Items =============-->
 		
     
-	<div class="stall-menu">
+	<div class="stall-menu" style="margin-top: 1000px;">
         <a href="#" class="stall-name" style="margin: auto; text-align: center;">CÓ THỂ BẠN CŨNG THÍCH</a>
 		<div id="myCarousel1" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->

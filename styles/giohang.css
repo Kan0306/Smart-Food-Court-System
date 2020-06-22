@@ -1,0 +1,62 @@
+.signupform {
+    position: relative;
+    width: 500px; 
+    margin-left: 890px;
+    height: 550px; 
+    border-radius: 10px; 
+    padding: 5px; 
+    padding-left: 40px; 
+    padding-right: 40px;
+}
+.signinbtn {
+    width: 100%;
+    background-color: #c76927;
+    /*#FE7A19;*/
+    color: white;
+    padding: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    opacity: 0.9;
+    display: block;
+    margin: auto;
+}
+.signupbtn {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+.nen_cam_nhat {
+    height: 700px;
+    width: 100%;
+    background: url('../images/nen_cam_nhat.png');
+}
+.nen_cam_dam {
+    height: 600px;
+    width: 100%;
+    background: url('../images/nen_cam_dam.png');
+}
+.dan_dong {
+    /*Class này tạo ra để dãn dòng; vì tui gà*/
+    padding: 15px;
+    margin: 0;
+}
+.flex-col-c {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	-ms-align-items: center;
+	align-items: center;
+}
