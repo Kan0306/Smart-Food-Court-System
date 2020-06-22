@@ -285,20 +285,20 @@ body {
 }
 .item-detail select {
 	border: 2px dashed #1488DB;	
-	width: 15vw;
-	height: 7vh;
+	width: 150px;
+	height: 50px;
 	margin-left: 12vw;
 	text-align: right;
 }
 .item-detail select option{
-	font-size: 2.3vw;
+	font-size: 30px;
 	margin-left: 0.6vw;
 	width: 30vw;
 }
 .item-title1 input {
 	border: 2px dashed #1488DB;	
-	width: 13vw;
-	height: 7vh;
+	width: 150px;
+	height: 50px;
 	margin-left: 7vw;
 	text-align: left;
 }
@@ -347,11 +347,11 @@ body {
 }
 
 .number{
-	float: left;
+	float: right;
 	margin-left: 0.6vw;
 	font-family: Segoe UI;
 	font-style: normal;
-	font-size: 1.6vw;
+	font-size: 30px;
 	color: #1488DB;
 }
 .star{
