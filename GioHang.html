@@ -204,19 +204,28 @@
 	
 
 
-	<div class="form-popup" id="myForm" style="position: fixed;
+	<div class="form-popup" id="myForm" style="position: fixed; left: 50%;
 	transform: translate(-50%, -50%); border-style: groove; border-color: black;">
-		<form action="/action_page.php" class="form-container" style="background-color: rgb(243, 231, 204); text-align: center;">
-			<h1 style="color: #FE7A19;"><b>Lựa chọn phương thức thanh toán</b></h1>
+		<form action="/action_page.php" class="form-container" onsubmit="return false" 
+		style="background-color: rgb(243, 231, 204); text-align: center; height: 420px;">
+			<h1 style="color: #FE7A19; font-size: 35px;"><b>Lựa chọn phương thức thanh toán</b></h1>
+			<br>
+			<div class="oidar">
+				<input type="radio" name="gender" value="male"><b> Thanh toán bằng tài khoản</b><br>
+			</div>
+			<br>
+			
+			<span style="font-size: 20px; color: rgb(134, 134, 134);"> - HOẶC - </span><br><br>
+
+			<div class="oidar">
+				<input type="radio" name="gender" value="female"><b> Thanh toán bằng dịch vụ khác</b><br>
+			</div>
+
+			<br><br>
 		
-			<label for="email"><b>Email</b></label>
-			<input type="text" placeholder="Enter Email" name="email" required>
 		
-			<label for="psw"><b>Password</b></label>
-			<input type="password" placeholder="Enter Password" name="psw" required>
-		
-			<button type="submit" class="btn">Tiếp tục</button>
-			<button type="submit" class="btn cancel" onclick="closeForm()">Trở lại</button>
+			<button type="submit" class="btn cancel" style="float: left; width: 50%;font-size: 18px;" onclick="closeForm() "><b>Trở lại</b></button>
+			<button type="submit" class="btn" style="float: left; width: 50%; font-size: 18px;"><b>Tiếp tục</b></button>
 		</form>
 	</div>
 
