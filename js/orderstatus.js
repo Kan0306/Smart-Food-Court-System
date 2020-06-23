@@ -13,7 +13,7 @@ function showAccOptions()
         x.style.width = "220px";
         x.style.padding = "0px";
         x.style.margin = "0";
-        x.style.left = "-140px";
+        x.style.left = "-130px";
         x.style.top = "20px";
         x.style.lineHeight = "30px";
         x.style.zIndex = "1";

@@ -63,9 +63,12 @@ body {
 	max-width: 1150px;
 	position: relative;
 }
+
 .contact-imfo-box .container{
+	display: flex;
     padding: 10px;
 	margin-left: 15px;
+	position: relative;
 }
 
 .account {
@@ -89,7 +92,7 @@ body {
 	line-height: 10px;
 	text-align: left;
 	color: #828282;
-	font-size: 10pt;
+	font-size: 10px;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	-ms-border-radius: 50%;
@@ -99,18 +102,26 @@ body {
 }
 
 .contact-imfo-box p {
-    margin: 0px;
+    margin: 0px 0px 0px 20px;
     color: #828282;
 	text-align: left;
 	line-height: 10px;
     font-weight: 600;
-    font-size: 10pt;
+    font-size: 12px;
     font-family: "SegoeUI_Regular";
 	font-style: italic;
 }
-.account {
-	position: absolute;
-	right: 0px;
+.lead {
+    font-size: 18px;
+    line-height: 30px;
+    color: #767676;
+    margin: 0px;
+	padding: 0;
+}
+.lead a:hover
+{
+	color: #fff;
+	text-decoration: none;
 }
 .account a:hover
 {
@@ -158,26 +169,23 @@ body {
 {
     line-height: 30px;
     color: #767676;
-    margin: 0px;
-	padding: 0;
+    
+	right: 0px;
+	position: absolute;
 }
 .login p
 {
 	font-family: 'Bebas_Bold';
 	font-style: normal;
 	font-size: 18px;
+	text-decoration: underline;
+	text-decoration-color: #FE7A19;
 }
 .login a:hover
 {
 	text-decoration: none;
 }
-.login_line
-{
-	background: #FE7A19;
-	height: 2px;
-	margin-top: 2px;
-	padding: 0;
-}
+
 .logo_area
 {
 	position: absolute;

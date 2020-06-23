@@ -117,8 +117,15 @@ body {
 }
 
 .contact-imfo-box .container{
+	display: flex;
     padding: 10px;
-    margin-left: 15px;
+	margin-left: 15px;
+	position: relative;
+}
+
+.account {
+	position: absolute;
+	right: 0px;
 }
 
 .contact-imfo-box{
@@ -137,8 +144,7 @@ body {
 	line-height: 10px;
 	text-align: left;
 	color: #828282;
-	font-size: 10pt;
-	padding-right: 15px;
+	font-size: 10px;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	-ms-border-radius: 50%;
@@ -148,23 +154,32 @@ body {
 }
 
 .contact-imfo-box p {
-    margin: 0px;
+    margin: 0px 0px 0px 20px;
     color: #828282;
 	text-align: left;
 	line-height: 10px;
     font-weight: 600;
-    font-size: 10pt;
+    font-size: 12px;
     font-family: "SegoeUI_Regular";
 	font-style: italic;
 }
-.account {
-	position: absolute;
-	right: 0px;
+.lead {
+    font-size: 18px;
+    line-height: 30px;
+    color: #767676;
+    margin: 0px;
+	padding: 0;
+}
+.lead a:hover
+{
+	color: #fff;
+	text-decoration: none;
 }
 .account a:hover
 {
 	text-decoration: none;
 }
+
 .acc-options
 {
 	display: none;
@@ -189,7 +204,6 @@ body {
 	color: #1488DB;
 	text-decoration: none;
 }
-
 .stall-list{
 	position: relative;
 	max-width: 1200px;
@@ -201,6 +215,7 @@ body {
 .main-menu{
 	position: relative;
 	text-align: center;
+	margin-top: 60px;
 }
 
 .right-column{

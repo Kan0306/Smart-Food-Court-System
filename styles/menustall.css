@@ -30,13 +30,19 @@
 	src: url('../fonts/BebasNeueBold.ttf')  format('truetype');
 }
 .contact-imfo-box .container{
+	display: flex;
     padding: 10px;
-    margin-left: 15px;
+	margin-left: 15px;
+	position: relative;
+}
+
+.account {
+	position: absolute;
+	right: 0px;
 }
 
 .contact-imfo-box{
 	background: #D9D9D9;
-	position: relative;
 }
 
 .overflow-hidden {
@@ -51,8 +57,7 @@
 	line-height: 10px;
 	text-align: left;
 	color: #828282;
-	font-size: 10pt;
-	padding-right: 15px;
+	font-size: 10px;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	-ms-border-radius: 50%;
@@ -62,25 +67,26 @@
 }
 
 .contact-imfo-box p {
-    margin: 0px;
-	color: #828282;
+    margin: 0px 0px 0px 20px;
+    color: #828282;
 	text-align: left;
 	line-height: 10px;
     font-weight: 600;
-    font-size: 10pt;
-    font-family: "SegoeUI_Italic";
+    font-size: 12px;
+    font-family: "SegoeUI_Regular";
+	font-style: italic;
 }
 .lead {
     font-size: 18px;
-	line-height: 30px;
-	position: relative;
+    line-height: 30px;
     color: #767676;
     margin: 0px;
 	padding: 0;
 }
-.account {
-	position: absolute;
-	right: 0px;
+.lead a:hover
+{
+	color: #fff;
+	text-decoration: none;
 }
 .account a:hover
 {
@@ -111,7 +117,6 @@
 	color: #1488DB;
 	text-decoration: none;
 }
-
 .line{
 	background: #1488DB;
 	position: relative;
@@ -127,6 +132,7 @@
 	bottom: 9.6%;
 	background: url(../images/ym-bg.png) no-repeat center;
 	filter: brightness(30%);
+	z-index: -1;
 }
 .logo_area
 {
@@ -146,6 +152,7 @@ body
 	padding: 0;
 	font-family: 'SegoeUI_Regular';
 	background: url('../images/background.png');
+	
 }
 #half_circle
 {

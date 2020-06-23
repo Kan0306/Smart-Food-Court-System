@@ -116,19 +116,25 @@ body {
 	padding: 0;
 	font-family: 'SegoeUI_Regular';
 }
-
-.contact-imfo-box .container{
-    padding: 10px;
-    margin-left: 15px;
-}
-
 .top-navbar .container{
     background: #FE7A19;
     margin-right: 0;
 }
 
+.contact-imfo-box .container{
+	display: flex;
+    padding: 10px;
+	margin-left: 15px;
+	position: relative;
+}
+
+.account {
+	position: absolute;
+	right: 0px;
+}
+
 .contact-imfo-box{
-    background: #D9D9D9;
+	background: #D9D9D9;
 }
 
 .overflow-hidden {
@@ -143,23 +149,22 @@ body {
 	line-height: 10px;
 	text-align: left;
 	color: #828282;
-	font-size: 10pt;
-	padding-right: 15px;
+	font-size: 10px;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	-ms-border-radius: 50%;
 	border-radius: 50%;
     margin-right: 5px;
-	margin-left: 5px;
+    margin-left: 5px;
 }
 
 .contact-imfo-box p {
-    margin: 0px;
+    margin: 0px 0px 0px 20px;
     color: #828282;
 	text-align: left;
 	line-height: 10px;
     font-weight: 600;
-    font-size: 10pt;
+    font-size: 12px;
     font-family: "SegoeUI_Regular";
 	font-style: italic;
 }
@@ -167,12 +172,13 @@ body {
     font-size: 18px;
     line-height: 30px;
     color: #767676;
-    margin: 0;
+    margin: 0px;
 	padding: 0;
 }
-.account {
-	position: absolute;
-	right: 0px;
+.lead a:hover
+{
+	color: #fff;
+	text-decoration: none;
 }
 .account a:hover
 {
@@ -182,7 +188,7 @@ body {
 .acc-options
 {
 	display: none;
-	top: 30px;
+	top: 7px;
 }
 .acc-options ul
 {

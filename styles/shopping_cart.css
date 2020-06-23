@@ -1,0 +1,143 @@
+@charset "utf-8";
+/** ADD YOUR AWESOME CODES HERE **/
+@import url(animate.css);
+@import url(font-awesome.min.css);
+@import url(superslides.css);
+@import url(baguetteBox.min.css);
+
+@font-face
+{
+	font-family: 'SegoeUI_Regular';
+	src: url('../fonts/segoeui.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Italic';
+	src: url('../fonts/segoeuii.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Semibold';
+	src: url('../fonts/seguisb.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Bold';
+	src: url('../fonts/segoeuib.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_SemiItalic';
+	src: url('../fonts/seguisbi.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'Bebas_Bold';
+	src: url('../fonts/BebasNeueBold.ttf')  format('truetype');
+}
+body {
+  font-size: 15px;
+  background: url('../images/background.png');
+  margin: 0;
+  padding: 0;
+  font-family: 'SegoeUI_Regular';
+}
+
+.nen_cam_nhat {
+    height: 700px;
+    width: 100%;
+    background: url('../images/nen_cam_nhat.png');
+}
+.nen_cam_dam {
+    height: 600px;
+    width: 100%;
+    background: url('../images/nen_cam_dam.png');
+}
+
+.flex-col-c {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	-ms-align-items: center;
+	align-items: center;
+}
+.open-button {
+    background-color: #FE7A19;;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+  }
+  
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 700px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  .form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+  .oidar {
+    border: solid;
+    font-size: 20px;
+    width: 80%;
+    margin: auto;
+    background-color: white;
+}
