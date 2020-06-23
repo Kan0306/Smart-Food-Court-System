@@ -259,13 +259,12 @@ body
 {
     height: 250px;
     background: none;
-    counter-reset: step;
 }
 .order_status .progress li
 {
     position: relative;
     display: inline-table;
-    width: 300px;
+    width: 280px;
     text-align: center;
     list-style-type: none;
     font-family: 'SegoeUI_Bold';
@@ -296,7 +295,7 @@ body
     height: 4px;
     background-color: #d9d9d9;
     top: 12px;
-    left: -46.5%;
+    left: -46%;
 }
 .order_status .progress li.active
 {

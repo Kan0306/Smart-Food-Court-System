@@ -356,7 +356,10 @@ body {
 	text-decoration: none;
 	color: #FE7A19;
 }
-
+.prefer a button
+{
+	line-height: 20px;
+}
 .prefer_items 
 {
 	margin-left: 150px;
@@ -453,7 +456,7 @@ body {
 	background: #FE7A19;
 	color: #fff;
 	border: none;
-	border-radius: 30px;
+	border-radius: 3px;
 }
 .footer-logo{
 	position: relative;

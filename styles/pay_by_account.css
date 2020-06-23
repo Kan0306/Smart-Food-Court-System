@@ -362,6 +362,10 @@ body {
 	padding-top: 30px;
 }
 
+.up-button{
+	position: relative;
+}
+
 #up-button-image{
 	display: block;
 	position: absolute;
@@ -391,4 +395,75 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	width: 40%;
+}
+
+
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  border: 3px solid #FDCF76;
+  z-index: 9;
+  transform: translate(-50%, -105%);
+}
+
+.form-container {
+  max-width: 400px;
+  height: 300px;
+  margin-top: 0;
+  padding: 30px 50px 0 50px;
+  background-color: white;
+  text-align: center;
+}
+.form-container label
+{
+	font-family: 'SegoeUI_Bold';
+	font-size: 15px;
+	padding-top: 20px;
+}
+
+.form-container input[type=password] {
+	font-family: 'SegoeUI_Regular';
+	font-size: 15px;
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	border: none;
+	background: #f1f1f1;
+}
+
+.form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.form-container .btn {
+	font-family: 'SegoeUI_Regular';
+	font-size: 15px;
+	background-color: #FE7A19;
+	color: white;
+	padding: 10px;
+	border: 2px solid #FE7A19;
+	cursor: pointer;
+	width: 40%;
+	margin-top: 20px;
+	margin-left: 55px;
+}
+
+.form-container .cancel {
+	background-color: #FCE8DA;
+	border: 2px solid #FE7A19;
+	color: #FE7A19;
+	width: 40%;
+	text-align: center;
+	margin-left: 0;
+}
+.form-container .btn:hover
+{
+	color: #fff;
+}
+.form-container .cancel:hover
+{
+	color: #FE7A19;
 }

@@ -90,7 +90,7 @@
         </ul>
     </div>
     <div class="cart_icon">
-        <a href="#" ><img src="images/shopping-cart.png" alt="Giỏ hàng" style="padding-left: 7px; padding-top: 8px"
+        <a href="shopping_cart.html" ><img src="images/shopping-cart.png" alt="Giỏ hàng" style="padding-left: 7px; padding-top: 8px"
 			data-toggle="tooltip"  data-placement="top" title="Giỏ hàng"></a>
 			<span class="badge">0</span>
     </div>
@@ -144,11 +144,11 @@
             </div>
             <div class="item-title1">
                 Số lượng:
-                <input type="number" name="txtNumber" value="0">
+				<input id="num_item" type="number" name="txtNumber" value="0">
             </div>
-            <button class="submit">Thêm vào giỏ hàng</button>
+            <button id="add_cart" class="submit">Thêm vào giỏ hàng</button>
             <div class="order">
-                <a href="#">Đặt hàng ngay </a>
+                <a href="shopping_cart.html">Đặt hàng ngay </a>
             </div>
         </div>
     </div>
@@ -163,8 +163,7 @@
     <!--================ End Comment ===================-->
 
     <!--================ Start Other Items =============-->
-		
-    
+		  
 	<div class="stall-menu">
         <a href="#" class="stall-name">MÓN ĂN KHÁC CỦA YUMMY MIX</a>
 		<div id="myCarousel1" class="carousel slide" data-ride="carousel">
@@ -193,7 +192,7 @@
 				<div class="item col-xl-3">
 					<div class="food-image"><img src="images/image 62.png" style="width: 250px;height: 132px; text-align: center;"></div>
 						<div class="infomation">
-							<a href="#" class="food-name">Mì Spaghetti</a>
+							<a href="item_info.html" class="food-name">Mì Spaghetti</a>
 							<div class="fooditem-bottem">
 								<div class="row">
 									<div class="food-price">30,000</div>
@@ -374,5 +373,6 @@
 	
 	<!--================Footer =================-->
 	<script src="js/item_info.js"></script>
+	<script src="js/account.js"></script>
 </body>
 </html>
