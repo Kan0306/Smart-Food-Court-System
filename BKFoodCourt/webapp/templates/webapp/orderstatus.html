@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Trạng thái đơn hàng </title>
+        <link rel="stylesheet" type="text/css" href="{% static 'webapp/styles/orderstatus.css' %}">
+        <link rel="stylesheet" href="{% static 'webapp/styles/bootstrap.min.css' %}">     
+	    <link rel="stylesheet" href="{% static 'webapp/styles/font-awesome.min.css' %}">  
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <!-- Start Contact info -->
+        <div class="line"></div>
+        <div class="contact-imfo-box">
+            <div class="container">
+                <p class="lead">
+                    <i class="fa fa-map-marker"></i>Đại học Bách Khoa - Cơ sở Dĩ An
+                </p>
+                <p class="lead">
+                    <i class="fa fa-phone"></i>(028)38-647-XXX
+                </p>
+                <p class="lead">
+                    <i class="fa fa-envelope"></i>foodcourt@hcmut.edu.vn
+                </p>
+                <div class="row account">
+                    <a id="acc" href="#">
+                        <p class="lead" onclick="showAccOptions()">customer09</p>
+                        <div id ="op-active" class="acc-options">
+                            <ul>
+                                <li><a href="#">Thông tin tài khoản</a></li>
+                                <li><a href="#">Cài đặt</a></li>
+                                <li><a href="#">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                    <i class="fa fa-user"></i>
+                </div>
+            </div>
+        </div>
+        <!-- End Contact info -->
+        <header> 
+            <div id="menu_bar"></div>
+                <ul>
+                    <li><a href="{% url 'home-page' %}">Trang chủ</a></li>
+                    <li><a href="{% url 'about' %}">Giới thiệu</a></li>
+                    <li><a href="{% url 'main-menu' %}">Thực đơn</a></li>
+                    <li><a href="{% url 'preference' %}">Ưu đãi</a></li>
+                    
+                </ul>
+                <div class="search">
+                    <form>
+                        <input type="text" placeholder="  Tìm kiếm">
+                        <button><img src="{% static 'webapp/images/search.png' %}"/></button> 
+                    </form>
+                </div>
+                <div class="logo_area">
+                    <a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""/></a>
+                </div>
+        </header>
+        <div>
+            <img id="half_circle" src="{% static 'webapp/images/image 22.png' %}"/>
+            <div class="order_icon">
+                <img src="{% static 'webapp/images/order-icon.png' %}" width="100px"/>
+            </div>
+            <div class="order_name">
+                <a href="#">Đơn Hàng Của Bạn</a>
+            </div>
+        </div>
+        <!--================ Menu Area =================-->
+        <section class="back_area">
+            <div class="order_status">
+                <p class="order_code">Đơn hàng #OID134630052020</p>
+                <div class="progress">
+                    <ul>
+                        <li class="active">
+                            <p>Thanh toán đơn hàng</p>
+                        </li>
+                        <li>
+                            <p>Tiếp nhận đơn hàng</p>
+                        </li>
+                        <li>
+                            <p>Đang chuẩn bị</p>
+                        </li>
+                        <li>
+                            <p>Đơn hàng sẵn sàng</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="line"></div>
+        </section>
+        <!--================Footer =================-->
+	<div class="footer-above">
+		<div class="row">
+			<div class="footer-logo">
+				<a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""></a>
+			</div>
+			<div class="row footer-side">
+				<div class="catalogue-title">
+					<ul> 
+						<li>DANH MỤC</li>
+						<li>TRỢ GIÚP</li>
+						<li>THÔNG TIN</li>
+					</ul>
+				</div>
+				<div>
+					<ul> 
+						<li class="catalogue">
+							<ul>
+								<li><a href="{% url 'home-page' %}">Trang chủ</a></li>
+								<li><a href="{% url 'about' %}">Giới thiệu</a></li>
+								<li><a href="{% url 'main-menu' %}">Thực đơn</a></li>
+								<li><a href="{% url 'preference' %}">Ưu đãi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Hỗ trợ</a></li>
+								<li><a href="#">Liên hệ với chúng tôi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Chính sách bảo mật</a></li>
+								<li><a href="#">Điều khoản sử dụng</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="row">
+			<div class="col-xl-4 copyright">
+				Copyright © 2020 BK Food Court. All rights reserved.
+			</div>
+			<div class="col-xl-5">
+				<div class="up-button">
+					<a href="#"><img id="up-button-image" src="{% static 'webapp/images/Subtraction 3.png' %}"></a>
+				</div>
+			</div>
+			<div class="col-xl-3">
+				<ul class="list-inline f-social">
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/facebook (2).png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/google-plus.png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/twitter.png' %}"></a></li>
+				</ul>
+			</div>
+		</div>
+    </div>
+    <!--================Footer =================-->
+    <script src="{% static 'webapp/js/dropdown.js' %}"></script>
+    </body>
+</html>

@@ -1,0 +1,367 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Yummy Mix </title>
+        <link rel="stylesheet" type="text/css" href="{% static 'webapp/styles/menustall.css' %}">
+        <link rel="stylesheet" href="{% static 'webapp/styles/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'webapp/styles/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+    </head>
+    <body>
+        
+        <div class="head_background"></div>
+        <!-- Start Contact info -->
+        <div class="line"></div>
+        <div class="contact-imfo-box">
+            <div class="container">
+                <p class="lead">
+                    <i class="fa fa-map-marker"></i>Đại học Bách Khoa - Cơ sở Dĩ An
+                </p>
+                <p class="lead">
+                    <i class="fa fa-phone"></i>(028)38-647-XXX
+                </p>
+                <p class="lead">
+                    <i class="fa fa-envelope"></i>foodcourt@hcmut.edu.vn
+                </p>
+                <div class="row account">
+                    <a id="acc" href="#">
+                        <p class="lead" onclick="showAccOptions()">customer09</p>
+                        <div id ="op-active" class="acc-options">
+                            <ul>
+                                <li><a href="#">Thông tin tài khoản</a></li>
+                                <li><a href="#">Cài đặt</a></li>
+                                <li><a href="#">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                    <i class="fa fa-user"></i>
+                </div>
+            </div>
+        </div>
+        <!-- End Contact info -->
+
+        <!--================ Header Menu Area =================-->
+        <header> 
+            <div id="menu_bar"></div>
+                <ul>
+                    <li><a href="{% url 'home-page' %}">Trang chủ</a></li>
+                    <li><a href="about.html">Giới thiệu</a></li>
+                    <li><a href="{% url 'main-menu' %}" class="active">Thực đơn</a></li>
+                    <li><a href="preference.html">Ưu đãi</a></li>
+                    
+                </ul>
+                <div class="search">
+                    <form>
+                        <input type="text" placeholder="  Tìm kiếm">
+                        <button><img src="{% static 'webapp/images/search.png' %}"/></button> 
+                    </form>
+                </div>
+                <div class="logo_area">
+                    <a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""/></a>
+                </div>
+        </header>
+        <div>
+            <img id="half_circle" src="{% static 'webapp/images/image 22.png' %}" style="top: 10px"/>
+            <div class="stall_icon">
+                <img src="{% static 'webapp/images/stall-icon.png' %}" width="100px"/>
+            </div>
+            <div class="stall_name">
+                <a href="{% url 'stall-menu' %}">Yummy Mix</a>
+            </div>
+        </div>
+        <!--================ Header Menu Area =================-->
+
+        <!--================ Menu Area =================-->
+        <section class="back_area">
+                <div class="text_heading">
+                    <a href="#">Trang chủ</a> > <a href="{% url 'main-menu' %}"> Thực đơn</a> > <a href="{% url 'stall-menu' %}"> Yummy Mix</a>
+                    <div class="cart_icon">
+                        <a href="{% url 'shopping-cart' %}"><img src="{% static 'webapp/images/shopping-cart.png' %}" style="padding-left: 7px; padding-top: 8px"/></a>
+                        <span class="badge">0</span>
+                    </div>
+                </div>
+                <div class="item_type">
+                    <a href="#"><button>Món Việt</button></a>
+                    <a href="#"><button>Món Hàn Quốc</button></a>
+                    <a href="#"><button>Món Trung Quốc</button></a>
+                    <a href="#"><button>Món Phương Tây</button></a>
+                </div>
+                <div class="filter">
+                    <p id="sortby">Sắp xếp theo</p>
+                    <div class="row">
+                        <button style="margin-left: 230px">Bán chạy</button>
+                        <button>Mới nhất</button>
+                        <button style="width: 200px; text-align: right">Thứ tự chữ cái
+                            <i class="fa fa-angle-down"></i>
+                            <div class="alphabet">
+                                <ul>
+                                    <li>Từ A-Z</li>
+                                    <li>Từ Z-A</li>
+                                </ul>
+                            </div>
+                        </button>
+                        <button style="width: 280px; text-align: right;">Giá
+                            <i class="fa fa-angle-down"></i>
+                            <div class="price">
+                                <ul>
+                                    <li>Giá từ thấp đến cao</li>
+                                    <li>Giá từ cao đến thấp</li>
+                                </ul>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/image 61.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="#" class="food-name">Gà Sốt Phô Mai</a>
+                            <div class="description">Những cơn mưa ngày hạ bất chợt kèm theo chút se lạnh là thời điểm thích hợp để ăn món gà phô mai Hàn Quốc...</div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">25,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/image 62.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="{% url 'item-info' %}" class="food-name">Mì Spaghetti</a>
+                            <div class="description">Nếu bạn là tín đồ của ẩm thực phương Tây thì không thể bỏ qua mì Spaghetti...</div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">30,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/image 63.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="#" class="food-name">Cơm Trộn Hàn Quốc</a>
+                            <div class="description">Một trong những món ăn truyền thống của xứ sở Kim Chi... </div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">28,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="items1">
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/bun-dau.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="#" class="food-name">Bún Đậu Mắm Tôm</a>
+                            <div class="description">Bún đậu mắm tôm được mệnh danh là món ăn đặc sản của người Hà Nội...</div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">20,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/pho-cuon.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="#" class="food-name">Phở Cuốn</a>
+                            <div class="description">Một trong những món ăn rất nổi tiếng của Hà Nội, ngon miệng, mát ruột, đủ chất...</div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">10,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/lau-chay.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="#" class="food-name">Lẩu Chay</a>
+                            <div class="description">Có hương vị đậm đà, thanh mát, vừa chứa hàm lượng dinh dưỡng cao... </div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">70,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="items1">
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/image 61.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="#" class="food-name">Gà Sốt Phô Mai</a>
+                            <div class="description">Những cơn mưa ngày hạ bất chợt kèm theo chút se lạnh là thời điểm thích hợp để ăn món gà phô mai Hàn Quốc...</div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">25,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/image 62.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="#" class="food-name">Mì Spaghetti</a>
+                            <div class="description">Nếu bạn là tín đồ của ẩm thực phương Tây thì không thể bỏ qua mì Spaghetti...</div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">30,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/image 63.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="#" class="food-name">Cơm Trộn Hàn Quốc</a>
+                            <div class="description">Một trong những món ăn truyền thống của xứ sở Kim Chi... </div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">28,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="items1">
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/bun-dau.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="#" class="food-name">Bún Đậu Mắm Tôm</a>
+                            <div class="description">Bún đậu mắm tôm được mệnh danh là món ăn đặc sản của người Hà Nội...</div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">20,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/pho-cuon.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="#" class="food-name">Phở Cuốn</a>
+                            <div class="description">Một trong những món ăn rất nổi tiếng của Hà Nội, ngon miệng, mát ruột, đủ chất...</div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">10,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-xl-3">
+                        <div class="food-image"><img src="{% static 'webapp/images/lau-chay.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+                        <div class="infomation">
+                            <a href="#" class="food-name">Lẩu Chay</a>
+                            <div class="description">Có hương vị đậm đà, thanh mát, vừa chứa hàm lượng dinh dưỡng cao... </div>
+                            <div class="fooditem-bottem">
+                                <div class="row">
+                                    <div class="food-price">70,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Begin Pagination -->
+                <div class="next-page">
+                    <div class="pagination">
+                        <a href="#">&laquo;</a>
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">6</a>
+                        <a href="#">&raquo;</a>
+                    </div>
+                </div>
+                <!-- End Pagination -->
+        </section>
+        <!--================ End Menu Area =================-->
+    <!--================Footer =================-->
+	<div class="footer-above">
+		<div class="row">
+			<div class="footer-logo">
+				<a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""></a>
+			</div>
+			<div class="row footer-side">
+				<div class="catalogue-title">
+					<ul> 
+						<li>DANH MỤC</li>
+						<li>TRỢ GIÚP</li>
+						<li>THÔNG TIN</li>
+					</ul>
+				</div>
+				<div>
+					<ul> 
+						<li class="catalogue">
+							<ul>
+								<li><a href="{% url 'home-page' %}">Trang chủ</a></li>
+								<li><a href="about.html">Giới thiệu</a></li>
+								<li><a href="{% url 'main-menu' %}">Thực đơn</a></li>
+								<li><a href="preference.html">Ưu đãi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Hỗ trợ</a></li>
+								<li><a href="#">Liên hệ với chúng tôi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Chính sách bảo mật</a></li>
+								<li><a href="#">Điều khoản sử dụng</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="row">
+			<div class="col-xl-4 copyright">
+				Copyright © 2020 BK Food Court. All rights reserved.
+			</div>
+			<div class="col-xl-5">
+				<div class="up-button">
+					<a href="#"><img id="up-button-image" src="{% static 'webapp/images/Subtraction 3.png' %}"></a>
+				</div>
+			</div>
+			<div class="col-xl-3">
+				<ul class="list-inline f-social">
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/facebook (2).png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/google-plus.png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/twitter.png' %}"></a></li>
+				</ul>
+			</div>
+		</div>
+    </div>
+    <!--================Footer =================-->
+    <script src="{% static 'webapp/js/dropdown.js' %}"></script>
+	<script src="{% static 'webapp/js/order.js' %}"></script>
+    </body>
+</html>

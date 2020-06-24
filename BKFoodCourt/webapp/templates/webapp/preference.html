@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,11 +15,11 @@
 	<meta name="author" content="">
 	
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="styles/bootstrap.min.css">  
-    <link rel="stylesheet" href="styles/font-awesome.min.css">  
+    <link rel="stylesheet" href="{% static 'webapp/styles/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'webapp/styles/font-awesome.min.css' %}">  
     <!-- Purecss -->
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-	<link rel="stylesheet" href="styles/preference.css">
+	<link rel="stylesheet" href="{% static 'webapp/styles/preference.css' %}">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -61,30 +62,30 @@
 	<header>
 		<div id="menu_bar"></div>
 			<ul>
-				<li><a href="home.html">Trang chủ</a></li>
-				<li><a href="about.html">Giới thiệu</a></li>
-				<li><a href="menu.html">Thực đơn</a></li>
-				<li><a href="preference.html" class="active">Ưu đãi</a></li>					
+				<li><a href="{% url 'home-page' %}">Trang chủ</a></li>
+				<li><a href="{% url 'about' %}">Giới thiệu</a></li>
+				<li><a href="{% url 'main-menu' %}">Thực đơn</a></li>
+				<li><a href="{% url 'preference' %}" class="active">Ưu đãi</a></li>					
 			</ul>
 			<div class="search">
 				<form>
 					<input type="text" placeholder="  Tìm kiếm">
-					<button><img src="images/search.png"></button> 
+					<button><img src="{% static 'webapp/images/search.png' %}"></button> 
 				</form>
 			</div>
 			<div class="logo_area">
-				<a href="home.html"><img src="images/logo.png" alt=""></a>
+				<a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""></a>
 			</div>
 	</header>
 	<section class="stall-list">
 		<div class="row">
 			<div class="col-xl-12">
 				<div class="row main-menu">
-					<img id="orange-half-circle" src="images/image 22.png"/>
+					<img id="orange-half-circle" src="{% static 'webapp/images/image 22.png' %}"/>
 					<div class="prefer-icon">
-						<img src="images/preference.png" style="width: 100px; padding-top: 80px">
+						<img src="{% static 'webapp/images/preference.png' %}" style="width: 100px; padding-top: 80px">
 						<div id="menu">
-							<a href="preference.html">ƯU ĐÃI</a>
+							<a href="{% url 'preference' %}">ƯU ĐÃI</a>
 						</div>
 					</div>
 				</div>
@@ -96,7 +97,7 @@
     <!--================ Start Preference Area =================-->
     <div class="homepage-menu">
 		<div class="path">
-			<a href="home.html">Trang chủ</a> > <a href="preference.html"> Ưu đãi</a>
+			<a href="{% url 'home-page' %}">Trang chủ</a> > <a href="{% url 'preference' %}"> Ưu đãi</a>
         </div>
     </div>
     <!--================ End Prefetence Area =================-->
@@ -105,7 +106,7 @@
 	<div class="footer-above">
 		<div class="row">
 			<div class="footer-logo">
-				<a href="home.html"><img src="images/logo.png" alt=""></a>
+				<a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""></a>
 			</div>
 			<div class="row footer-side">
 				<div class="catalogue-title">
@@ -119,10 +120,10 @@
 					<ul> 
 						<li class="catalogue">
 							<ul>
-								<li><a href="home.html">Trang chủ</a></li>
-								<li><a href="about.html">Giới thiệu</a></li>
-								<li><a href="menu.html">Thực đơn</a></li>
-								<li><a href="preference.html">Ưu đãi</a></li>
+								<li><a href="{% url 'home-page' %}">Trang chủ</a></li>
+								<li><a href="{% url 'about' %}">Giới thiệu</a></li>
+								<li><a href="{% url 'main-menu' %}">Thực đơn</a></li>
+								<li><a href="{% url 'preference' %}">Ưu đãi</a></li>
 							</ul>
 						</li>
 						<li class="catalogue">
@@ -149,20 +150,19 @@
 			</div>
 			<div class="col-xl-5">
 				<div class="up-button">
-					<a href="#"><img id="up-button-image" src="images/Subtraction 3.png"></a>
+					<a href="#"><img id="up-button-image" src="{% static 'webapp/images/Subtraction 3.png' %}"></a>
 				</div>
 			</div>
 			<div class="col-xl-3">
 				<ul class="list-inline f-social">
-					<li class="list-inline-item"><a href="#"><img src="images/facebook (2).png"></a></li>
-					<li class="list-inline-item"><a href="#"><img src="images/google-plus.png"></a></li>
-					<li class="list-inline-item"><a href="#"><img src="images/twitter.png"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/facebook (2).png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/google-plus.png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/twitter.png' %}"></a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<!--================Footer =================-->
-
-    <script src="js/account.js"></script>
+	<script src="{% static 'webapp/js/dropdown.js' %}"></script>
 </body>
 </html>
