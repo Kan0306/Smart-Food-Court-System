@@ -13,7 +13,7 @@ def register(request):
         password = request.POST.get('password')
         authpass = request.POST.get('authpassword')
         if User.objects.filter(username=username).exists() == False and password == authpass:
-            user = User(username=username, password=password, email=email)
+            user = User.objects.create_user(username=username, password=password, email=email)
             customer = Customer(user=user, phone=phone)
             user.save()
             customer.save()
