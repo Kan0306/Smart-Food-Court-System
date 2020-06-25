@@ -1,0 +1,198 @@
+.signupform {
+  position: relative;
+  width: 400px; 
+  margin-left: 950px;
+  height: 550px; 
+  border-radius: 10px; 
+  padding: 5px; 
+  padding-left: 40px; 
+  padding-right: 40px;
+}
+.signupform a
+{
+  color: #FE7A19;
+}
+.signupform a:hover
+{
+  cursor: pointer;
+  text-decoration: none;
+  color: #FE7A19;
+}
+.signinbtn {
+  width: 100%;
+  background-color: #FDCF76;
+  /*#FE7A19;*/
+  color: #000;
+  font-family: 'SegoeUI_Semibold';
+  padding: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  display: block;
+  margin: auto;
+}
+
+.nen_cam_nhat {
+  height: 700px;
+  width: 100%;
+  background: url('../images/nen_cam_nhat.png');
+}
+.nen_cam_dam {
+  height: 600px;
+  width: 100%;
+  background: url('../images/nen_cam_dam.png');
+}
+.dan_dong {
+  /*Class này tạo ra để dãn dòng; vì tui gà*/
+  padding: 15px;
+  margin: 0;
+}
+.flex-col-c {
+display: -webkit-box;
+display: -webkit-flex;
+display: -moz-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-flex-direction: column;
+-moz-flex-direction: column;
+-ms-flex-direction: column;
+-o-flex-direction: column;
+flex-direction: column;
+-ms-align-items: center;
+align-items: center;
+}
+.open-button {
+  background-color: #FE7A19;;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  left: 50%;
+  border: 3px solid #FDCF76;
+  z-index: 9;
+  transform: translate(-50%, -50%);
+}
+
+.form-container {
+  max-width: 700px;
+  padding: 10px;
+  background-color: white;
+}
+
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.form-container .btn {
+  background-color: #1488DB;
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid #1488DB;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 50%;
+  margin-bottom:10px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.form-container .cancel {
+  background-color: #fff;
+  border: 2px solid #1488DB;
+  color: #1488DB;
+  margin-left: 80px;
+}
+
+.oidar {
+  border: 2px solid;
+  font-size: 18px;
+  font-family: 'SegoeUI_Semibold';
+  width: 80%;
+  margin: auto;
+  background-color: white;
+}
+.head-background{
+  background: url(../images/wood-top.png);
+  margin: 0;
+  padding: 0;
+}
+#half_circle
+{
+	position: relative;
+  margin-top: 200px;
+  margin-bottom: -64px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 35%;
+}
+.cart-icon
+{
+	position: absolute;
+	top: 380px;
+  left: 46%;
+  width: 100px;
+}
+.cart_name
+{
+	position: relative;
+	text-align: center;
+	font-family: 'Bebas_Bold';
+	top: -10px;
+	font-size: 35px;
+}
+.cart_name a
+{
+	text-decoration: none;
+	color: #fff;
+	display: block;
+}
+.cart_name a:hover
+{
+	text-decoration: none;
+	color: #fff;
+	cursor: pointer;
+}
+.refer-menu{
+	background-color: #fff;
+  margin-top: 60vh;
+  padding-bottom: 5vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.refer-menu .refer-name{
+  display: block;
+  margin-top: 60vh;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5vh;
+	background-color: #FE7A19;
+  width: 40vw;
+	color:#fff;
+	font-family: "Bebas_Bold";
+  font-size: 30px;
+	text-align: center;
+	text-decoration: none;
+}

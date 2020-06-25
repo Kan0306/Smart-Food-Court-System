@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
-from .models import Item
+from .models import Item, Menu
+from django.core.paginator import Paginator
 # Create your views here.
 @login_required
 def shopping_cart(request):
@@ -27,19 +27,30 @@ def home(request):
     return render(request, 'webapp/home.html', {})
 
 def menu(request):
-    return render(request, 'webapp/menu.html', {})
-
-def menustall(request):
+    stalls = Menu.objects.all()
     items = Item.objects.all()
+    paginator = Paginator(stalls, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
-        'items': items
+        'stalls' : stalls,
+        'items' : items,
+        'page_obj': page_obj
+    }
+    return render(request, 'webapp/menu.html', context)
+
+def menustall(request, id):
+    items = Item.objects.all()
+    stall = get_object_or_404(Menu, id=id)
+    paginator = Paginator(items, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'items': items,
+        'stall': stall,
+        'page_obj': page_obj
     }
     return render(request, 'webapp/menustall.html', context)
-
-# class ItemListView(ListView):
-#     model = Item
-#     template_name = 'webapp/menustall.html'
-#     context_objects_name = 'items'
 
 
 def about(request):

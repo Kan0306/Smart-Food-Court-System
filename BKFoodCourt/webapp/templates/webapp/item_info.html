@@ -94,7 +94,7 @@
         <ul>
         <li><a href="{% url 'home-page' %}">Trang chủ > </a></li>
         <li><a href="{% url 'main-menu' %}" >Thực đơn > </a></li>
-        <li><a href="{% url 'stall-menu' %}">Yummy Mix > </a></li>
+        <li><a href="{{ stall.get_absolute_url }}">Yummy Mix > </a></li>
         <li><a href="#">Mì Spaghetti</a></li>
         </ul>
     </div>

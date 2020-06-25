@@ -29,7 +29,7 @@ urlpatterns = [
     path('item-info/', web_views.item_info, name='item-info'),
     path('about/', web_views.about, name='about'),
     path('preference/', web_views.preference, name='preference'),
-    path('stall-menu/', web_views.menustall, name='stall-menu'),
+    path('stall-menu/<int:id>/', web_views.menustall, name='stall-menu'),
     path('login/', auth_views.LoginView.as_view(template_name='users/signin.html', redirect_authenticated_user='home-page'), name='login-page'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/signout.html'), name='logout-page'),
     path('register/', users_views.register, name='register'),

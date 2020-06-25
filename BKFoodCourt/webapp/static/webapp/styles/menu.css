@@ -322,42 +322,32 @@ body {
 	font-family: "Bebas_Bold";
 	font-size: 30px;
 	color: #FFFFFF;
+	text-transform: capitalize;
 }
 .stall-name:hover
 {
 	color: #FDCF76;
 	text-decoration: none;
 }
-.food-items{
-	display: flex;
-}
-
-.food-image{
-	width: 250px;
-	height: 132px;
-	text-align: center;
-}
-
-.food-items .all{
-	float: right;
-	position: absolute;
-	margin-top: 15px;
-	right: 50px;
-}
 
 .item{
-	display: inline-block;
+	display: flex;
 	margin-top: 40px;
 	margin-bottom: 30px;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 160px;
+	/* margin-right: auto; */
 	padding-left: 40px;
+	position: relative;
+}
+
+.food-image {
+	width: 500px;
 }
 .item .infomation
 {
 	position: relative;
 	background: #FDCF76;
-	width: 250px;
+	width: 500px;
 }
 .description{
 	height: 100px;
@@ -388,20 +378,21 @@ body {
 	font-size: 30px;
 	font-family: 'SegoeUI_Bold';
 }
-.up-button{
+.infomation .row, .up-button{
 	position: relative;
 }
 
-.order-button{
+.order-button, .alert-button {
 	position: absolute;
-	right: 0px;
-	top: 260px;
+	right: 15px;
+	top: 5px;
 	font-family: "SegoeUI_Semibold";
 	background: #FE7A19;
-	border: none;
 	color: #000;
+	border: none;
 	margin-left: 0;
 }
+
 
 .next-page {
 	text-align: center;
@@ -513,7 +504,7 @@ body {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 80%;
+	width: 40%;
 }
 
 #up-button-image{
@@ -522,3 +513,4 @@ body {
 	left: 100px;
 	width: 25%;
 }
+

@@ -82,7 +82,7 @@
                 <img src="{% static 'webapp/images/stall-icon.png' %}" width="100px"/>
             </div>
             <div class="stall_name">
-                <a href="{% url 'stall-menu' %}">Yummy Mix</a>
+                <a href="{{ stall.get_absolute_url }}">Yummy Mix</a>
             </div>
         </div>
         <!--================ Header Menu Area =================-->
@@ -90,7 +90,7 @@
         <!--================ Menu Area =================-->
         <section class="back_area">
             <div class="text_heading">
-                <a href="#">Trang chủ</a><a href="{% url 'main-menu' %}"> Thực đơn</a> > <a href="{% url 'stall-menu' %}"> Yummy Mix</a>
+                <a href="#">Trang chủ</a><a href="{% url 'main-menu' %}"> > Thực đơn</a> > <a href="{{ stall.get_absolute_url }}"> Yummy Mix</a>
                 {% if user.is_authenticated %}
                 {% for group in request.user.groups.all %}
                     {% if group.name == 'Customer' %}
@@ -128,7 +128,7 @@
                 </div>
             </div>
 
-            {% for item in items %}
+            {% for item in page_obj %}
             <div class="items">
                 <div class="food-image"><img src="{{ item.image.url }}" style="width: 250px;height: 132px; text-align: center;"></div>
                 <div class="infomation">
@@ -136,7 +136,15 @@
                     <div class="description">{{ item.description }}</div>
                     <div class="row">
                         <div class="food-price">{{ item.price }} </div>
-                        <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                        {% if user.is_authenticated %}
+                        {% for group in request.user.groups.all %}
+                            {% if group.name == 'Customer' %}
+                                <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                            {% endif %}
+                        {% endfor %}
+						{% else %}
+						<button class="alert-button"><i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+						{% endif %}
                     </div>
                 </div>
             </div>
@@ -144,17 +152,24 @@
             
         
             <!-- Begin Pagination -->
-            <div class="next-page">
-                <div class="pagination">
-                    <a href="#">&laquo;</a>
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">&raquo;</a>
-                </div>
+            <div class="pagination" style="margin: 50px;">
+                <span class="step-links">
+                    <div class="current">
+                        Trang {{ page_obj.number }} trên {{ page_obj.paginator.num_pages }}.
+                    </div>
+                    <br>
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; Trang đầu</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">Trang trước</a>
+                    {% endif %}
+                    
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">Trang tiếp</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">Trang cuối &raquo;</a>
+                    {% endif %}
+    
+                    
+                </span>
             </div>
             <!-- End Pagination -->
         </section>
@@ -221,6 +236,8 @@
     </div>
     <!--================Footer =================-->
     <script src="{% static 'webapp/js/dropdown.js' %}"></script>
-	<script src="{% static 'webapp/js/order.js' %}"></script>
+    <script src="{% static 'webapp/js/order.js' %}"></script>
+	<script src="{% static 'webapp/js/unauthenticated_alert.js' %}"></script>
+    
     </body>
 </html>

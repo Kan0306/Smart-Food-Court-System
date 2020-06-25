@@ -458,7 +458,7 @@ header .search button
 	position: relative;
 }
 
-.order-button{
+.order-button, .alert-button{
 	position: absolute;
 	right: 15px;
 	top: 5px;

@@ -175,7 +175,7 @@
 				<div class="item col-xl-3">
 					<div class="prefer-image"><img src="{% static 'webapp/images/upto50.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
 					<div class="infomation" style="text-align: center;">
-						<a href="{% url 'stall-menu' %}">YUMMY MIX</a>
+						<a href="{{ stall.get_absolute_url }}">YUMMY MIX</a>
 						<button class="view-button" onclick="redirect">Xem chi tiết</button>
 					</div>
 				</div>
