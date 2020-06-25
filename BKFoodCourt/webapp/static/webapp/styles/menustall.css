@@ -130,6 +130,7 @@
 	right: 0%;
 	top: 0%;
 	bottom: 9.6%;
+	margin-right: -80px;
 	background: url(../images/ym-bg.png) no-repeat center;
 	filter: brightness(30%);
 	z-index: -1;
@@ -410,43 +411,18 @@ header .search button
 }
 .items 
 {
-	margin-left: 150px;
-	margin-top: 50px;
-}
-.items1
-{
-	margin-left: 150px;
-	margin-top: -30px;
-}
-.food-items{
+	margin: 50px 100px 50px 50px;
 	display: flex;
+	background-color: #FFFFFF;
 }
 
 .food-image{
 	text-align: center;
 }
 
-.food-items .all{
-	float: right;
-	position: absolute;
-	margin-top: 15px;
-	right: 50px;
+.infomation {
+	width: 100%;
 }
-
-.item{
-	display: inline-block;
-	margin-top: 50px;
-	margin-bottom: 30px;
-	margin-left: auto;
-	margin-right: 50px;
-	padding-left: 40px;
-}
-.item .infomation
-{
-	background: #FDCF76;
-	width: 250px;
-}
-
 .description{
 	height: 100px;
 	font-size: 15px;
@@ -477,14 +453,14 @@ header .search button
 	font-size: 30px;
 	font-family: 'SegoeUI_Bold';
 }
-.fooditem-bottom .row, .up-button{
+.infomation .row, .up-button{
 	position: relative;
 }
 
 .order-button{
 	position: absolute;
 	right: 15px;
-	top: 260px;
+	top: 5px;
 	font-family: "SegoeUI_Semibold";
 	background: #FE7A19;
 	color: #000;

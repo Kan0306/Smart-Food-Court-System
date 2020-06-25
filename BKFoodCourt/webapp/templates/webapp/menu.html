@@ -52,7 +52,7 @@
 			{% if user.is_authenticated %}
 			<div class="row account">
 				<a id="acc" href="#">
-					<p class="lead" onclick="showAccOptions()">customer09</p>
+					<p class="lead" onclick="showAccOptions()">{{ user.username }}</p>
 					<div id ="op-active" class="acc-options">
 						<ul>
 							<li><a href="#">Thông tin tài khoản</a></li>
@@ -208,10 +208,16 @@
 	<div class="homepage-menu">
 		<div class="path">
 			<a href="{% url 'home-page' %}">Trang chủ</a> > <a href="{% url 'main-menu' %}"> Thực đơn</a>
-			<div class="cart_icon">
-				<a href="{% url 'shopping-cart' %}"><img src="{% static 'webapp/images/shopping-cart.png' %}" style="padding-left: 7px; padding-top: 8px"/></a>
-				<span class="badge">0</span>
-			</div>
+			{% if user.is_authenticated %}
+            {% for group in request.user.groups.all %}
+                {% if group.name == 'Customer' %}
+					<div class="cart_icon">
+						<a href="{% url 'shopping-cart' %}"><img src="{% static 'webapp/images/shopping-cart.png' %}" style="padding-left: 7px; padding-top: 8px"/></a>
+						<span class="badge">0</span>
+					</div>
+					{% endif %}
+                {% endfor %}
+            {% endif %}
 			
 		</div>
 		<div class="stall-menu">

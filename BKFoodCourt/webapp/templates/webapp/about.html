@@ -44,7 +44,7 @@
 			{% if user.is_authenticated %}
 			<div class="row account">
 				<a id="acc" href="#">
-					<p class="lead" onclick="showAccOptions()">customer09</p>
+					<p class="lead" onclick="showAccOptions()">{{ user.username }}</p>
 					<div id ="op-active" class="acc-options">
 						<ul>
 							<li><a href="#">Thông tin tài khoản</a></li>

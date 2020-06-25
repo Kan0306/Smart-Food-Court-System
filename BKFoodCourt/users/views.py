@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from .models import Customer
 from django.core.exceptions import ValidationError
 # Create your views here.
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('home-page')
     context = {}
     if request.method == 'POST':
         username = request.POST.get('name')
@@ -15,6 +17,8 @@ def register(request):
         if User.objects.filter(username=username).exists() == False and password == authpass:
             user = User.objects.create_user(username=username, password=password, email=email)
             customer = Customer(user=user, phone=phone)
+            group = Group.objects.get(name='Customer')
+            user.group.add(group)
             user.save()
             customer.save()
             return redirect('login-page')  

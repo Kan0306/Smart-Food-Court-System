@@ -18,6 +18,8 @@ from django.urls import path
 from webapp import views as web_views
 from users import views as users_views
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -28,7 +30,7 @@ urlpatterns = [
     path('about/', web_views.about, name='about'),
     path('preference/', web_views.preference, name='preference'),
     path('stall-menu/', web_views.menustall, name='stall-menu'),
-    path('login/', auth_views.LoginView.as_view(template_name='users/signin.html'), name='login-page'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/signin.html', redirect_authenticated_user='home-page'), name='login-page'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/signout.html'), name='logout-page'),
     path('register/', users_views.register, name='register'),
     path('cart/', web_views.shopping_cart, name='shopping-cart'),
@@ -37,3 +39,6 @@ urlpatterns = [
     path('status/', web_views.order_status, name='order-status'),  
     path('onlinepay/', web_views.online_payment, name='online-pay'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
