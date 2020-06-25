@@ -19,9 +19,6 @@ def online_payment(request):
 def home(request):
     return render(request, 'webapp/home.html', {})
 
-def temphome(request):
-    return render(request, 'webapp/home_logined.html', {})
-
 def menu(request):
     return render(request, 'webapp/menu.html', {})
 

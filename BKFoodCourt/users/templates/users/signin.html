@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,62 +58,30 @@
     
 	<!--+++++++++++ BEGIN SIGN IN FORM +++++++++++++-->
 	
-	<div class="nen_cam_nhat" style="height: 780px;">
-		<div class="dan_dong"></div>
-		<div class="nen_cam_dam" style="height: 550px;">
-			<div class="dan_dong"></div>
-
-			<!--Chèn logo-->
-			<img src="{% static 'users/images/large-logo.png' %}" alt="HCMUT Smart Food Court" 
-			style="width: 400px; height: 400px; float: left; margin-top: 10px;margin-left: 150px;">
-
-			<form  class="signupform"  method="post" style="height: 425px;">
-				<h1 style="text-align: left; font-family: 'Bebas_Bold'"><b><u style="text-decoration-color: #FE7A19;">ĐĂNG NHẬP</u></b></h1>
-				<br>
-				<input type="text" name="name" placeholder="Email/Số điện thoại/Tên đăng nhập"
-				style="padding-bottom: 10px;padding-top: 10px;width: 100%;margin-top: 4px;margin-bottom: 10px;padding-left: 5px;">
-				<br>
-				
-				<input type="password" name="password" placeholder="Mật khẩu"
-				style="padding-bottom: 10px;padding-top: 10px;width: 100%;margin-top: 4px;margin-bottom: 10px;padding-left: 5px;">
-				<br>
-                
-                
-                <input type="checkbox" value="agree3" name="agree4" style="margin-top: 10px"> Nhớ mật khẩu</input> 
-				<a href="#" style="float: right; color: #1488DB; margin-top: 10px">Quên mật khẩu</a>
-				<!--<div>
-					<a href="home_logined.html"><button style="margin-top: 15px;" class="signinbtn">ĐĂNG NHẬP</button></a>
+	<div class="content-section" style="margin: 100px">
+		<div class="row">
+			<div class="col-xl-6">
+				<img src="{% static 'users/images/large-logo.png' %}" style="width:50%;height: 250px;">
+			</div>
+			<div class="col-xl-6">
+				<form method="POST">
+					{% csrf_token %}
+					<fieldset class="form-group">
+						<legend class="border-bottom mb-4">ĐĂNG NHẬP</legend>
+						{{ form|crispy }}
+					</fieldset>
+					<div class="form-group">
+						<button class="btn btn-outline-info" type="summit" style="background-color: #FE7A19;; color: white;">Đăng nhập</button>
+					</div>
+				</form>
+				<div class="border-top pt-3">
+					<small class="text-muted">
+						Chưa có tài khoản? <a class="ml-2" href="{% url 'register' %}"> Đăng ký ngay</a>
+					</small>
 				</div>
-				<br>
-                
-                <div class="flex-col-c">
-					<span style="color: rgb(134, 134, 134);"> - HOẶC - </span>
-					<span style="display: inline-block; vertical-align: middle; margin: 10px 0;">Chưa có tài khoản:
-					<button formaction="http://127.0.0.1:5500/signup.html#" type="submit" style="font-family: 'SegoeUI_Semibold'; font-size: 15px; padding: 3px; display: inline-block; vertical-align: middle; margin: 10px 0; background-color: white;
-						border-radius: 30px;border-color: #FE7A19;    border-style: solid; width: 130px;">Đăng ký</button></a>
-					</span>
-				</div> -->
-					
-			</form>
-			
-			<div id="login">
-				<a href="{% url 'temp-home' %}"><button class="signinbtn_tmp">ĐĂNG NHẬP</button></a>
 			</div>
-			
-			
-			<div class="flex-col-c" style="margin-left: 650px; margin-top: 20px; position: relative;">
-				<span style="color: rgb(134, 134, 134);"> - HOẶC - </span>
-				<span style="display: inline-block; vertical-align: middle; margin: 10px 0;">Chưa có tài khoản:
-				<a href="{% url 'register' %}"><button style="font-family: 'SegoeUI_Semibold'; font-size: 15px; padding: 3px; display: inline-block; vertical-align: middle; margin: 10px 0; background-color: white;
-					border-radius: 30px;border-color: #FE7A19;    border-style: solid; width: 130px;">Đăng ký</button></a>
-				</span>
-			</div>
-			<div class="dan_dong"></div>
-			<div class="line" style="margin-top: 80px; margin-bottom: 20px; padding: 5px"></div>
-			<div class="dan_dong"></div>
 		</div>
 	</div>
-
 	<!--+++++++++++ END SIGN IN FORM +++++++++++++-->
 	
 	<!--/////////// Bắt đầu làm cái nền và logo /////////////////-->

@@ -50,11 +50,27 @@
 			<p class="lead">
 				<i class="fa fa-envelope"></i>foodcourt@hcmut.edu.vn
 			</p>
-            <div class="row login">
+			{% if user.is_authenticated %}
+			<div class="row account">
+				<a id="acc" href="#">
+					<p class="lead" onclick="showAccOptions()">customer09</p>
+					<div id ="op-active" class="acc-options">
+						<ul>
+							<li><a href="#">Thông tin tài khoản</a></li>
+							<li><a href="#">Cài đặt</a></li>
+							<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
+						</ul>
+					</div>
+				</a>
+				<i class="fa fa-user"></i>
+			</div>
+			{% else %}
+            <div class="row account">
 				<a href="{% url 'login-page' %}">
 					<p>ĐĂNG KÝ/ĐĂNG NHẬP</p>
 				</a>
 			</div>
+			{% endif %}
         </div>
     </div>
 	 <!-- End Contact info -->
@@ -111,7 +127,9 @@
 									<a href="#"><p>Bánh Mì Bơ Tỏi</p></a>
 									<div class="newfood_des">Hay còn gọi là bánh mì bơ tỏi phô mai hiện đang cực kỳ gây sốt ở khắp mọi nơi trên mạng xã hội...</div>
 									<p style="position: absolute; color: #000; padding: 0; top: 240px; left: 110px">15,000đ</p>
+									{% if user.is_authenticated %}
 									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+									{% endif %}
 								</div>
 						</div>
 				  

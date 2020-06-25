@@ -20,32 +20,40 @@
         <div class="head_background"></div>
         <!-- Start Contact info -->
         <div class="line"></div>
-        <div class="contact-imfo-box">
-            <div class="container">
-                <p class="lead">
-                    <i class="fa fa-map-marker"></i>Đại học Bách Khoa - Cơ sở Dĩ An
-                </p>
-                <p class="lead">
-                    <i class="fa fa-phone"></i>(028)38-647-XXX
-                </p>
-                <p class="lead">
-                    <i class="fa fa-envelope"></i>foodcourt@hcmut.edu.vn
-                </p>
-                <div class="row account">
-                    <a id="acc" href="#">
-                        <p class="lead" onclick="showAccOptions()">customer09</p>
-                        <div id ="op-active" class="acc-options">
-                            <ul>
-                                <li><a href="#">Thông tin tài khoản</a></li>
-                                <li><a href="#">Cài đặt</a></li>
-                                <li><a href="#">Đăng xuất</a></li>
-                            </ul>
-                        </div>
-                    </a>
-                    <i class="fa fa-user"></i>
-                </div>
-            </div>
+	 <div class="contact-imfo-box">
+		<div class="container">
+			<p class="lead">
+				<i class="fa fa-map-marker"></i>Đại học Bách Khoa - Cơ sở Dĩ An
+			</p>
+			<p class="lead">
+				<i class="fa fa-phone"></i>(028)38-647-XXX
+			</p>
+			<p class="lead">
+				<i class="fa fa-envelope"></i>foodcourt@hcmut.edu.vn
+			</p>
+			{% if user.is_authenticated %}
+			<div class="row account">
+				<a id="acc" href="#">
+					<p class="lead" onclick="showAccOptions()">customer09</p>
+					<div id ="op-active" class="acc-options">
+						<ul>
+							<li><a href="#">Thông tin tài khoản</a></li>
+							<li><a href="#">Cài đặt</a></li>
+							<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
+						</ul>
+					</div>
+				</a>
+				<i class="fa fa-user"></i>
+			</div>
+			{% else %}
+            <div class="row account">
+				<a href="{% url 'login-page' %}">
+					<p>ĐĂNG KÝ/ĐĂNG NHẬP</p>
+				</a>
+			</div>
+			{% endif %}
         </div>
+    </div>
         <!-- End Contact info -->
 
         <!--================ Header Menu Area =================-->

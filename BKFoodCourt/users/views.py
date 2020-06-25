@@ -1,12 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Customer
 from django.core.exceptions import ValidationError
 # Create your views here.
-def login(request):
-    return render(request, 'users/signin.html', {})
 
 def register(request):
+    context = {}
     if request.method == 'POST':
         username = request.POST.get('name')
         phone    = request.POST.get('phoneNumber')
@@ -20,6 +19,5 @@ def register(request):
             customer.save()
             return redirect('login-page')  
         else:
-            return HttpResponse("Username already taken")     
-    else:
-        return render(request, 'users/signup.html', {})
+            context['user'] = 1     
+    return render(request, 'users/signup.html', context)

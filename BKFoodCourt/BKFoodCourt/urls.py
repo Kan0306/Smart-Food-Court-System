@@ -17,17 +17,19 @@ from django.contrib import admin
 from django.urls import path
 from webapp import views as web_views
 from users import views as users_views
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', web_views.home, name='home-page'),
-    path('temp/', web_views.temphome, name='temp-home'),
     path('menu/', web_views.menu, name='main-menu'),
     path('item-info/', web_views.item_info, name='item-info'),
     path('about/', web_views.about, name='about'),
     path('preference/', web_views.preference, name='preference'),
     path('stall-menu/', web_views.menustall, name='stall-menu'),
-    path('login/', users_views.login, name='login-page'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/signin.html'), name='login-page'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/signout.html'), name='logout-page'),
     path('register/', users_views.register, name='register'),
     path('cart/', web_views.shopping_cart, name='shopping-cart'),
     path('payaccount/', web_views.pay_by_account, name='pay-by-acc'),
