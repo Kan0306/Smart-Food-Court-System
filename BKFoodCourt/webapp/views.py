@@ -40,7 +40,7 @@ def menu(request):
     return render(request, 'webapp/menu.html', context)
 
 def menustall(request, id):
-    items = Item.objects.all()
+    items = Item.objects.get(id=id)
     stall = get_object_or_404(Menu, id=id)
     paginator = Paginator(items, 3)
     page_number = request.GET.get('page')
