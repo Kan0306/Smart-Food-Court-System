@@ -48,7 +48,9 @@
 					<div id ="op-active" class="acc-options">
 						<ul>
 							<li><a href="#">Thông tin tài khoản</a></li>
-							<li><a href="#">Cài đặt</a></li>
+								{% if user.is_superuser == True %}
+								<li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
+								{% endif %}
 							<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
 						</ul>
 					</div>
