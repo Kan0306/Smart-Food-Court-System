@@ -36,8 +36,9 @@ urlpatterns = [
     path('cart/', web_views.shopping_cart, name='shopping-cart'),
     path('payaccount/', web_views.pay_by_account, name='pay-by-acc'),
     path('bill/', web_views.bill, name='bill'), 
-    path('status/', web_views.order_status, name='order-status'),  
+    path('status/<int:id>', web_views.order_status, name='order-status'),  
     path('onlinepay/', web_views.online_payment, name='online-pay'),
+    path('payment/<int:id>/', web_views.payment, name='payment')
 ]
 
 if settings.DEBUG:

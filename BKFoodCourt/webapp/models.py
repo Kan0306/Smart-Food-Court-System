@@ -21,17 +21,12 @@ class Item(models.Model):
     available = models.BooleanField(default=True)
     belongs_to_stall = models.ForeignKey(Menu, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 class OrderItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    ordered = models.BooleanField(default=False)
-    SIZE_CHOICES = (
-        ("NHỎ", "Nhỏ"),
-        ("VỪA", "Vừa"),
-        ("LỚN", "Lớn")
-    )
-    size = models.CharField(max_length=20, choices=SIZE_CHOICES, default="VỪA")
-
 
 class Order(models.Model):
     item = models.ManyToManyField(OrderItem)
@@ -47,6 +42,12 @@ class Order(models.Model):
         ("COMPLETED", "Completed")
     )
     status = models.CharField(max_length=100, choices=ORDER_STAT_CHOICES, default="ONGOING")
+    
+    def get_absolute_url(self):
+        return reverse("payment",kwargs={"id":self.id})
+
+    def get_absolute_return_url(self):
+        return reverse("order-status", kwargs={"id":self.id})
 
 
     
