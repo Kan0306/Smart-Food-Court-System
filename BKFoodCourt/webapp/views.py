@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Item, Menu
+from .models import Item, Menu, Order
 from django.core.paginator import Paginator
 # Create your views here.
 @login_required
@@ -17,11 +17,16 @@ def bill(request):
 
 @login_required
 def order_status(request):
-    return render(request, 'webapp/orderstatus.html', {})
+    order = get_object_or_404(Order, order_by=request.user)
+    context = {
+        'order': order
+    }
+    print(order.status)
+    return render(request, 'webapp/orderstatus.html', context)
 
 @login_required
 def online_payment(request):
-    return render(request, 'webapp/online-webapp.html', {})
+    return render(request, 'webapp/online-payment.html', {})
 
 def home(request):
     return render(request, 'webapp/home.html', {})
@@ -40,11 +45,12 @@ def menu(request):
     return render(request, 'webapp/menu.html', context)
 
 def menustall(request, id):
-    items = Item.objects.get(id=id)
     stall = get_object_or_404(Menu, id=id)
+    items = Item.objects.filter(belongs_to_stall=stall)
     paginator = Paginator(items, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    print(page_obj)
     context = {
         'items': items,
         'stall': stall,

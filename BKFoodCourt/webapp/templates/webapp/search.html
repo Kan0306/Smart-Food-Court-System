@@ -90,7 +90,7 @@
         <!--================ Menu Area =================-->
         <section class="back_area">
             <div class="text_heading">
-                <a href="#">Trang chủ</a><a href="{% url 'main-menu' %}"> > Thực đơn</a> > <a href="{{ stall.get_absolute_url }}"> {{ stall.stallname }}</a>
+                <a href="#">Trang chủ</a><a href="{% url 'main-menu' %}"> > Thực đơn</a> > <a href="{{ stall.get_absolute_url }}"> Yummy Mix</a>
                 {% if user.is_authenticated %}
                 {% for group in request.user.groups.all %}
                     {% if group.name == 'Customer' %}

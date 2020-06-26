@@ -4,7 +4,6 @@ from django.urls import reverse
 
 # Create your models here.
 class Menu(models.Model):
-    stall_id = models.CharField(max_length=20,blank=False,unique=True,primary_key=True)
     stallname = models.CharField(max_length=500)
     owner = models.CharField(max_length=50, blank=True)
     contact_phone = models.CharField(max_length=20, blank=True)
@@ -15,7 +14,6 @@ class Menu(models.Model):
         return reverse("stall-menu",kwargs={"id":self.id})
 
 class Item(models.Model):
-    item_id = models.CharField(max_length=20,blank=False,unique=True,primary_key=True)
     name = models.CharField(max_length=500)
     image = models.ImageField(default='default.png', upload_to='profile_pics')
     description = models.TextField(blank=True, max_length=300)
@@ -36,7 +34,6 @@ class OrderItem(models.Model):
 
 
 class Order(models.Model):
-    order_id = models.CharField(max_length=20,blank=False,unique=True,primary_key=True)
     item = models.ManyToManyField(OrderItem)
     is_ready = models.BooleanField(default=False)
     order_by = models.ForeignKey(User, on_delete=models.CASCADE)
