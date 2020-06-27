@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', web_views.home, name='home-page'),
     path('menu/', web_views.menu, name='main-menu'),
-    path('item-info/', web_views.item_info, name='item-info'),
+    path('item-info/<int:id>', web_views.item_info, name='item-info'),
     path('about/', web_views.about, name='about'),
     path('preference/', web_views.preference, name='preference'),
     path('stall-menu/<int:id>/', web_views.menustall, name='stall-menu'),
@@ -38,7 +38,9 @@ urlpatterns = [
     path('bill/', web_views.bill, name='bill'), 
     path('status/<int:id>', web_views.order_status, name='order-status'),  
     path('onlinepay/', web_views.online_payment, name='online-pay'),
-    path('payment/<int:id>/', web_views.payment, name='payment')
+    path('payment/<int:id>/', web_views.payment, name='payment'),
+    path('search/', web_views.search, name='search'),
+    path('update_order/', web_views.update_order, name='update-order')
 ]
 
 if settings.DEBUG:

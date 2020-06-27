@@ -32,6 +32,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="{% static 'webapp/js/csrftoken.js' %}"></script>
 
 </head>
     
@@ -84,9 +85,9 @@
 				<li><a href="{% url 'preference' %}">Ưu đãi</a></li>					
 			</ul>
 			<div class="search">
-				<form>
-					<input type="text" placeholder="  Tìm kiếm">
-					<button><img src="{% static 'webapp/images/search.png' %}"></button> 
+				<form method="GET" action="{% url 'search' %}">
+					<input type="text" name="query" placeholder="  Tìm kiếm">
+					<button type='submit'><img src="{% static 'webapp/images/search.png' %}"></button> 
 				</form>
 			</div>
 			<div class="logo_area">
@@ -114,8 +115,14 @@
             {% for group in request.user.groups.all %}
                 {% if group.name == 'Customer' %}
 					<div class="cart_icon">
-						<a href="{% url 'shopping-cart' %}"><img src="{% static 'webapp/images/shopping-cart.png' %}" style="padding-left: 7px; padding-top: 8px"/></a>
-						<span class="badge">0</span>
+						<a href="{% url 'shopping-cart' %}"><img src="{% static 'webapp/images/shopping-cart.png' %}" style="position: absolute; width: 35px; left: 4px; top: 5px"/></a>
+						<span class="badge">
+							{% if order == 'none' %}
+							0
+							{% else %}
+							{{ order.sum_item }} 
+							{% endif %}
+						</span>
 					</div>
 					{% endif %}
                 {% endfor %}
@@ -136,14 +143,14 @@
 						{% endif %}
 								<div class="food-image"><img src="{{ item.image.url }}" class="food-image"></div>
 								<div class="infomation">
-									<a href="#" class="food-name">{{ item.name }}</a>
+									<a href="{{ item.get_absolute_url }}" class="food-name">{{ item.name }}</a>
 									<div class="description">{{ item.description }}</div>
 									<div class="row">
 										<div class="food-price">{{ item.price }}</div>
 										{% if user.is_authenticated %}
 										{% for group in request.user.groups.all %}
-                           					{% if group.name == 'Customer' %}
-												<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+											{% if group.name == 'Customer' %}
+												<button data-item={{ item.id }} data-action="add" class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
 											{% endif %}
 										{% endfor %}
 										{% else %}

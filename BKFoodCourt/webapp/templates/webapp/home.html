@@ -76,9 +76,9 @@
 				<li><a href="{% url 'preference' %}">Ưu đãi</a></li>					
 			</ul>
 			<div class="search">
-				<form>
-					<input type="text" placeholder="  Tìm kiếm">
-					<button><img src="{% static 'webapp/images/search.png' %}"></button> 
+				<form method="GET" action="{% url 'search' %}">
+					<input type="text" name="query" placeholder="  Tìm kiếm">
+					<button type='submit'><img src="{% static 'webapp/images/search.png' %}"></button> 
 				</form>
 			</div>
 			<div class="logo_area">

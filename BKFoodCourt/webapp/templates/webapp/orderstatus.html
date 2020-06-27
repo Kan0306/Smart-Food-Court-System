@@ -77,6 +77,7 @@
                 <p class="order_code">Đơn hàng #{{ order.id }}</p>
                 <div class="progress">
                     <ul>
+                    {% if order.status == "ACCEPT" or order.status == "CONFIRMED" or order.status == "WAITING" or order.status == "READY" %}
                         <li class="active">
                             <p>Thanh toán đơn hàng</p>
                         </li>

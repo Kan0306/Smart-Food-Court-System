@@ -67,9 +67,9 @@
                     
                 </ul>
                 <div class="search">
-                    <form>
-                        <input type="text" placeholder="  Tìm kiếm">
-                        <button><img src="{% static 'webapp/images/search.png' %}"/></button> 
+                    <form method="GET" action="">
+                        <input type="text" name="query" placeholder="  Tìm kiếm">
+                        <button submit><img src="{% static 'webapp/images/search.png' %}"/></button> 
                     </form>
                 </div>
                 <div class="logo_area">
@@ -82,7 +82,7 @@
                 <img src="{% static 'webapp/images/stall-icon.png' %}" width="100px"/>
             </div>
             <div class="stall_name">
-                <a href="{{ stall.get_absolute_url }}">Yummy Mix</a>
+                <a href="{{ stall.get_absolute_url }}">MENU</a>
             </div>
         </div>
         <!--================ Header Menu Area =================-->
@@ -90,14 +90,14 @@
         <!--================ Menu Area =================-->
         <section class="back_area">
             <div class="text_heading">
-                <a href="#">Trang chủ</a><a href="{% url 'main-menu' %}"> > Thực đơn</a> > <a href="{{ stall.get_absolute_url }}"> Yummy Mix</a>
+                <a href="#">Trang chủ</a><a href="{% url 'main-menu' %}"> > Thực đơn</a>
                 {% if user.is_authenticated %}
                 {% for group in request.user.groups.all %}
                     {% if group.name == 'Customer' %}
-                        <div class="cart_icon">
-                            <a href="{% url 'shopping-cart' %}"><img src="{% static 'webapp/images/shopping-cart.png' %}" style="padding-left: 7px; padding-top: 8px"/></a>
-                            <span class="badge">0</span>
-                        </div>
+                    <div class="cart_icon">
+						<a href="{% url 'shopping-cart' %}"><img src="{% static 'webapp/images/shopping-cart.png' %}" style="position: absolute; width: 35px; left: 4px; top: 5px"/></a>
+						<span class="badge">0</span>
+					</div>
                     {% endif %}
                 {% endfor %}
                 {% endif %}
@@ -127,7 +127,11 @@
                     </button>
                 </div>
             </div>
-
+            {% if none == 'True' %}
+            <div style="text-align: center; margin: 80px">
+                <h4> Không tìm thấy món ăn nào. Xin bạn vui lòng tìm kiếm với từ khóa khác </h4>
+            </div>
+            {% else %}
             {% for item in page_obj %}
             <div class="items">
                 <div class="food-image"><img src="{{ item.image.url }}" style="width: 250px;height: 132px; text-align: center;"></div>
@@ -149,6 +153,7 @@
                 </div>
             </div>
             {% endfor %}
+            {% endif %}
             
         
             <!-- Begin Pagination -->

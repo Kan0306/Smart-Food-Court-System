@@ -23,14 +23,10 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
-
-class OrderItem(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
+    def get_absolute_url(self):
+        return reverse("item-info",kwargs={"id":self.id})
 
 class Order(models.Model):
-    item = models.ManyToManyField(OrderItem)
-    is_ready = models.BooleanField(default=False)
     order_by = models.ForeignKey(User, on_delete=models.CASCADE)
     start_date = models.DateTimeField(auto_now_add=True)
     ORDER_STAT_CHOICES = (
@@ -48,6 +44,27 @@ class Order(models.Model):
 
     def get_absolute_return_url(self):
         return reverse("order-status", kwargs={"id":self.id})
+    
+    def sum_price(self):
+        sum = 0
+        for item in self.orderitem_set.all():
+            sum += item.get_sum()
+        return sum
+    def sum_item(self):
+        sum = 0
+        for item in self.orderitem_set.all():
+            sum += item.quantity
+        return sum
+
+class OrderItem(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+
+    def get_sum(self):
+        return self.item.price * self.quantity
+
+
 
 
     
