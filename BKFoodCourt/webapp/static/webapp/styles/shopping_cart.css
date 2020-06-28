@@ -1,13 +1,3 @@
-.signupform {
-  position: relative;
-  width: 400px; 
-  margin-left: 950px;
-  height: 550px; 
-  border-radius: 10px; 
-  padding: 5px; 
-  padding-left: 40px; 
-  padding-right: 40px;
-}
 .signupform a
 {
   color: #FE7A19;
@@ -174,25 +164,39 @@ align-items: center;
 	color: #fff;
 	cursor: pointer;
 }
-.refer-menu{
-	background-color: #fff;
-  margin-top: 60vh;
-  padding-bottom: 5vh;
-  padding-left: 2vw;
-  padding-right: 2vw;
+
+.item-quantity {
+  display: flex;
+  margin-left: 40px;
+  position: relative;
 }
 
-.refer-menu .refer-name{
-  display: block;
-  margin-top: 60vh;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 5vh;
-	background-color: #FE7A19;
-  width: 40vw;
-	color:#fff;
-	font-family: "Bebas_Bold";
-  font-size: 30px;
-	text-align: center;
-	text-decoration: none;
+.item-quantity .dcrs {
+  position: absolute;
+  top: 0px;
+  left: -30px;
+}
+
+.item-quantity .icrs {
+  position: absolute;
+  top: 0px;
+  right: -30px;
+}
+
+.item-quantity .quantt {
+  border: 2px dashed #1488DB;	
+	font-family: 'SegoeUI_Regular';
+	font-size: 23px;
+	width: 13vw;
+	height: 7vh;
+	margin-left: 0px;
+	text-align: left;
+}
+
+.order-button.removebutton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: none;
+  color: blue;
 }

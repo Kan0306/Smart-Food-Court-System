@@ -295,7 +295,7 @@ body {
 }
 .item-title {
 	font-family: 'SegoeUI_Bold';
-	font-size: 4.5vw;
+	font-size: 3vw;
 	margin-left: 0.6vw;
 	width: 30vw;
 }
@@ -339,26 +339,22 @@ body {
 	width: 30vw;
 }
 
-.item-title1 input {
-	border: 2px dashed #1488DB;	
-	font-family: 'SegoeUI_Regular';
-	font-size: 23px;
-	width: 13vw;
-	height: 7vh;
-	margin-left: 47px;
-	text-align: left;
-}
 .item-detail button {
-	border: 3px  #FE7A19;	
-	font-size: 23px;
-	font-family: 'SegoeUI_Semibold';
-	border-style: solid;
-	background-color: #fff;
+	border: 1px solid #ddd;	
+	font-size: 18px;
+	text-align: center;
+	vertical-align: middle;
+	background: #eee;
+	border-style: none;
 	color: #000;
-	margin-top: 20px;
-	margin-left: 50px;
-	height: 9vh;
-	width: 30vw;
+	margin-top: 10px;
+	margin-left: 0px;
+	height: 2vw;
+	width: 2vw;
+}
+
+.item-detail button:hover {
+	cursor: pointer;
 }
 
 .order a {
@@ -529,18 +525,6 @@ body {
 	position: relative;
 }
 
-.order-button{
-	position: absolute;
-	right: 0px;
-	top: 50px;
-	font-family: "SegoeUI_Semibold";
-	background: #FE7A19;
-	border: none;
-	margin-left: 0;
-	color: #000;
-}
-
-
 .next-page {
 	text-align: center;
 	padding: 15px 30px;
@@ -672,3 +656,55 @@ body {
 	width: 80%;
 }
 
+.item-title1 input {
+	border: 2px dashed #1488DB;	
+	font-family: 'SegoeUI_Regular';
+	font-size: 23px;
+	width: 13vw;
+	height: 7vh;
+	margin-left: 47px;
+	text-align: left;
+}
+
+.order-button#add_cart {
+	border: 3px  #FE7A19;	
+	font-size: 23px;
+	font-family: 'SegoeUI_Semibold';
+	border-style: solid;
+	background-color: #fff;
+	color: #000;
+	margin-top: 0px;
+	margin-left: 50px;
+	height: 9vh;
+	width: 30vw;
+}
+
+
+.item-quantity {
+	display: flex;
+	margin-left: 40px;
+	position: relative;
+  }
+  
+  .item-quantity .dcrs {
+	position: absolute;
+	top: 0px;
+	left: -30px;
+  }
+  
+  .item-quantity .icrs {
+	position: absolute;
+	top: 0px;
+	right: -30px;
+  }
+  
+  .item-quantity .quantt {
+	border: 2px dashed #1488DB;	
+	  font-family: 'SegoeUI_Regular';
+	  font-size: 23px;
+	  width: 13vw;
+	  height: 7vh;
+	  margin-left: 0px;
+	  text-align: left;
+  }
+  

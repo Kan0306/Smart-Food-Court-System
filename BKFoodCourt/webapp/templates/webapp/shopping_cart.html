@@ -29,6 +29,7 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="{% static 'webapp/js/csrftoken.js' %}"></script>
 </head>
     
 <body>
@@ -92,101 +93,70 @@
     </div>
     <!--=============== End Header Menu Area ===============-->
 
-    
-    
-    <!--=============== Start Item Area ===================-->
-	<div style="background-color: white; width: 900px; height: 750px; margin-left: 40px; float: left; margin-top: 40px;">
-        <div class="item-image" style="float: left;">
-            <img src="{% static 'webapp/images/image 62.png' %}"  style="width: 300px; height: auto; float: left;">
-        </div>
-        <br>
-        
-        <div class="item-detail" style="float: left; margin-left: 40px">
-			<label style="font-family: 'SegoeUI_Bold'; font-size: 30px;">Mì Spaghetti</label>
-			
-			
-            <div class="item-title1"style="font-size: 25px; margin-left: 0px; ">
-				<div style="float: left; font-family: 'SegoeUI_Semibold'">Loại:</div>
+	<div class = "row" style="margin-top: 50px;">
+	<!--=============== Start Item Area ===================-->
+		<div style="background-color: white; margin-left: 50px;">
+			{% for item in items %}
+			<div style="position: relative;"> 
+				<div class="item-image" style="float: left;">
+					<img src="{{ item.item.image.url }}"  style="width: 300px">
+				</div>
+				<br>
 				
-                <select style="margin-left: 100px; font-size: 20px; font-family: 'SegoeUI_Regular'">
-                    <option >Nhỏ </option>
-                    <option>Vừa</option>
-                    <option>Lớn</option>
-                </select>
-            </div>
-            <div class="item-title1"style=" font-size: 25px; margin-left: 0px;">
-                <div style="float: left; font-family: 'SegoeUI_Semibold'">Số lượng:</div>
-                <input type="number" style="margin-left: 45px; font-size: 20px;" name="txtNumber" value="1">
+				<div class="item-detail" style="float: left; margin-left: 40px">
+					<label style="font-family: 'SegoeUI_Bold'; font-size: 30px" id="item-name-url"><a href="{{ item.item.get_absolute_url }}" style="color: black">{{ item.item.name }}</a></label>
+					
+					<div class="item-title1" style=" font-size: 25px; margin-left: 0px;">
+						<div style="float: left; font-family: 'SegoeUI_Semibold'">Số lượng:</div>
+						<div class="item-quantity">
+							<button data-item={{ item.item.id }} data-action="remove" class="dcrs order-button">-</button>
+							<div class="quantt">{{ item.quantity }}</div>
+							<button data-item={{ item.item.id }} data-action="add" class="icrs order-button">+</button>
+						</div>
+					</div>
+				</div>
+				<hr style="border-top: 1px solid #828282; margin-top: 220px; width: 820px;;">
+				<div style=" font-size: 20px; float: left; margin-left: 40px;"><button data-item={{ item.item.id }} data-action="delete" class="order-button removebutton">Xoá</button></div>
+				<p style="color: #000; font-family: 'SegoeUI_Bold'; font-size: 30px; float: right; margin-right: 40px;">{{ item.get_sum }}</p>
+				<div style="padding: 30px"></div>
 			</div>
+			{% endfor %}
 		</div>
-		<hr style="border-top: 1px solid #828282; margin-top: 220px; width: 820px;;">
-		<div style=" font-size: 20px; float: left; margin-left: 40px;"><a href="#">Xoá</a></div>
-		<p style="color: #000; font-family: 'SegoeUI_Bold'; font-size: 30px; float: right; margin-right: 40px;">30.000</p>
+	<!--=============== End Item Area   ===================-->
 
-		<!--                ......                     -->
-
-		<div class="item-image" style="float: left; padding-top: 130px; margin-left: -70px;">
-            <img src="{% static 'webapp/images/image 63.png' %}"  style="width: 300px; height: 180px; float: left;">
-        </div>
-		
-        <div style="margin: auto;"></div>
-        <div class="item-detail" style="padding-top: 130px; ">
-			<label style="font-size: 30px; margin-left: 40px; font-family: 'SegoeUI_Bold'">Cơm trộn Hàn Quốc</label>
-			
-			
-            <div class="item-title1"style="font-size: 25px; margin-left: 40px;">
-				<div style="float: left; font-family: 'SegoeUI_Semibold';">Loại:</div>
-				
-                <select style="margin-left: 100px; font-size: 20px; font-family: 'SegoeUI_Regular'">
-                    <option >Nhỏ </option>
-                    <option>Vừa</option>
-                    <option>Lớn</option>
-                </select>
-            </div>
-            <div class="item-title1"style=" font-size: 25px; margin-left: 40px">
-                <div style="float: left; font-family: 'SegoeUI_Semibold'">Số lượng:</div>
-                <input type="number" style="margin-left: 45px; font-size: 20px;" name="txtNumber" value="2">
-			</div>
+	<!--=============== Cart total price area   ===================-->
+		<div style="margin-left: 50px;">
+			<form onsubmit="return false;" method="POST" style="height: 450px;margin-top: 40px; margin-right: 40px;">
+				{% csrf_token %}
+				<div  class="row" style="text-align: left; color: #000; font-family: 'SegoeUI_Bold'; font-size: 20px">
+					<p style="text-align: left; margin-left: 15px;">{{ order.sum_item }} món</p>
+					<p style="text-align: right; margin-left: 190px;">{{ order.sum_price }}</p>
+				</div>
+				<hr style="border-top: 1px solid #FE7A19;">
+				<input type="text" name="name" placeholder="Nhập mã ưu đãi"
+				style="border: 1px solid #FDCF76;padding-bottom: 15px;padding-top: 15px;width: 100%;margin-top: 4px;margin-bottom: 10px;padding-left: 5px;">
+				<br>
+				<div>
+					<button type="submit" style="margin-top: 15px;" class="signinbtn">Áp dụng</button>
+				</div>
+				<br>
+				<hr style="border-top: 1px solid #FE7A19;">
+				<p style="float: left; color: #000; font-family: 'SegoeUI_Bold'; font-size: 25px">Tổng cộng</p>
+				<p style="float: right; color: #FE7A19; font-family: 'SegoeUI_Bold'; font-size: 30px">{{ order.sum_price }}</p>
+				<div style="margin-top: 80px;">
+					<a href="{{ order.get_absolute_url }}" style="border: 1px solid #FE7A19; margin-top: 15px; background-color: #FE7A19; color: #ffffff; font-family: 'SegoeUI_Bold'; font-size: 18px" class="btn signinbtn">THANH TOÁN</a>
+				</div>
+				<div>
+					<a href="{% url 'main-menu' %}" style="border: 1px solid #FE7A19; margin-top: 15px; background-color: #ffffff; color: #FE7A19; font-family: 'SegoeUI_Bold'; font-size: 18px" class="btn signinbtn">Tiếp tục đặt hàng</a>
+				</div>
+			</form>	
 		</div>
-		<hr style="border-top: 1px solid #828282; margin-top: 70px; width: 820px;;">
-
-		<div style=" font-size: 20px; float: left; margin-left: 40px;"><a href="#">Xoá</a></div>
-		<p style="color: #000; font-family: 'SegoeUI_Bold'; font-size: 30px; float: right; margin-right: 40px;">60.000</p>
 	</div>
-	
-    <!--=============== End Item Area   ===================-->
-    <!--=============== Cart total price area   ===================-->
-	<form  class="signupform" onsubmit="return false;" method="post" style="height: 450px;margin-top: 40px; margin-right: 40px;">
-		<div  class="row" style="text-align: left; color: #000; font-family: 'SegoeUI_Bold'; font-size: 20px">
-			<p style="text-align: left; margin-left: 15px;">3 món</p>
-			<p style="text-align: right; margin-left: 190px;">90.000</p>
-		</div>
-		<hr style="border-top: 1px solid #FE7A19;">
-		<br>
-		<input type="text" name="name" placeholder="Nhập mã ưu đãi"
-		style="border: 1px solid #FDCF76;padding-bottom: 15px;padding-top: 15px;width: 100%;margin-top: 4px;margin-bottom: 10px;padding-left: 5px;">
-		<br>
-		<div>
-			<button type="submit" style="margin-top: 15px;" class="signinbtn">Áp dụng</button>
-		</div>
-		<br>
-		<hr style="border-top: 1px solid #FE7A19;">
-		<p style="float: left; color: #000; font-family: 'SegoeUI_Bold'; font-size: 25px">Tổng cộng</p>
-		<p style="float: right; color: #FE7A19; font-family: 'SegoeUI_Bold'; font-size: 30px">90.000</p>
-		<div>
-			<button style="margin-top: 15px; background-color: #FE7A19; color: #fff; font-family: 'SegoeUI_Bold'; font-size: 18px" class="signinbtn" onclick="openForm()">THANH TOÁN</button>
-		</div>
-		<div>
-			<button onclick="contOrder()" type="submit" style="border: 1px solid #FE7A19; margin-top: 15px; background-color: #ffffff; color: #FE7A19; font-family: 'SegoeUI_Bold'; font-size: 18px" class="signinbtn">Tiếp tục đặt hàng</button>
-		</div>
-		<br>	
-	</form>
-	<br>
-    <!--=============== End cart total price   ===================-->
+	<!--=============== End cart total price   ===================-->	
 
 	<!--+++++++++++++++ Pop up thanh toán      +++++++++++++++++++-->
 
-	<div class="form-popup" id="myForm">
+	<!-- <div class="form-popup" id="myForm">
 		<form action="/action_page.php" class="form-container" onsubmit="return false" 
 		style="background-color: #fff; text-align: center; height: 420px;">
 			<h1 style="color: #FE7A19; font-size: 30px; font-family: 'Bebas_Bold';"><b>Lựa chọn phương thức thanh toán</b></h1>
@@ -240,155 +210,7 @@
 		{
 			window.location.href = "{% url 'main-menu' %}";
 		}
-	</script>
-
-    <br>
-
-    <!--================ Start Refer Items =============-->
-	<div class="refer-menu">
-        <a href="#" class="refer-name">CÓ THỂ BẠN CŨNG THÍCH</a>
-		<div id="myCarousel1" class="carousel slide" data-ride="carousel">
-			<!-- Indicators -->
-			<ol class="carousel-indicators">
-				<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel1" data-slide-to="1"></li>
-				<li data-target="#myCarousel1" data-slide-to="2"></li>
-			</ol>
-			  
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner">
-			<div class="row item active" style="padding-left: 200px;">
-				<div class="item col-xl-3">
-					<div class="food-image"><img src="{% static 'webapp/images/image 61.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
-						<div class="infomation">
-							<a href="#" class="food-name">Gà Sốt Phô Mai</a>
-							<div class="fooditem-bottem">
-								<div class="row">
-									<div class="food-price">25,000</div>
-									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				<div class="item col-xl-3">
-					<div class="food-image"><img src="{% static 'webapp/images/image 62.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
-						<div class="infomation">
-							<a href="{% url 'item-info' %}" class="food-name">Mì Spaghetti</a>
-							<div class="fooditem-bottem">
-								<div class="row">
-									<div class="food-price">30,000</div>
-									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item col-xl-3">
-						<div class="food-image"><img src="{% static 'webapp/images/image 63.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
-						<div class="infomation">
-							<a href="#" class="food-name">Cơm Trộn Hàn Quốc</a>
-								<div class="fooditem-bottem">
-								<div class="row">
-									<div class="food-price">28,000</div>
-									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-		  
-				<div class="row item" style="padding-left: 200px;">
-			<div class="item col-xl-3">
-						<div class="food-image"><img src="{% static 'webapp/images/image 61.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
-						<div class="infomation">
-							<a href="#" class="food-name">Gà Sốt Phô Mai</a>
-							<div class="fooditem-bottem">
-								<div class="row">
-									<div class="food-price">25,000</div>
-									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				<div class="item col-xl-3">
-						<div class="food-image"><img src="{% static 'webapp/images/image 62.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
-						<div class="infomation">
-							<a href="{% url 'item-info' %}" class="food-name">Mì Spaghetti</a>
-							<div class="fooditem-bottem">
-								<div class="row">
-									<div class="food-price">30,000</div>
-									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-								</div>
-							</div>
-							</div>
-					</div>
-					<div class="item col-xl-3">
-						<div class="food-image"><img src="{% static 'webapp/images/image 63.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
-						<div class="infomation">
-							<a href="#" class="food-name">Cơm Trộn Hàn Quốc</a>
-							<div class="fooditem-bottem">
-								<div class="row">
-									<div class="food-price">28,000</div>
-									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			
-				<div class="row item" style="padding-left: 200px;">
-					<div class="item col-xl-3">
-						<div class="food-image"><img src="{% static 'webapp/images/image 61.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
-							<div class="infomation">
-							<a href="#" class="food-name">Gà Sốt Phô Mai</a>
-							<div class="fooditem-bottem">
-								<div class="row">
-									<div class="food-price">25,000</div>
-                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item col-xl-3">
-						<div class="food-image"><img src="{% static 'webapp/images/image 62.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
-						<div class="infomation">
-							<a href="#" class="food-name">Mì Spaghetti</a>
-							<div class="fooditem-bottem">
-								<div class="row">
-									<div class="food-price">30,000</div>
-									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item col-xl-3">
-						<div class="food-image"><img src="{% static 'webapp/images/image 63.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
-						<div class="infomation">
-							<a href="#" class="food-name">Cơm Trộn Hàn Quốc</a>
-							<div class="fooditem-bottem">
-								<div class="row">
-									<div class="food-price">28,000</div>
-                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-									</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-	 
-			<!-- Left and right controls -->
-			<a class="left carousel-control" href="#myCarousel1" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="right carousel-control" href="#myCarousel1" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-				<span class="sr-only">Next</span>
-            </a>
-		</div>  
-	</div>
-	<div class="line"></div>
-
-    <!--================= End Refer Items ==============-->
+	</script> -->
 
     <!--================Footer =================-->
 	<div class="footer-above">
