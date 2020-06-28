@@ -15,9 +15,9 @@
 	<meta name="author" content="">
 	
     <!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="{% static 'payment/styles/bootstrap.min.css' %}">     
-	<link rel="stylesheet" href="{% static 'payment/styles/font-awesome.min.css' %}"> 
-	<link rel="stylesheet" href="{% static 'payment/styles/bill.css' %}">  
+	<link rel="stylesheet" href="{% static 'webapp/styles/bootstrap.min.css' %}">     
+	<link rel="stylesheet" href="{% static 'webapp/styles/font-awesome.min.css' %}"> 
+	<link rel="stylesheet" href="{% static 'webapp/styles/bill.css' %}">  
     <!-- Purecss -->
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -40,7 +40,8 @@
 			<p class="lead">
 				<i class="fa fa-envelope"></i>foodcourt@hcmut.edu.vn
 			</p>
-            <div class="row account">
+            {% if user.is_authenticated %}
+			<div class="row account">
 				<a id="acc" href="#">
 					<p class="lead" onclick="showAccOptions()">{{ user.username }}</p>
 					<div id ="op-active" class="acc-options">
@@ -53,6 +54,13 @@
 				</a>
 				<i class="fa fa-user"></i>
 			</div>
+			{% else %}
+            <div class="row account">
+				<a href="{% url 'login-page' %}">
+					<p>ĐĂNG KÝ/ĐĂNG NHẬP</p>
+				</a>
+			</div>
+			{% endif %}
         </div>
     </div>
 	<!-- End Contact info -->
@@ -68,20 +76,20 @@
 				<li><a href="{% url 'preference' %}">Ưu đãi</a></li>					
 			</ul>
 			<div class="search">
-				<form>
-					<input type="text" placeholder="  Tìm kiếm">
-					<button><img src="{% static 'payment/images/search.png' %}"></button> 
+				<form method="GET" action="{% url 'search' %}">
+					<input type="text" name="query" placeholder="  Tìm kiếm">
+					<button type='submit'><img src="{% static 'webapp/images/search.png' %}"></button> 
 				</form>
 			</div>
 			<div class="logo_area">
-				<a href="{% url 'home-page' %}"><img src="{% static 'payment/images/logo.png' %}" alt=""></a>
+				<a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""></a>
 			</div>
 	</header>
 	<!--================Header=================-->
 	<div class="hoadonthanhtoan">
-            <img id="half_circle" src="{% static 'payment/images/image 22.png' %}"/>
+            <img id="half_circle" src="{% static 'webapp/images/image 22.png' %}"/>
             <div class="bill_icon">
-                <img src="{% static 'payment/images/bill.png' %}" width="100px"/>
+                <img src="{% static 'webapp/images/bill.png' %}" width="100px"/>
             </div>
             <div class="bill_name">
                 <a href="#">HÓA ĐƠN THANH TOÁN</a>
@@ -94,14 +102,26 @@
 	<main class="bill">
 	<div class="donhang">
             <div class="success">
-				<p>ĐƠN HÀNG #OID 1346300522020</p>
-				<p style="color: rgb(255, 123, 0);">-80.000đ</p>
-				<img src="{% static 'payment/images/Group 204.png' %}" style="width:10%;">
+				<p>ĐƠN HÀNG #{{ orderId }}</p>
+				{% if error == 0 %}
+				<p style="color: rgb(255, 123, 0);">-{{ order.sum_price }}VNĐ</p>
+				<img src="{% static 'webapp/images/Group 204.png' %}" style="width:10%;">
+				{% elif error == "38" %}
+				<p class="failed">Tài khoản của bạn không đủ tiền. Vui lòng nạp thêm.</p>
+				<p class="failed">
+					<i class="fa fa-times-circle"></i>&nbsp;Thất bại
+				</p>
+				{% elif error == "36" %}
+				<p class="failed">Thanh toán không thành công</p>
+				<p class="failed">
+					<i class="fa fa-times-circle"></i>&nbsp;Thất bại
+				</p>
+				{% endif %}
 			</div>
 	</div>
 	<div class="line"></div>
 	<!--==End Don hang==-->
-
+	{% if error == "0" %}
 	<!--==Thong tin don hang==-->
 	<div class="thongtindonhangcommon">
 		<div class="successcover">
@@ -114,8 +134,8 @@
 				<li><p>Thời gian hoàn tất đơn hàng:</p></li>
 			</ul>
 			<ul id="phai">
-				<li><p>OID134630052020</p></li>
-				<li><p>Ngày 30 tháng 5 năm 2020 13:55</p></li>
+				<li><p>{{ orderID }}</p></li>
+				<li><p>{{ order.start_date }}</p></li>
 			</ul>
 		</div>
 	
@@ -129,10 +149,10 @@
 				<li><p>Phương thức thanh toán:</p></li>
 			</ul>
 			<ul id="phai">
-				<li><p>Nguyễn Văn A </p></li>
-				<li><p>0866042xxx</p></li>
-				<li><p>poetchaossg9@gmail.com </p></li>
-				<li><p>customer09</p></li>
+				<li><p>{{ order.order_by.customer.name }}</p></li>
+				<li><p>{{ order.order_by.customer.phone }}</p></li>
+				<li><p>{{ order.order_by.email}}</p></li>
+				<li><p>{{ order.order_by.username }}</p></li>
 				<li><p>Thanh toán bằng tài khoản</p></li>
 			</ul>
 		</div>
@@ -166,20 +186,15 @@
                          </tr>
                      </thead>
                      <tbody>
+						{% for item in items %}
                          <tr>
-                             <td class="center">1</td>
-                             <td class="left strong">Mì Spaghetti</td>
-							 <td class="left">30.000đ</td>
-							  <td class="left">1</td>
-                             <td class="right">30.000đ</td>
+                             <td class="center">{{ forloop.counter }}</td>
+                             <td class="left strong">{{ item.item.name }}</td>
+							 <td class="left"></td>
+							  <td class="left">{{ item.quantity }}</td>
+                             <td class="right">{{ item.get_sum }}</td>
                          </tr>
-                         <tr>
-                            <td class="center">2</td>
-                             <td class="left strong">Phở cuốn</td>
-							 <td class="left">10.000đ</td>
-							  <td class="left">5</td>
-                             <td class="right">50.000đ</td>
-                         </tr>
+                        {% endfor %}
                      </tbody>
                  </table>
              </div>
@@ -193,7 +208,7 @@
                                  <td class="left">
                                      <strong>Tạm tính</strong>
                                  </td>
-                                 <td class="right">80.000đ</td>
+                                 <td class="right">{{ order.sum_price }}VNĐ</td>
                              </tr>
                              <tr>
                                  <td class="left">
@@ -205,7 +220,7 @@
                                  <td class="left total_price">
                                      <strong>Tổng cộng</strong> </td>
                                  <td class="right total_price">
-                                     <strong>80.000đ</strong>
+                                     <strong>{{ order.sum_price }}VNĐ</strong>
                                  </td>
                              </tr>
                          </tbody>
@@ -217,12 +232,13 @@
  </div>
  
  </div>
- 	<div class="line"></div>
+	 <div class="line"></div>
+ 	{% endif %}
 	<!--==End chi tiet don hang==-->
 	
 	<div class="checkstate">
             <div class="cover">
-				<a href="{% url 'order-status' %}"><button>Kiểm tra trạng thái đơn hàng</button></a>
+				<a href="{{ order.get_status_url }}"><button>Kiểm tra trạng thái đơn hàng</button></a>
             </div>
 	</div>>
 	</main>	
@@ -231,7 +247,7 @@
 	<div class="footer-above">
 		<div class="row">
 			<div class="footer-logo">
-				<a href="{% url 'home-page' %}"><img src="{% static 'payment/images/logo.png' %}" alt=""></a>
+				<a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""></a>
 			</div>
 			<div class="row footer-side">
 				<div class="catalogue-title">
@@ -275,19 +291,19 @@
 			</div>
 			<div class="col-xl-5">
 				<div class="up-button">
-					<a href="#"><img id="up-button-image" src="{% static 'payment/images/Subtraction 3.png' %}"></a>
+					<a href="#"><img id="up-button-image" src="{% static 'webapp/images/Subtraction 3.png' %}"></a>
 				</div>
 			</div>
 			<div class="col-xl-3">
 				<ul class="list-inline f-social">
-					<li class="list-inline-item"><a href="#"><img src="{% static 'payment/images/facebook (2).png' %}"></a></li>
-					<li class="list-inline-item"><a href="#"><img src="{% static 'payment/images/google-plus.png' %}"></a></li>
-					<li class="list-inline-item"><a href="#"><img src="{% static 'payment/images/twitter.png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/facebook (2).png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/google-plus.png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/twitter.png' %}"></a></li>
 				</ul>
 			</div>
 		</div>
     </div>
 	<!--================Footer =================-->
-	<script src="{% static 'payment/js/dropdown.js' %}"></script>
+	<script src="{% static 'webapp/js/dropdown.js' %}"></script>
 	</body>
 </html>

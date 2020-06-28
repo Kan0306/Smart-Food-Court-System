@@ -79,6 +79,9 @@
                     <ul>
                     {% if order.status == "ACCEPT" or order.status == "CONFIRMED" or order.status == "WAITING" or order.status == "READY" %}
                         <li class="active">
+                    {% else %}
+                        <li>
+                    {% endif %}
                             <p>Thanh toán đơn hàng</p>
                         </li>
                     {% if order.status == "CONFIRMED" or order.status == "WAITING" or order.status == "READY" %}

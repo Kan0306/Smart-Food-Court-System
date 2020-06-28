@@ -43,6 +43,9 @@ class Order(models.Model):
         return reverse("payment",kwargs={"id":self.id})
 
     def get_absolute_return_url(self):
+        return reverse("bill", kwargs={"id":self.id})
+
+    def get_status_url(self):
         return reverse("order-status", kwargs={"id":self.id})
     
     def sum_price(self):

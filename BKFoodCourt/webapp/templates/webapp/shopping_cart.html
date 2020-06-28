@@ -95,16 +95,16 @@
 
 	<div class = "row" style="margin-top: 50px;">
 	<!--=============== Start Item Area ===================-->
-		<div style="background-color: white; margin-left: 50px; position: relative;">
+		<div style="background-color: white; margin-left: 50px;">
 			{% for item in items %}
-			<div>
+			<div style="position: relative;"> 
 				<div class="item-image" style="float: left;">
 					<img src="{{ item.item.image.url }}"  style="width: 300px">
 				</div>
 				<br>
 				
 				<div class="item-detail" style="float: left; margin-left: 40px">
-					<label style="font-family: 'SegoeUI_Bold'; font-size: 30px;">{{ item.item.name }}</label>
+					<label style="font-family: 'SegoeUI_Bold'; font-size: 30px" id="item-name-url"><a href="{{ item.item.get_absolute_url }}" style="color: black">{{ item.item.name }}</a></label>
 					
 					<div class="item-title1" style=" font-size: 25px; margin-left: 0px;">
 						<div style="float: left; font-family: 'SegoeUI_Semibold'">Số lượng:</div>

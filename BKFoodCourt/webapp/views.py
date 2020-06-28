@@ -8,6 +8,8 @@ from urllib.parse import parse_qs
 from django.urls import reverse
 from django.http import JsonResponse
 import json
+import random
+from datetime import datetime
 # Create your views here.
 @login_required
 def shopping_cart(request):
@@ -24,8 +26,26 @@ def pay_by_account(request):
     return render(request, 'webapp/pay_by_account.html', {})
 
 @login_required
-def bill(request):
-    return render(request, 'webapp/bill.html', {})
+def bill(request, id):
+    url = request.build_absolute_uri()
+    parsed = urlparse.urlparse(url)
+    error = parse_qs(parsed.query)['errorCode'][0]
+    time = parse_qs(parsed.query)['responseTime'][0]
+    order = get_object_or_404(Order, id=id)
+    items = order.orderitem_set.all()
+    orderId = 'BKORDER' + str(id).zfill(13)
+
+    if error == "0":
+        order.status = "CONFIRMED"
+        order.save()
+    context = {
+        'order': order,
+        'orderId': orderId,
+        'items': items,
+        'error': error,
+        'time' : time
+    }
+    return render(request, 'webapp/bill.html', context)
 
 @login_required
 def order_status(request, id):
@@ -33,14 +53,7 @@ def order_status(request, id):
     context = {
         'order': order
     }
-    url = request.build_absolute_uri()
-    parsed = urlparse.urlparse(url)
-    error = parse_qs(parsed.query)['errorCode'][0]
-    if error == 0:
-        order.status = "CONFIRMED"
-        return render(request, 'webapp/orderstatus.html', context)
-    else:
-        return render(request, 'webapp/orderstatus.html', context)
+    return render(request, 'webapp/orderstatus.html', context)
 
 @login_required
 def online_payment(request):
@@ -123,7 +136,6 @@ def manage_menu(request):
 
 def payment(request, id):
     order = Order.objects.get(id=id)
-    # orderId = 'BKORDER' + str(id).zfill(13)
     amount = 0
     for item in order.orderitem_set.all():
         amount += item.item.price * item.quantity
@@ -138,7 +150,8 @@ def payment(request, id):
     notifyurl = "https://dummy.url/notify"
     requestType = "captureMoMoWallet"
     extraData = "merchantName=;merchantId="
-    orderId = "1505359852738"
+    orderId = "1505359852740"
+    # orderID = random.seed(datetime.now())
     rawSignature = "partnerCode="+partnerCode+"&accessKey="+accessKey+"&requestId="+requestId+"&amount="+amount+"&orderId="+orderId+"&orderInfo="+orderInfo+"&returnUrl="+returnUrl+"&notifyUrl="+notifyurl+"&extraData="+extraData
     signature = hmac.new( bytes(serectkey, 'latin-1'), bytes(rawSignature, 'latin-1'), hashlib.sha256 ).hexdigest()
 
@@ -198,7 +211,6 @@ def update_order(request):
     item = Item.objects.get(id=itemID)
     order, created = Order.objects.get_or_create(order_by=request.user, status="ONGOING")
     orderItem, created = OrderItem.objects.get_or_create(order=order, item=item)
-    print(action)
     if action == "add":
         orderItem.quantity += 1
     elif action == "remove":
