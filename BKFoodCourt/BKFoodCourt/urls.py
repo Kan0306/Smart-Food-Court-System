@@ -38,7 +38,10 @@ urlpatterns = [
     path('bill/', web_views.bill, name='bill'), 
     path('status/<int:id>', web_views.order_status, name='order-status'),  
     path('onlinepay/', web_views.online_payment, name='online-pay'),
-    path('payment/<int:id>/', web_views.payment, name='payment')
+    path('payment/<int:id>/', web_views.payment, name='payment'),
+    path('delete-item/<int:id>/',web_views.delete_item, name='delete-item'),
+    path('update-item/<int:id>/',web_views.update_item, name='update-item'),
+    path('create-item/<int:id>/',web_views.create_item, name='create-item')
 ]
 
 if settings.DEBUG:

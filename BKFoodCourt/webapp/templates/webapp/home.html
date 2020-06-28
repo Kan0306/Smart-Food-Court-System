@@ -48,9 +48,23 @@
 					<div id ="op-active" class="acc-options">
 						<ul>
 							<li><a href="#">Thông tin tài khoản</a></li>
-								{% if user.is_superuser == True %}
+							{% if user.is_superuser == True %}
 								<li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
+							{% endif %}
+							{% for group in request.user.groups.all %}
+								{% if group.name == 'Manager' %}
+									{% for manager in managers %}
+										{% if manager.user.username == user.username %}
+											{% for stall in stalls %}	
+												{% if stall.owner == manager.user.username %}
+													<li><a href="{{stall.get_absolute_url}}">Chỉnh sửa Menu</a></li>
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+									{% endfor %}
 								{% endif %}
+							{% endfor %}
+							<li><a href="#">Cài đặt</a></li>
 							<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
 						</ul>
 					</div>

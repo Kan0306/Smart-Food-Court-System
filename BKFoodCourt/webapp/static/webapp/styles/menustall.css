@@ -458,7 +458,7 @@ header .search button
 	position: relative;
 }
 
-.order-button, .alert-button{
+.order-button,.alert-button{
 	position: absolute;
 	right: 15px;
 	top: 5px;
@@ -467,7 +467,10 @@ header .search button
 	color: #000;
 	border: none;
 	margin-left: 0;
+	height: 20px;
+	width: 100px;
 }
+
 .next-page {
 	text-align: center;
 	padding: 15px 30px;

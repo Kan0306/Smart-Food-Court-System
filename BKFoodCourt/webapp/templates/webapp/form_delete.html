@@ -70,7 +70,7 @@
         <!-- End Contact info -->
 
         <!--================ Header Menu Area =================-->
-        <header> 
+        <header>
             <div id="menu_bar"></div>
                 <ul>
                     <li><a href="{% url 'home-page' %}">Trang chủ</a></li>
@@ -104,108 +104,19 @@
         <section class="back_area">
             <div class="text_heading">
                 <a href="#">Trang chủ</a><a href="{% url 'main-menu' %}"> > Thực đơn</a> > <a href="{{ stall.get_absolute_url }}"> {{ stall.stallname }}</a>
-                {% if user.is_authenticated %}
-                {% for group in request.user.groups.all %}
-                    {% if group.name == 'Customer' %}
-                        <div class="cart_icon">
-                            <a href="{% url 'shopping-cart' %}"><img src="{% static 'webapp/images/shopping-cart.png' %}" style="padding-left: 7px; padding-top: 8px"/></a>
-                            <span class="badge">0</span>
-                        </div>
-                    {% endif %}
-                    {% if group.name == 'Manager' %}
-                        <a role ="button" href="{%url 'create-item' stall.id%}" style="position: absolute;margin-left: 0px;right: 80px;top:5px;width: 200px;height: 35px;text-align: center;text-decoration: none;background: #FE7A19;padding-top: 5px; color:#000;font-family: SegoeUI_Semibold;" >
-                            Thêm món mới
-                        </a>
-                    {% endif %}
-                {% endfor %}
-                {% endif %}
             </div>
-            <div class="filter">
-                <p id="sortby">Sắp xếp theo</p>
-                <div class="row">
-                    <button style="margin-left: 230px">Bán chạy</button>
-                    <button>Mới nhất</button>
-                    <button style="width: 200px; text-align: right">Thứ tự chữ cái
-                        <i class="fa fa-angle-down"></i>
-                        <div class="alphabet">
-                            <ul>
-                                <li>Từ A-Z</li>
-                                <li>Từ Z-A</li>
-                            </ul>
-                        </div>
-                    </button>
-                    <button style="width: 280px; text-align: right;">Giá
-                        <i class="fa fa-angle-down"></i>
-                        <div class="price">
-                            <ul>
-                                <li>Giá từ thấp đến cao</li>
-                                <li>Giá từ cao đến thấp</li>
-                            </ul>
-                        </div>
-                    </button>
-                </div>
-            </div>
-
-            {% for item in page_obj %}
             <div class="items">
-                <div class="food-image"><img src="{{ item.image.url }}" style="width: 250px;height: 132px; text-align: center;"></div>
                 <div class="infomation">
-                    <a href="#" class="food-name">{{ item.name }}</a>
-                    <div class="description">{{ item.description }}</div>
-                    <div class="row">
-                        <div class="food-price">{{ item.price }} </div>
-                        {% if user.is_authenticated %}
-                        {% for group in request.user.groups.all %}
-                            {% if group.name == 'Customer' %}
-                                <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-                            {% endif %}     
-                            {% if group.name == 'Manager' %}
-									{% for manager in managers %}
-										{% if manager.user.username == user.username %}
-											{% for stall in stalls %}	
-												{% if stall.owner == manager.user.username %}
-                                                <a role ="button" href="{%url 'update-item' item.id%}" style="position: absolute;margin-left: 0px;right: 15px;top:5px;width: 100px;height: 35px;text-align: center;text-decoration: none;background: #FE7A19;padding-top: 5px; color:#000;font-family: SegoeUI_Semibold;" >
-                                                    Chỉnh sửa
-                                                </a>
-                                                <a role ="button" href="{%url 'delete-item' item.id%}" style="position: absolute;margin-left: 0px;right: 120px;top:5px;width: 100px;height: 35px;text-align: center;text-decoration: none;background: #FE7A19;padding-top: 5px; color:#000;font-family: SegoeUI_Semibold;" >
-                                                    Xóa
-                                                </a> 
-												{% endif %}
-											{% endfor %}
-										{% endif %}
-									{% endfor %}
-								{% endif %}                      
-                        {% endfor %}
-						{% else %}
-						<button class="alert-button"><i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-						{% endif %}
-                    </div>
+                    <p class="food-name"> Bạn có chắc muốn xóa "{{item.name}}" ra khỏi menu?</p>
+                    <form action="" method = "POST" style="padding: 10px;">
+                        {% csrf_token %}
+                        <a role = 'button'href="{{ stall.get_absolute_url }}" style="position: relative;margin-left: 15px;width: 100px;height: 35px;text-align: center;text-decoration: none;padding-top: 5px; color:#FE7A19;font-family: SegoeUI_Semibold;">
+                            Cancel
+                        </a>
+                        <input type="submit" name="Confirm"style="position: relative;margin-left: 15px;width: 100px;height: 35px;text-align: center;text-decoration: none;background: #FE7A19;padding-top: 5px; color:#000;font-family: SegoeUI_Semibold;">
+                    </form>
                 </div>
             </div>
-            {% endfor %}
-            
-        
-            <!-- Begin Pagination -->
-            <div class="pagination" style="margin: 50px;">
-                <span class="step-links">
-                    <div class="current">
-                        Trang {{ page_obj.number }} trên {{ page_obj.paginator.num_pages }}.
-                    </div>
-                    <br>
-                    {% if page_obj.has_previous %}
-                        <a href="?page=1">&laquo; Trang đầu</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">Trang trước</a>
-                    {% endif %}
-                    
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">Trang tiếp</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">Trang cuối &raquo;</a>
-                    {% endif %}
-    
-                    
-                </span>
-            </div>
-            <!-- End Pagination -->
         </section>
         <!--================ End Menu Area =================-->
     <!--================Footer =================-->

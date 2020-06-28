@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Item, Menu, Order
+from .models import Item, Menu, Order, Manager
+from .decorators import allowed_users
 from django.core.paginator import Paginator
 import json, urllib.request, hmac, hashlib, uuid, socket
 import urllib.parse as urlparse
 from urllib.parse import parse_qs
 from django.urls import reverse
+from .forms import ItemForm
 
 # Create your views here.
 @login_required
@@ -39,17 +41,25 @@ def order_status(request, id):
 def online_payment(request):
     return render(request, 'webapp/online-payment.html', {})
 
-def home(request):
-    return render(request, 'webapp/home.html', {})
+def home(request):   
+    managers = Manager.objects.all()
+    stalls = Menu.objects.all()
+    context = {
+        'managers': managers,
+        'stalls': stalls,
+    }    
+    return render(request, 'webapp/home.html', context)
 
 def menu(request):
     stalls = Menu.objects.all()
     items = Item.objects.all()
+    managers = Manager.objects.all()
     paginator = Paginator(stalls, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
         'stalls' : stalls,
+        'managers': managers,
         'items' : items,
         'page_obj': page_obj
     }
@@ -57,6 +67,8 @@ def menu(request):
 
 def menustall(request, id):
     stall = get_object_or_404(Menu, id=id)
+    managers = Manager.objects.all()
+    stalls = Menu.objects.all()
     items = Item.objects.filter(belongs_to_stall=stall)
     paginator = Paginator(items, 3)
     page_number = request.GET.get('page')
@@ -64,25 +76,85 @@ def menustall(request, id):
     print(page_obj)
     context = {
         'items': items,
+        'managers': managers,
+        'stalls': stalls,
         'stall': stall,
         'page_obj': page_obj
     }
     return render(request, 'webapp/menustall.html', context)
 
-
 def about(request):
-    return render(request, 'webapp/about.html', {})
+    managers = Manager.objects.all()
+    stalls = Menu.objects.all()
+    context = {
+        'managers': managers,
+        'stalls': stalls,
+    }    
+    return render(request, 'webapp/about.html', context)
 
 def preference(request):
-    return render(request, 'webapp/preference.html', {})
+    managers = Manager.objects.all()
+    stalls = Menu.objects.all()
+    context = {
+        'managers': managers,
+        'stalls': stalls,
+    }    
+    return render(request, 'webapp/preference.html', context)
 
 def item_info(request):
-    return render(request, 'webapp/item_info.html', {})
+    managers = Manager.objects.all()
+    stalls = Menu.objects.all()
+    context = {
+        'managers': managers,
+        'stalls': stalls,
+    }    
+    return render(request, 'webapp/item_info.html', context)
+
 
 @login_required
-def manage_menu(request):
-    pass
+def delete_item(request,id):
+    item = Item.objects.get(id=id)
+    stall = item.belongs_to_stall
+    if request.method == "POST":
+        item.delete()
+        return redirect('stall-menu',stall.id)
+    context = {
+        'item':item,
+        'stall':stall
+    }
+    return render(request,'webapp/form_delete.html',context)
 
+@login_required
+def update_item(request,id):
+    item = Item.objects.get(id=id)
+    stall= item.belongs_to_stall
+    form = ItemForm(instance=item)
+    if request.method == 'POST':
+        form = ItemForm(request.POST,request.FILES,instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('stall-menu',stall.id)
+    context={
+        'form':form,
+        'stall':stall,
+    }
+    return render(request,'webapp/item_form.html',context)
+@login_required
+def create_item(request,id):
+    stall = Menu.objects.get(id=id)
+    form = ItemForm()
+    if request.method == 'POST':
+        form = ItemForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('stall-menu',id)
+    context={
+        'form':form,
+        'stall':stall,
+    }
+    return render(request,'webapp/item_form.html',context)
+
+@login_required
 def payment(request, id):
     order = Order.objects.get(id=id)
     # orderId = 'BKORDER' + str(id).zfill(13)
