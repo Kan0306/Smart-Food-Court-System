@@ -322,32 +322,42 @@ body {
 	font-family: "Bebas_Bold";
 	font-size: 30px;
 	color: #FFFFFF;
-	text-transform: capitalize;
 }
 .stall-name:hover
 {
 	color: #FDCF76;
 	text-decoration: none;
 }
-
-.item{
+.food-items{
 	display: flex;
-	margin-top: 40px;
-	margin-bottom: 30px;
-	margin-left: 160px;
-	/* margin-right: auto; */
-	padding-left: 40px;
-	position: relative;
 }
 
-.food-image {
-	width: 500px;
+.food-image{
+	width: 250px;
+	height: 132px;
+	text-align: center;
+}
+
+.food-items .all{
+	float: right;
+	position: absolute;
+	margin-top: 15px;
+	right: 50px;
+}
+
+.item{
+	display: inline-block;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 40px;
 }
 .item .infomation
 {
 	position: relative;
 	background: #FDCF76;
-	width: 500px;
+	width: 250px;
 }
 .description{
 	height: 100px;
@@ -378,21 +388,20 @@ body {
 	font-size: 30px;
 	font-family: 'SegoeUI_Bold';
 }
-.infomation .row, .up-button{
+.up-button{
 	position: relative;
 }
 
-.order-button, .alert-button {
+.order-button{
 	position: absolute;
-	right: 15px;
-	top: 5px;
+	right: 0px;
+	top: 260px;
 	font-family: "SegoeUI_Semibold";
 	background: #FE7A19;
-	color: #000;
 	border: none;
+	color: #000;
 	margin-left: 0;
 }
-
 
 .next-page {
 	text-align: center;
@@ -504,7 +513,7 @@ body {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 40%;
+	width: 80%;
 }
 
 #up-button-image{
@@ -513,4 +522,3 @@ body {
 	left: 100px;
 	width: 25%;
 }
-

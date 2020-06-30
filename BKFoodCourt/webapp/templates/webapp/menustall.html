@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">  
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ stall.stallname }}</title>
+        <title> Yummy Mix </title>
         <link rel="stylesheet" type="text/css" href="{% static 'webapp/styles/menustall.css' %}">
         <link rel="stylesheet" href="{% static 'webapp/styles/bootstrap.min.css' %}">
         <link rel="stylesheet" href="{% static 'webapp/styles/font-awesome.min.css' %}">
@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <script src="{% static 'webapp/js/csrftoken.js' %}"></script>
         
     </head>
     <body>
@@ -39,9 +38,9 @@
 					<div id ="op-active" class="acc-options">
 						<ul>
 							<li><a href="#">Thông tin tài khoản</a></li>
-                            {% if user.is_superuser == True %}
-                                <li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
-                            {% endif %}
+							{% if user.is_superuser == True %}
+								<li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
+							{% endif %}
 							<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
 						</ul>
 					</div>
@@ -70,9 +69,9 @@
                     
                 </ul>
                 <div class="search">
-                    <form method="GET" action="">
-                        <input type="text" name="query" placeholder="  Tìm kiếm">
-                        <button type='submit'><img src="{% static 'webapp/images/search.png' %}"></button> 
+                    <form>
+                        <input type="text" placeholder="  Tìm kiếm">
+                        <button><img src="{% static 'webapp/images/search.png' %}"/></button> 
                     </form>
                 </div>
                 <div class="logo_area">
@@ -85,7 +84,7 @@
                 <img src="{% static 'webapp/images/stall-icon.png' %}" width="100px"/>
             </div>
             <div class="stall_name">
-                <a href="{{ stall.get_absolute_url }}">{{ stall.stallname }}</a>
+                <a href="{% url 'stall-menu' %}">Yummy Mix</a>
             </div>
         </div>
         <!--================ Header Menu Area =================-->
@@ -93,19 +92,13 @@
         <!--================ Menu Area =================-->
         <section class="back_area">
             <div class="text_heading">
-                <a href="{% url 'home-page' %}">Trang chủ</a><a href="{% url 'main-menu' %}"> > Thực đơn</a> > <a href="{{ stall.get_absolute_url }}"> {{ stall.stallname }}</a>
+                <a href="#">Trang chủ</a><a href="{% url 'main-menu' %}"> Thực đơn</a> > <a href="{% url 'stall-menu' %}"> Yummy Mix</a>
                 {% if user.is_authenticated %}
                 {% for group in request.user.groups.all %}
                     {% if group.name == 'Customer' %}
                         <div class="cart_icon">
-                            <a href="{% url 'shopping-cart' %}"><img class='cart_pic' src="{% static 'webapp/images/shopping-cart.png' %}" style="position: absolute; width: 35px; left: 4px; top: 5px"/></a>
-                            <span class="badge">
-                                {% if order == 'none' %}
-							        0
-							    {% else %}
-							        {{ order.sum_item }} 
-							    {% endif %}
-                            </span>
+                            <a href="{% url 'shopping-cart' %}"><img src="{% static 'webapp/images/shopping-cart.png' %}" style="padding-left: 7px; padding-top: 8px"/></a>
+                            <span class="badge">0</span>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -137,54 +130,33 @@
                 </div>
             </div>
 
-            {% if none == 'True' %}
-            <div style="text-align: center; margin: 80px">
-                <h4> Không tìm thấy món ăn nào. Xin bạn vui lòng tìm kiếm với từ khóa khác </h4>
-            </div>
-            {% else %}
-            {% for item in page_obj %}
+            {% for item in items %}
             <div class="items">
                 <div class="food-image"><img src="{{ item.image.url }}" style="width: 250px;height: 132px; text-align: center;"></div>
                 <div class="infomation">
-                    <a href="{{ item.get_absolute_url }}" class="food-name">{{ item.name }}</a>
+                    <a href="#" class="food-name">{{ item.name }}</a>
                     <div class="description">{{ item.description }}</div>
                     <div class="row">
                         <div class="food-price">{{ item.price }} </div>
-                        {% if user.is_authenticated %}
-                        {% for group in request.user.groups.all %}
-                            {% if group.name == 'Customer' %}
-                                <button data-item={{ item.id }} data-action="add" class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-                            {% endif %}
-                        {% endfor %}
-						{% else %}
-						<button class="alert-button"><i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-						{% endif %}
+                        <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
                     </div>
                 </div>
             </div>
             {% endfor %}
-            {% endif %}
             
         
             <!-- Begin Pagination -->
-            <div class="pagination" style="margin: 50px;">
-                <span class="step-links">
-                    <div class="current">
-                        Trang {{ page_obj.number }} trên {{ page_obj.paginator.num_pages }}.
-                    </div>
-                    <br>
-                    {% if page_obj.has_previous %}
-                        <a href="?page=1">&laquo; Trang đầu</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">Trang trước</a>
-                    {% endif %}
-                    
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">Trang tiếp</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">Trang cuối &raquo;</a>
-                    {% endif %}
-    
-                    
-                </span>
+            <div class="next-page">
+                <div class="pagination">
+                    <a href="#">&laquo;</a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&raquo;</a>
+                </div>
             </div>
             <!-- End Pagination -->
         </section>
@@ -251,8 +223,6 @@
     </div>
     <!--================Footer =================-->
     <script src="{% static 'webapp/js/dropdown.js' %}"></script>
-    <script src="{% static 'webapp/js/order.js' %}"></script>
-	<script src="{% static 'webapp/js/unauthenticated_alert.js' %}"></script>
-    
+	<script src="{% static 'webapp/js/order.js' %}"></script>
     </body>
 </html>

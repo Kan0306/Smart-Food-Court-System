@@ -37,11 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'django.contrib.sites',
 
     # User install app
     'users.apps.UsersConfig',
     'webapp.apps.WebappConfig',
     'crispy_forms',
+    'django_tables2',
+    #Maintenance mode
+    #'maintenancemode',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +56,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
+
+    #Maintenance mode
+    #'maintenancemode.middleware.MaintenanceModeMiddleware',
 ]
 
 ROOT_URLCONF = 'BKFoodCourt.urls'
@@ -67,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #'maintenance_mode.context_processors.maintenance_mode',
             ],
         },
     },
@@ -130,3 +139,20 @@ LOGIN_URL = 'login-page'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "/media/"
+
+#SIDE_ID = 2
+# Maintenance mode
+
+"""MAINTENANCE_MODE = None
+MAINTENANCE_MODE_IGNORE_ANONYMOUS_USER = False
+MAINTENANCE_MODE_IGNORE_AUTHENTICATED_USER = False
+MAINTENANCE_MODE_IGNORE_STAFF = False
+MAINTENANCE_MODE_IGNORE_SUPERUSER = True
+MAINTENANCE_MODE_IGNORE_IP_ADDRESSES = ()
+MAINTENANCE_MODE_GET_CLIENT_IP_ADDRESS = None
+MAINTENANCE_MODE_GET_CLIENT_IP_ADDRESS = 'ipware.ip.get_ip'
+MAINTENANCE_MODE_IGNORE_URLS = ()
+MAINTENANCE_MODE_IGNORE_TESTS = False
+MAINTENANCE_MODE_REDIRECT_URL = None
+MAINTENANCE_MODE_TEMPLATE = '503'"""
+

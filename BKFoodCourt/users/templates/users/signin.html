@@ -56,45 +56,40 @@
 				
 	<!-- End Contact info -->
     
-
 	<!--+++++++++++ BEGIN SIGN IN FORM +++++++++++++-->
-	<div class="nen_cam_nhat" style="height: 750px;">
-		<div class="dan_dong"></div>
-		<div class="nen_cam_dam" style="height: 700px; padding-top: 0px; margin-top: 10px;">
-			<div class="dan_dong"></div>
-
-			<div class="content-section" style="margin: 100px; margin-top: 60px">
-				<div class="row">
-					<div class="col-xl-6">
-						<img src="{% static 'users/images/large-logo.png' %}" 
-						style="width: 300px; height: 300px;">
+	
+	<div class="content-section" style="margin: 100px">
+		<div class="row">
+			<div class="col-xl-6">
+				<img src="{% static 'users/images/large-logo.png' %}" style="width:50%;">
+			</div>
+			<div class="col-xl-6">
+				<form method="POST">
+					{% csrf_token %}
+					<fieldset class="form-group">
+						<legend class="border-bottom mb-4">ĐĂNG NHẬP</legend>
+						{{ form|crispy }}
+					</fieldset>
+					<div class="form-group">
+						<button class="btn btn-outline-info" type="summit" style="background-color: #FE7A19;; color: white;">Đăng nhập</button>
 					</div>
-					<div class="col-xl-6" style="background-color: white;  border-radius: 10px; ">
-						<form method="POST">
-							{% csrf_token %}
-							<fieldset class="form-group" style="margin-top: 30px; font-size: 17px">
-								<legend class="border-bottom mb-4" style="font-size: 30px"><b><u style="text-decoration-color: #FE7A19;">ĐĂNG NHẬP</u></b></legend>
-								{{ form|crispy }}
-							</fieldset>
-							<div class="form-group">
-								<button class="btn btn-outline-info" type="summit" 
-								style="font-size: 17px; background-color: #FE7A19;; color: white;">Đăng nhập</button>
-							</div>
-						</form>
-						<div class="border-top pt-3"style="margin-bottom: 30px">
-							<small class="text-muted" style="font-size: 15px">
-								Chưa có tài khoản? <a class="ml-2" href="{% url 'register' %}"> Đăng ký ngay</a>
-							</small>
-						</div>
-					</div>
+				</form>
+				<div class="border-top pt-3">
+					<small class="text-muted">
+						Chưa có tài khoản? <a class="ml-2" href="{% url 'register' %}"> Đăng ký ngay</a>
+					</small>
 				</div>
 			</div>
-
-			<div class="dan_dong"></div>
-			<div class="dan_dong"></div>
 		</div>
 	</div>
 	<!--+++++++++++ END SIGN IN FORM +++++++++++++-->
+	
+	<!--/////////// Bắt đầu làm cái nền và logo /////////////////-->
+
+	
+
+
+	<!--/////////// Làm xong cái nền và logo /////////////////-->
 
 	<!--================Footer =================-->
 	<section class="footer">

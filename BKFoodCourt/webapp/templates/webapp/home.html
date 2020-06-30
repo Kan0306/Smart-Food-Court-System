@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>Trang chủ</title>  
+	<title>Trang chủ</title>  
+	<link rel = "icon" href = "{% static 'webapp/images/logo-icon.png' %}"  type = "image/x-icon"> 
     <meta name="keywords" content="">
     <meta name="description" content="">
 	<meta name="author" content="">
@@ -47,10 +48,10 @@
 					<p class="lead" onclick="showAccOptions()">{{ user.username }}</p>
 					<div id ="op-active" class="acc-options">
 						<ul>
-							<li><a href="#">Thông tin tài khoản</a></li>
-							{% if user.is_superuser == True %}
-							<li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
-							{% endif %}
+							<li><a href="{% url 'profile' %}">Thông tin tài khoản</a></li>
+								{% if user.is_superuser == True or user.is_staff == True %}
+								<li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
+								{% endif %}
 							<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
 						</ul>
 					</div>
@@ -78,9 +79,9 @@
 				<li><a href="{% url 'preference' %}">Ưu đãi</a></li>					
 			</ul>
 			<div class="search">
-				<form method="GET" action="{% url 'search' %}">
-					<input type="text" name="query" placeholder="  Tìm kiếm">
-					<button type='submit'><img src="{% static 'webapp/images/search.png' %}"></button> 
+				<form>
+					<input type="text" placeholder="  Tìm kiếm">
+					<button><img src="{% static 'webapp/images/search.png' %}"></button> 
 				</form>
 			</div>
 			<div class="logo_area">
@@ -177,7 +178,7 @@
 				<div class="item col-xl-3">
 					<div class="prefer-image"><img src="{% static 'webapp/images/upto50.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
 					<div class="infomation" style="text-align: center;">
-						<a href="{{ stall.get_absolute_url }}">YUMMY MIX</a>
+						<a href="{% url 'stall-menu' %}">YUMMY MIX</a>
 						<button class="view-button" onclick="redirect">Xem chi tiết</button>
 					</div>
 				</div>

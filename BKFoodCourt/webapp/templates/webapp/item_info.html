@@ -25,7 +25,6 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script src="{% static 'webapp/js/csrftoken.js' %}"></script>
 </head>
     
 <body>
@@ -49,7 +48,7 @@
 					<div id ="op-active" class="acc-options">
 						<ul>
 							<li><a href="#">Thông tin tài khoản</a></li>
-							{% if user.is_superuser == True %}
+							{% if user.is_superuser == True or user.is_staff == True %}
 								<li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
 							{% endif %}
 							<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
@@ -97,33 +96,22 @@
         <ul>
         <li><a href="{% url 'home-page' %}">Trang chủ > </a></li>
         <li><a href="{% url 'main-menu' %}" >Thực đơn > </a></li>
-        <li><a href="{{ stall.get_absolute_url }}"> {{stall.stallname}} > </a></li>
-        <li><a href="#">{{ item.name }}</a></li>
+        <li><a href="{% url 'stall-menu' %}">Yummy Mix > </a></li>
+        <li><a href="#">Mì Spaghetti</a></li>
         </ul>
     </div>
-    {% if user.is_authenticated %}
-    	{% for group in request.user.groups.all %}
-    	    {% if group.name == 'Customer' %}
-    	        <div class="cart_icon">
-    	            <a href="{% url 'shopping-cart' %}"><img class='cart_pic' src="{% static 'webapp/images/shopping-cart.png' %}" style="position: absolute; width: 35px; left: 4px; top: 5px"/></a>
-    	            <span class="badge">
-						{% if order == 'none' %}
-							0
-						{% else %}
-							{{ order.sum_item }} 
-						{% endif %}
-					</span>
-    	        </div>
-    	    {% endif %}
-    	{% endfor %}
-    {% endif %}
+    <div class="cart_icon">
+        <a href="{% url 'shopping-cart' %}"><img src="{% static 'webapp/images/shopping-cart.png' %}" alt="Giỏ hàng" style="padding-left: 7px; padding-top: 8px"
+			data-toggle="tooltip"  data-placement="top" title="Giỏ hàng"></a>
+			<span class="badge">0</span>
+    </div>
         
     <!--=============== End Track List Area ===============-->
     
     <!--=============== Start Item Area ===================-->
     <div class="item-area">
         <div class="{% static 'webapp/images">
-            <img src="{{ item.image.url }}"  style="width: 600px; height: 402px; padding-right: 15px">
+            <img src="{% static 'webapp/images/item.png' %}"  style="width: 600px; height: 402px; padding-right: 15px">
             <div class="rate">
                 Đánh giá: 
                 <div class="number">4.9</div>
@@ -146,28 +134,36 @@
         </div>
         
         <div class="item-detail">
-            <div class="item-title">{{ item.name }}</div>
+            <div class="item-title">Mì Spaghetti</div>
             <div class="item-des">
-               {{ item.description }}
+                Nếu bạn là tín đồ của ẩm thực phương Tây thì không thể bỏ qua mì Spaghetti - một món ăn lừng danh của nước Ý. 
+                Với phần mì sợi to, vừa dai vừa mềm, cùng sốt thịt bò phải nói là quá xuất sắc.
             </div>
             <div class="item-title1">
                 Giá:
                 <div class="item-price">
-                    {{ item.price }}
+                    30.000
                 </div>
 			</div>
-			<div>
-			{% if user.is_authenticated %}
-			{% for group in request.user.groups.all %}
-				{% if group.name == 'Customer' %}
-				<button data-item={{ item.id }} data-action="add" class="order-button" id="add_cart">Thêm vào giỏ hàng</button>
+			<!-- <form action="" method="POST">
+				{% csrf_token %} -->
+				<div class="item-title1">
+					Loại:
+					<select>
+						<option>Nhỏ </option>
+						<option>Vừa</option>
+						<option>Lớn</option>
+					</select>
+				</div>
+				<div class="item-title1">
+					Số lượng:
+					<input id="num_item" type="number" name="txtNumber" value="0">
+				</div>
+				<button id="add_cart" class="submit">Thêm vào giỏ hàng</button>
+			<!-- </form> -->
             <div class="order">
                 <a href="#">Đặt hàng ngay </a>
-			</div>
-			{% endif %}
-    	{% endfor %}
-	{% endif %}
-</div>
+            </div>
         </div>
     </div>
     <!--=============== End Item Area   ===================-->
@@ -181,6 +177,150 @@
     <!--================ End Comment ===================-->
 
     <!--================ Start Other Items =============-->
+		
+    
+	<div class="stall-menu">
+        <a href="#" class="stall-name">MÓN ĂN KHÁC CỦA YUMMY MIX</a>
+		<div id="myCarousel1" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel1" data-slide-to="1"></li>
+				<li data-target="#myCarousel1" data-slide-to="2"></li>
+			</ol>
+			  
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			<div class="row item active" style="padding-left: 200px;">
+				<div class="item col-xl-3">
+					<div class="food-image"><img src="{% static 'webapp/images/image 61.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+						<div class="infomation">
+							<a href="#" class="food-name">Gà Sốt Phô Mai</a>
+							<div class="fooditem-bottem">
+								<div class="row">
+									<div class="food-price">25,000</div>
+									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				<div class="item col-xl-3">
+					<div class="food-image"><img src="{% static 'webapp/images/image 62.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+						<div class="infomation">
+							<a href="#" class="food-name">Mì Spaghetti</a>
+							<div class="fooditem-bottem">
+								<div class="row">
+									<div class="food-price">30,000</div>
+									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item col-xl-3">
+						<div class="food-image"><img src="{% static 'webapp/images/image 63.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+						<div class="infomation">
+							<a href="#" class="food-name">Cơm Trộn Hàn Quốc</a>
+								<div class="fooditem-bottem">
+								<div class="row">
+									<div class="food-price">28,000</div>
+									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		  
+				<div class="row item" style="padding-left: 200px;">
+			<div class="item col-xl-3">
+						<div class="food-image"><img src="{% static 'webapp/images/image 61.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+						<div class="infomation">
+							<a href="#" class="food-name">Gà Sốt Phô Mai</a>
+							<div class="fooditem-bottem">
+								<div class="row">
+									<div class="food-price">25,000</div>
+									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				<div class="item col-xl-3">
+						<div class="food-image"><img src="{% static 'webapp/images/image 62.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+						<div class="infomation">
+							<a href="#" class="food-name">Mì Spaghetti</a>
+							<div class="fooditem-bottem">
+								<div class="row">
+									<div class="food-price">30,000</div>
+									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+								</div>
+							</div>
+							</div>
+					</div>
+					<div class="item col-xl-3">
+						<div class="food-image"><img src="{% static 'webapp/images/image 63.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+						<div class="infomation">
+							<a href="#" class="food-name">Cơm Trộn Hàn Quốc</a>
+							<div class="fooditem-bottem">
+								<div class="row">
+									<div class="food-price">28,000</div>
+									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+				<div class="row item" style="padding-left: 200px;">
+					<div class="item col-xl-3">
+						<div class="food-image"><img src="{% static 'webapp/images/image 61.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+							<div class="infomation">
+							<a href="#" class="food-name">Gà Sốt Phô Mai</a>
+							<div class="fooditem-bottem">
+								<div class="row">
+									<div class="food-price">25,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item col-xl-3">
+						<div class="food-image"><img src="{% static 'webapp/images/image 62.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+						<div class="infomation">
+							<a href="#" class="food-name">Mì Spaghetti</a>
+							<div class="fooditem-bottem">
+								<div class="row">
+									<div class="food-price">30,000</div>
+									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item col-xl-3">
+						<div class="food-image"><img src="{% static 'webapp/images/image 63.png' %}" style="width: 250px;height: 132px; text-align: center;"></div>
+						<div class="infomation">
+							<a href="#" class="food-name">Cơm Trộn Hàn Quốc</a>
+							<div class="fooditem-bottem">
+								<div class="row">
+									<div class="food-price">28,000</div>
+                                    <button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	 
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel1" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel1" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+            </a>
+		</div>  
+	</div>
+	<div class="line"></div>
     
 
     <!--================= End Other Items ==============-->
@@ -247,7 +387,6 @@
 	</div>
 	
 	<!--================Footer =================-->
-	<script src="{% static 'webapp/js/order.js' %}"></script>
-	<script src="{% static 'webapp/js/dropdown.js' %}"></script>
+	<script src="{% static 'webapp/js/iteminfo.js' %}"></script>
 </body>
 </html>

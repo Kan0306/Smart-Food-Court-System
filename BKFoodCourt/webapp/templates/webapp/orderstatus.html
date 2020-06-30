@@ -74,35 +74,19 @@
         <!--================ Menu Area =================-->
         <section class="back_area">
             <div class="order_status">
-                <p class="order_code">Đơn hàng #{{ order.id }}</p>
+                <p class="order_code">Đơn hàng #OID134630052020</p>
                 <div class="progress">
                     <ul>
-                    {% if order.status == "ACCEPT" or order.status == "CONFIRMED" or order.status == "WAITING" or order.status == "READY" %}
                         <li class="active">
-                    {% else %}
-                        <li>
-                    {% endif %}
                             <p>Thanh toán đơn hàng</p>
                         </li>
-                    {% if order.status == "CONFIRMED" or order.status == "WAITING" or order.status == "READY" %}
-                        <li class="active">
-                    {% else %}
                         <li>
-                    {% endif %}
                             <p>Tiếp nhận đơn hàng</p>
                         </li>
-                    {% if order.status == "WAITING"  %}
-                        <li class="active">
-                    {% else %}
                         <li>
-                    {% endif %}
                             <p>Đang chuẩn bị</p>
                         </li>
-                    {% if order.status == "READY" %}
-                        <li class="active">
-                    {% else %}
                         <li>
-                    {% endif %}
                             <p>Đơn hàng sẵn sàng</p>
                         </li>
                     </ul>
