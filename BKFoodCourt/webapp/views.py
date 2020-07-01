@@ -8,6 +8,7 @@ import urllib.parse as urlparse
 from urllib.parse import parse_qs
 from django.urls import reverse
 from .forms import ItemForm
+from maintenance_mode.decorators import force_maintenance_mode_off, force_maintenance_mode_on
 
 # Create your views here.
 @login_required
@@ -206,3 +207,11 @@ def payment(request, id):
     return redirect(a['payUrl'])
     
     # return render(request, 'webapp/payment.html', {})
+@force_maintenance_mode_off
+def force_maintenance_mode_off_view(request):
+    return HttpResponse()
+
+
+@force_maintenance_mode_on
+def force_maintenance_mode_on_view(request):
+    return HttpResponse()
