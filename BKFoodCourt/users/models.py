@@ -3,8 +3,7 @@ from django.contrib.auth.models import User
 from webapp.models import Menu
 # Create your models here.
 class Customer(models.Model):
-    name = models.CharField(max_length=500)
-    image = models.FileField(default='default-user.png', upload_to='user_pics')
+    name = models.CharField(max_length=500, blank=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='customer')
     phone = models.CharField(max_length=500, blank=True)
     address = models.CharField(max_length=500, blank=True)

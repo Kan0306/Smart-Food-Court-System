@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>Hóa đơn thanh toán</title>  
+	<title>Hóa đơn thanh toán</title> 
+	<link rel = "icon" href = "{% static 'webapp/images/logo-icon.ico' %}"  type = "image/x-icon"> 
     <meta name="keywords" content="">
     <meta name="description" content="">
 	<meta name="author" content="">
@@ -47,9 +48,9 @@
 					<div id ="op-active" class="acc-options">
 						<ul>
 							<li><a href="{% url 'profile' %}">Thông tin tài khoản</a></li>
-							{% if user.is_superuser == True %}
+							{% if user.is_superuser == True or user.is_staff == True %}
 								<li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
-								{% endif %}
+							{% endif %}
 							<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
 						</ul>
 					</div>

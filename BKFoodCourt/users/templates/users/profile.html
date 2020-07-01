@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Tài khoản </title>
-        <link rel = "icon" href = "{% static 'webapp/images/logo-icon.png' %}"  type = "image/x-icon"> 
+        <link rel = "icon" href = "{% static 'webapp/images/logo-icon.ico' %}"  type = "image/x-icon"> 
         <link rel="stylesheet" type="text/css" href="{% static 'users/styles/profile.css' %}">
         <link rel="stylesheet" href="{% static 'users/styles/bootstrap.min.css' %}">     
 	    <link rel="stylesheet" href="{% static 'users/styles/font-awesome.min.css' %}">  
@@ -55,15 +55,10 @@
         <!--================ Start User Profile =================-->
         <div class="profile-section">
             <div class="container emp-profile">
-                <form method="post">
+                <form method="post" style="padding-left: 3%">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="profile-img">
-                                <img class="rounded-circle account-img" src="{{ customers.image.url }}" alt=""/>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="profile-head">
+                        <div class="col-md-10">
+                            <div class="profile-head" style="padding-left: 5%">
                                         <h5>
                                             {{ user.username }}
                                         </h5>
@@ -82,16 +77,17 @@
                                                 {% endfor %}
                                             {% endif %}
                                         </h6>
-                                       <!-- <p class="proile-rating">RANKINGS : <span>8/10</span></p> -->
-                                <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 100px;">
+                                        <div class="row">
+                                        <p style="margin-left: 48%"><i class="fa fa-shopping-basket u-icon"></i>ĐÃ MUA: <b style="font-family: 'SegoeUI_Bold'; font-size: 15px;">{{ orders.count }}</b> đơn hàng</p>
+                                        <p style="margin-left: 10%"><i class="fa fa-heart u-icon"></i>ĐÃ THÍCH: <b style="font-family: 'SegoeUI_Bold'; font-size: 15px">0</b> món ăn</p>
+                                        </div>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 50px;">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Thông tin tài khoản</a>
                                     </li>
-                                    {% if user.is_superuser == False and user.is_staff == False %}
                                     <li class="nav-item">
                                         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Đơn hàng</a>
                                     </li>
-                                    {% endif%}
                                 </ul>
                             </div>
                         </div>
@@ -101,18 +97,16 @@
                         </div>
                     </div>
                     <div class="row">
+                        <!--
                         <div class="col-md-4">
-                            {% if user.is_superuser == False and user.is_staff == False %}
                             <div class="profile-work">
                                 <p><i class="fa fa-shopping-basket u-icon"></i>ĐÃ MUA: <b style="font-family: 'SegoeUI_Bold'; font-size: 18px">{{ orders.count }}</b> đơn hàng</p>
                                 <p><i class="fa fa-heart u-icon"></i>ĐÃ THÍCH: <b style="font-family: 'SegoeUI_Bold'; font-size: 18px">0</b> món ăn</p>
                             </div>
-                            {% endif %}
-                        </div>
-                        <div class="col-md-8">
+                        </div>-->
+                        <div class="col-md-10">
                             <div class="tab-content profile-tab" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                            
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" style="padding-left: 5%">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <label>Họ và tên</label>
@@ -146,8 +140,7 @@
                                                 </div>
                                             </div>
                                 </div>
-                                {% if user.is_superuser == False and user.is_staff == False %}
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="padding-left: 5%">
                                     <div class="card card-body">
                                         <table class="table" style="font-size: 15px">
                                             <tr>
@@ -188,7 +181,6 @@
                                         </table>
                                     </div>
                                 </div>
-                                {% endif %}
                             </div>
                         </div>
                     </div>

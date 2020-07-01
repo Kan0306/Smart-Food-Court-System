@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Trạng thái đơn hàng </title>
+        <link rel = "icon" href = "{% static 'webapp/images/logo-icon.ico' %}"  type = "image/x-icon">
         <link rel="stylesheet" type="text/css" href="{% static 'webapp/styles/orderstatus.css' %}">
         <link rel="stylesheet" href="{% static 'webapp/styles/bootstrap.min.css' %}">     
 	    <link rel="stylesheet" href="{% static 'webapp/styles/font-awesome.min.css' %}">  
@@ -29,7 +30,7 @@
                 </p>
                 <div class="row account">
                     <a id="acc" href="#">
-                        <p class="lead" onclick="showAccOptions()">{{ user.username }}9</p>
+                        <p class="lead" onclick="showAccOptions()">{{ user.username }}</p>
                         <div id ="op-active" class="acc-options">
                             <ul>
                                 <li><a href="{% url 'profile' %}">Thông tin tài khoản</a></li>

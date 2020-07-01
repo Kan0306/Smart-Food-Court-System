@@ -147,7 +147,7 @@ def payment(request, id):
     notifyurl = "https://dummy.url/notify"
     requestType = "captureMoMoWallet"
     extraData = "merchantName=;merchantId="
-    orderId = "1505359852743"
+    orderId = "1505359852744"
     # orderID = random.seed(datetime.now())
     rawSignature = "partnerCode="+partnerCode+"&accessKey="+accessKey+"&requestId="+requestId+"&amount="+amount+"&orderId="+orderId+"&orderInfo="+orderInfo+"&returnUrl="+returnUrl+"&notifyUrl="+notifyurl+"&extraData="+extraData
     signature = hmac.new( bytes(serectkey, 'latin-1'), bytes(rawSignature, 'latin-1'), hashlib.sha256 ).hexdigest()
