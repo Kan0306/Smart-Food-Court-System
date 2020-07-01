@@ -38,7 +38,12 @@ urlpatterns = [
     path('status/<int:id>', web_views.order_status, name='order-status'),  
     path('payment/<int:id>/', web_views.payment, name='payment'),
     path('search/', web_views.search, name='search'),
-    path('update_order/', web_views.update_order, name='update-order')
+    path('update_order/', web_views.update_order, name='update-order'),
+    path('profile/', users_views.profile, name='profile'),
+    path('profile/edit', users_views.edit_profile, name='edit-profile'),
+    path('delete-item/<int:id>/',web_views.delete_item, name='delete-item'),
+    path('update-item/<int:id>/',web_views.update_item, name='update-item'),
+    path('create-item/<int:id>/',web_views.create_item, name='create-item')
 ]
 
 if settings.DEBUG:

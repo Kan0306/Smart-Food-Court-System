@@ -47,8 +47,19 @@
 					<p class="lead" onclick="showAccOptions()">{{ user.username }}</p>
 					<div id ="op-active" class="acc-options">
 						<ul>
-							<li><a href="#">Thông tin tài khoản</a></li>
-							<li><a href="#">Cài đặt</a></li>
+							{% if user.is_superuser == True or user.is_staff == True %}
+							<li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
+							{% endif %}
+							{% if user.is_authenticated %}
+							{% for group in request.user.groups.all %}
+								{% if group.name == 'Customer' %}
+									<li><a href="{% url 'profile' %}">Thông tin tài khoản</a></li>
+								{% endif %}
+								{% if group.name == 'Manager' %}
+								<li><a href="{{ request.user.manager.own_stall.get_absolute_url }}">Chỉnh sửa Menu</a></li>
+								{% endif %}
+							{% endfor %}
+							{% endif %}
 							<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
 						</ul>
 					</div>

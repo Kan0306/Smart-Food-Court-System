@@ -51,8 +51,14 @@
 						<p class="lead" onclick="showAccOptions()">{{ user.username }}</p>
 						<div id ="op-active" class="acc-options">
 							<ul>
-								<li><a href="#">Thông tin tài khoản</a></li>
-								<li><a href="#">Cài đặt</a></li>
+								<li><a href="{% url 'profile' %}">Thông tin tài khoản</a></li>
+								{% if user.is_authenticated %}
+								{% for group in request.user.groups.all %}
+									{% if group.name == 'Manager' %}
+									<li><a href="{{ request.user.manager.own_stall.get_absolute_url }}">Chỉnh sửa Menu</a></li>
+									{% endif %}
+								{% endfor %}
+								{% endif %}
 								<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
 							</ul>
 						</div>
@@ -153,64 +159,6 @@
 		</div>
 	</div>
 	<!--=============== End cart total price   ===================-->	
-
-	<!--+++++++++++++++ Pop up thanh toán      +++++++++++++++++++-->
-
-	<!-- <div class="form-popup" id="myForm">
-		<form action="/action_page.php" class="form-container" onsubmit="return false" 
-		style="background-color: #fff; text-align: center; height: 420px;">
-			<h1 style="color: #FE7A19; font-size: 30px; font-family: 'Bebas_Bold';"><b>Lựa chọn phương thức thanh toán</b></h1>
-			<br>
-			<div class="oidar">
-				<input id="choice1" type="radio" name="method" value="false" onclick="setAP()">  Thanh toán bằng tài khoản<br>
-			</div>
-			<br>
-			
-			<span style="font-size: 20px; color: rgb(134, 134, 134);"> - HOẶC - </span><br><br>
-
-			<div class="oidar">
-				<input id="choice2" type="radio" name="method" value="false" onclick="setSP()"> Thanh toán bằng dịch vụ khác<br>
-			</div>
-
-			<br><br>
-		
-		
-			<button type="submit" class="btn cancel" style="float: left; width: 30%;font-size: 15px;" onclick="closeForm() "><b>Trở lại</b></button>
-			<button type="submit" class="btn" style="float: left; width: 30%; font-size: 15px;" onclick="payment() "><b>Tiếp tục</b></button>
-		</form>
-	</div>
-
-	<script>
-		function openForm() {
-			document.getElementById("myForm").style.display = "block";
-	  	}
-	  
-	  	function closeForm() {
-			document.getElementById("myForm").style.display = "none";
-		  }
-		function setAP()
-		{
-			document.getElementById("choice1").value = "true";
-			document.getElementById("choice2").value = "false";
-		}
-		function setSP()
-		{
-			document.getElementById("choice2").value = "true";
-			document.getElementById("choice1").value = "false";
-		}
-		function payment()
-		{
-			var paychoice = document.getElementById("choice1").value;
-			if (paychoice === "true")
-				window.location.href = "{% url 'pay-by-acc' %}";
-			else 
-				window.location.href = "{% url 'online-pay' %}";
-		}
-		function contOrder()
-		{
-			window.location.href = "{% url 'main-menu' %}";
-		}
-	</script> -->
 
     <!--================Footer =================-->
 	<div class="footer-above">

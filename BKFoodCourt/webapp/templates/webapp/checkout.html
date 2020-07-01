@@ -46,7 +46,7 @@
 					<p class="lead" onclick="showAccOptions()">{{ user.username }}</p>
 					<div id ="op-active" class="acc-options">
 						<ul>
-							<li><a href="#">Thông tin tài khoản</a></li>
+							<li><a href="{% url 'profile' %}">Thông tin tài khoản</a></li>
 							{% if user.is_superuser == True %}
 								<li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
 								{% endif %}

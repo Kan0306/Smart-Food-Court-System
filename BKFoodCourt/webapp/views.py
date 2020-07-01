@@ -10,8 +10,13 @@ from django.http import JsonResponse
 import json
 import random
 from datetime import datetime
+from .forms import ItemForm
+from .decorators import allowed_users
+from users.models import Manager
 # Create your views here.
+
 @login_required
+@allowed_users(['Customer'])
 def shopping_cart(request):
     order, created = Order.objects.get_or_create(order_by=request.user, status="ONGOING")
     items = order.orderitem_set.all()
@@ -22,6 +27,7 @@ def shopping_cart(request):
     return render(request, 'webapp/shopping_cart.html', context)
 
 @login_required
+@allowed_users(['Customer'])
 def bill(request, id):
     url = request.build_absolute_uri()
     parsed = urlparse.urlparse(url)
@@ -44,6 +50,7 @@ def bill(request, id):
     return render(request, 'webapp/bill.html', context)
 
 @login_required
+@allowed_users(['Customer'])
 def order_status(request, id):
     order = get_object_or_404(Order, id=id)
     context = {
@@ -51,7 +58,7 @@ def order_status(request, id):
     }
     return render(request, 'webapp/orderstatus.html', context)
 
-def home(request):
+def home(request):    
     return render(request, 'webapp/home.html', {})
 
 def menu(request):
@@ -99,7 +106,7 @@ def menustall(request, id):
     return render(request, 'webapp/menustall.html', context)
 
 
-def about(request):
+def about(request):  
     return render(request, 'webapp/about.html', {})
 
 def preference(request):
@@ -123,9 +130,7 @@ def item_info(request, id):
     return render(request, 'webapp/item_info.html', context)
 
 @login_required
-def manage_menu(request):
-    pass
-
+@allowed_users(['Customer'])
 def payment(request, id):
     order = Order.objects.get(id=id)
     amount = 0
@@ -142,7 +147,7 @@ def payment(request, id):
     notifyurl = "https://dummy.url/notify"
     requestType = "captureMoMoWallet"
     extraData = "merchantName=;merchantId="
-    orderId = "1505359852740"
+    orderId = "1505359852743"
     # orderID = random.seed(datetime.now())
     rawSignature = "partnerCode="+partnerCode+"&accessKey="+accessKey+"&requestId="+requestId+"&amount="+amount+"&orderId="+orderId+"&orderInfo="+orderInfo+"&returnUrl="+returnUrl+"&notifyUrl="+notifyurl+"&extraData="+extraData
     signature = hmac.new( bytes(serectkey, 'latin-1'), bytes(rawSignature, 'latin-1'), hashlib.sha256 ).hexdigest()
@@ -164,11 +169,8 @@ def payment(request, id):
     }
 
     data = json.dumps(data)
-    with open("4forces.json","w") as x:
-        x.write(data)
 
-    g = open('4forces.json')
-    req = urllib.request.Request(endpoint, g, {'Content-Type': 'application/json', 'Content-Length': len(data)})
+    req = urllib.request.Request(endpoint, data.encode('utf-8'), {'Content-Type': 'application/json', 'Content-Length': len(data)})
     f = urllib.request.urlopen(req)
     response = f.read()
     f.close()
@@ -195,6 +197,8 @@ def search(request):
     }
     return render(request, 'webapp/search.html', context)
 
+@login_required
+@allowed_users(['Customer'])
 def update_order(request):
     data = json.loads(request.body)
     itemID = data['itemID']
@@ -214,3 +218,57 @@ def update_order(request):
         orderItem.delete()
 
     return JsonResponse("Successful", safe=False)
+
+@login_required
+@allowed_users(['Manager'])
+def delete_item(request,id):
+    item = Item.objects.get(id=id)
+    stall = item.belongs_to_stall
+    if request.method == "POST":
+        item.delete()
+        return redirect('stall-menu',stall.id)
+    context = {
+        'item':item,
+        'stall':stall
+    }
+    return render(request,'webapp/form_delete.html',context)
+
+@login_required
+@allowed_users(['Manager'])
+def update_item(request,id):
+    item = Item.objects.get(id=id)
+    stall= item.belongs_to_stall
+    form = ItemForm(instance=item)
+    if request.method == 'POST':
+        form = ItemForm(request.POST,request.FILES,instance=item)
+        print(request.POST)
+        print(request.FILES)
+        print(request.body)
+
+        if form.is_valid():
+            form.save()
+            return redirect('stall-menu',stall.id)
+    context={
+        'form':form,
+        'stall':stall,
+    }
+    return render(request,'webapp/item_form.html',context)
+
+@login_required
+@allowed_users(['Manager'])
+def create_item(request,id):
+    stall = Menu.objects.get(id=id)
+    form = ItemForm()
+    if request.method == 'POST':
+        form = ItemForm(request.POST,request.FILES)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.belongs_to_stall = stall
+            obj.save()
+            return redirect('stall-menu',id)
+    context={
+        'form':form,
+        'stall':stall,
+    }
+    return render(request,'webapp/item_form.html',context)
+

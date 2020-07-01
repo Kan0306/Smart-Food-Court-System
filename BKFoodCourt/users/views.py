@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, Group
 from .models import Customer
+from .forms import UserForm
+from webapp.models import Order
 from django.core.exceptions import ValidationError
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from webapp.decorators import allowed_users
 # Create your views here.
 
 CUSTOMER_GROUP_ID = 1
@@ -26,3 +31,35 @@ def register(request):
         else:
             context['user'] = 1     
     return render(request, 'users/signup.html', context)
+
+@login_required
+@allowed_users(['Customer'])
+def profile(request):
+    customers = request.user.customer
+    orders = Order.objects.filter(order_by=request.user, status="CONFIRMED")
+    context = {
+        'customers': customers,
+        'orders': orders, 
+    }
+    return render(request, 'users/profile.html', context)
+
+@login_required
+@allowed_users(['Customer'])
+def edit_profile(request):
+    customers = request.user.customer
+    orders = Order.objects.filter(order_by=request.user)
+    form = UserForm(instance=customers)
+    if request.method == 'POST':
+        form = UserForm(data=request.POST, files=request.FILES, instance=customers)
+        print(request.POST)
+        print(request.FILES)
+        print(request.body)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    context = {
+        'form': form,
+        'customers': customers,
+        'orders': orders,
+    }
+    return render(request, 'users/edit_profile.html', context)
