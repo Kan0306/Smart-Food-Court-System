@@ -4,7 +4,6 @@ from webapp.models import Menu
 # Create your models here.
 class Customer(models.Model):
     name = models.CharField(max_length=500)
-    image = models.FileField(default='default-user.png', upload_to='user_pics')
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='customer')
     phone = models.CharField(max_length=500, blank=True)
     address = models.CharField(max_length=500, blank=True)

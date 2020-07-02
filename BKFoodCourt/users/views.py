@@ -47,7 +47,7 @@ def profile(request):
 @allowed_users(['Customer'])
 def edit_profile(request):
     customers = request.user.customer
-    orders = Order.objects.filter(order_by=request.user)
+    orders = Order.objects.filter(order_by=request.user, status="CONFIRMED")
     form = UserForm(instance=customers)
     if request.method == 'POST':
         form = UserForm(data=request.POST, files=request.FILES, instance=customers)

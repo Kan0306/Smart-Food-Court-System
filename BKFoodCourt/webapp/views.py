@@ -148,8 +148,7 @@ def payment(request, id):
     notifyurl = "https://dummy.url/notify"
     requestType = "captureMoMoWallet"
     extraData = "merchantName=;merchantId="
-    orderId = "1505359852743"
-    # orderID = random.seed(datetime.now())
+    orderId = ''.join([chr(random.randint(48, 122)) for i in range(10)])
     rawSignature = "partnerCode="+partnerCode+"&accessKey="+accessKey+"&requestId="+requestId+"&amount="+amount+"&orderId="+orderId+"&orderInfo="+orderInfo+"&returnUrl="+returnUrl+"&notifyUrl="+notifyurl+"&extraData="+extraData
     signature = hmac.new( bytes(serectkey, 'latin-1'), bytes(rawSignature, 'latin-1'), hashlib.sha256 ).hexdigest()
 
@@ -242,14 +241,10 @@ def update_item(request,id):
     form = ItemForm(instance=item)
     if request.method == 'POST':
         form = ItemForm(request.POST,request.FILES,instance=item)
-        print(request.POST)
-        print(request.FILES)
-        print(request.body)
-
         if form.is_valid():
             form.save()
             return redirect('stall-menu',stall.id)
-    context={
+    context = {
         'form':form,
         'stall':stall,
     }
@@ -272,6 +267,17 @@ def create_item(request,id):
         'stall':stall,
     }
     return render(request,'webapp/item_form.html',context)
+
+@login_required
+@allowed_users(['Customer'])
+def checkout(request, id):
+    order = get_object_or_404(Order, id=id)
+    items = order.orderitem_set.all()
+    context = {
+        'order': order,
+        'items': items,
+    }
+    return render(request,'webapp/checkout.html', context)
 
 @force_maintenance_mode_off
 def force_maintenance_mode_off_view(request):

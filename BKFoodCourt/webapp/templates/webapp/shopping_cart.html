@@ -150,7 +150,7 @@
 				<p style="float: left; color: #000; font-family: 'SegoeUI_Bold'; font-size: 25px">Tổng cộng</p>
 				<p style="float: right; color: #FE7A19; font-family: 'SegoeUI_Bold'; font-size: 30px">{{ order.sum_price }}</p>
 				<div style="margin-top: 80px;">
-					<a href="{{ order.get_absolute_url }}" style="border: 1px solid #FE7A19; margin-top: 15px; background-color: #FE7A19; color: #ffffff; font-family: 'SegoeUI_Bold'; font-size: 18px" class="btn signinbtn">THANH TOÁN</a>
+					<a href="{{ order.get_checkout_url }}" style="border: 1px solid #FE7A19; margin-top: 15px; background-color: #FE7A19; color: #ffffff; font-family: 'SegoeUI_Bold'; font-size: 18px" class="btn signinbtn">THANH TOÁN</a>
 				</div>
 				<div>
 					<a href="{% url 'main-menu' %}" style="border: 1px solid #FE7A19; margin-top: 15px; background-color: #ffffff; color: #FE7A19; font-family: 'SegoeUI_Bold'; font-size: 18px" class="btn signinbtn">Tiếp tục đặt hàng</a>

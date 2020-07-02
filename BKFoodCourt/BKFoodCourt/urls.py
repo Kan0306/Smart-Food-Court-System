@@ -46,6 +46,7 @@ urlpatterns = [
     path('delete-item/<int:id>/',web_views.delete_item, name='delete-item'),
     path('update-item/<int:id>/',web_views.update_item, name='update-item'),
     path('create-item/<int:id>/',web_views.create_item, name='create-item'),
+    path('checkout/<int:id>/', web_views.checkout, name='checkout'),
     re_path(r'^maintenance-mode/off/$', maintenance_mode_off, name='maintenance_mode_off'),
     re_path(r'^maintenance-mode/on/$', maintenance_mode_on, name='maintenance_mode_on'),
 ]
