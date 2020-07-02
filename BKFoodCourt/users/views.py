@@ -36,7 +36,7 @@ def register(request):
 @allowed_users(['Customer'])
 def profile(request):
     customers = request.user.customer
-    orders = Order.objects.filter(order_by=request.user, status="CONFIRMED")
+    orders = Order.objects.filter(order_by=request.user)
     context = {
         'customers': customers,
         'orders': orders, 
@@ -47,7 +47,7 @@ def profile(request):
 @allowed_users(['Customer'])
 def edit_profile(request):
     customers = request.user.customer
-    orders = Order.objects.filter(order_by=request.user, status="CONFIRMED")
+    orders = Order.objects.filter(order_by=request.user)
     form = UserForm(instance=customers)
     if request.method == 'POST':
         form = UserForm(data=request.POST, files=request.FILES, instance=customers)

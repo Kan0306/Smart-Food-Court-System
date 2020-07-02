@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from webapp import views as web_views
 from users import views as users_views
+from kitchen import views as cook_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -49,6 +50,7 @@ urlpatterns = [
     path('checkout/<int:id>/', web_views.checkout, name='checkout'),
     re_path(r'^maintenance-mode/off/$', maintenance_mode_off, name='maintenance_mode_off'),
     re_path(r'^maintenance-mode/on/$', maintenance_mode_on, name='maintenance_mode_on'),
+     path('order-list/',cook_views.order_list, name='order-list'),
 ]
 
 if settings.DEBUG:

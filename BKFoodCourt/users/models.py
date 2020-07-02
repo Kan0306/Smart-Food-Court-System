@@ -17,3 +17,10 @@ class Manager(models.Model):
     phone = models.CharField(max_length=500, blank=True)
     address = models.CharField(max_length=500, blank=True)
     own_stall = models.ForeignKey(Menu, on_delete=models.CASCADE)
+
+class Cook(models.Model):
+    name = models.CharField(max_length=500)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='cook')
+    phone = models.CharField(max_length=500, blank=True)
+    address = models.CharField(max_length=500, blank=True)
+    own_stall = models.ForeignKey(Menu, on_delete=models.CASCADE)

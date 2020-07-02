@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # User install app
     'users.apps.UsersConfig',
     'webapp.apps.WebappConfig',
+    'kitchen.apps.KitchenConfig',
     'crispy_forms',
     'django_tables2'
 ]
