@@ -10,7 +10,7 @@
  
      <!-- Site Metas -->
 	<title>Trang chủ</title>  
-	<link rel = "icon" href = "{% static 'webapp/images/logo-icon.png' %}"  type = "image/x-icon"> 
+	<link rel = "icon" href = "{% static 'webapp/images/logo-icon.ico' %}"  type = "image/x-icon"> 
     <meta name="keywords" content="">
     <meta name="description" content="">
 	<meta name="author" content="">
@@ -109,72 +109,7 @@
 		<!--================New Food =================-->
 	<section class="stall-list">
 			<div class="stall-menu">
-				
-				<div id="myCarousel1" class="carousel slide" data-ride="carousel">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-					  <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-					  <li data-target="#myCarousel2" data-slide-to="1"></li>
-					  <li data-target="#myCarousel2" data-slide-to="2"></li>
-					</ol>
-				  
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner">
-						<div class="row item active" style="padding-left: auto; padding-right:auto; padding-top: 100px; padding-bottom: 50px;">
-								<div class="newfood_img">
-									<div class="new_icon"><img src="{% static 'webapp/images/new.png' %}" style="width: 60%;"></div>
-								</div>
-								<div class="newfood">
-									<p class="new_title">MÓN MỚI</p>
-									<div class="new_dashedline"></div>
-									<a href="#"><p>Bánh Mì Bơ Tỏi</p></a>
-									<div class="newfood_des">Hay còn gọi là bánh mì bơ tỏi phô mai hiện đang cực kỳ gây sốt ở khắp mọi nơi trên mạng xã hội...</div>
-									<p style="position: absolute; color: #000; padding: 0; top: 240px; left: 110px">15,000đ</p>
-									{% if user.is_authenticated %}
-									<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-									{% endif %}
-								</div>
-						</div>
-				  
-						<div class="row item" style="padding-left: auto; padding-right:auto; padding-top: 100px; padding-bottom: 50px;">
-							<div class="newfood_img">
-								<div class="new_icon"><img src="{% static 'webapp/images/new.png' %}" style="width: 60%;"></div>
-							</div>
-							<div class="newfood">
-								<p class="new_title">MÓN MỚI</p>
-								<div class="new_dashedline"></div>
-								<a href="#"><p>Tên món ăn 1</p></a>
-								<div class="newfood_des">Mô tả...</div>
-								<p style="position: absolute; color: #000; padding: 0; top: 240px; left: 110px">??,000đ</p>
-								<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-							</div>
-						</div>
-					
-						<div class="row item" style="padding-left: auto; padding-right:auto; padding-top: 100px; padding-bottom: 50px;">
-							<div class="newfood_img">
-								<div class="new_icon"><img src="{% static 'webapp/images/new.png' %}" style="width: 60%;"></div>
-							</div>
-							<div class="newfood">
-								<p class="new_title">MÓN MỚI</p>
-								<div class="new_dashedline"></div>
-								<a href="#"><p>Tên món ăn 2</p></a>
-								<div class="newfood_des">Mô tả...</div>
-								<p style="position: absolute; color: #000; padding: 0; top: 240px; left: 120px">??,000đ</p>
-								<button class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-							</div>
-					</div>
-					</div>
-				  
-					<!-- Left and right controls -->
-					<a class="left carousel-control" href="#myCarousel1" data-slide="prev">
-						<span class="glyphicon glyphicon-chevron-left"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="right carousel-control" href="#myCarousel1" data-slide="next">
-						<span class="glyphicon glyphicon-chevron-right"></span>
-						<span class="sr-only">Next</span>
-					</a>
-				</div>
+				<img src="{% static 'webapp/images/new-item-banner.png' %}"/>				
 			</div>
 		</section>
 		<div class="grayline" style="margin-top: 50px"></div>
