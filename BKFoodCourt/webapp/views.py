@@ -13,6 +13,7 @@ from datetime import datetime
 from .forms import ItemForm
 from .decorators import allowed_users
 from users.models import Manager
+from maintenance_mode.decorators import force_maintenance_mode_off, force_maintenance_mode_on
 # Create your views here.
 
 @login_required
@@ -272,3 +273,11 @@ def create_item(request,id):
     }
     return render(request,'webapp/item_form.html',context)
 
+@force_maintenance_mode_off
+def force_maintenance_mode_off_view(request):
+    return HttpResponse()
+
+
+@force_maintenance_mode_on
+def force_maintenance_mode_on_view(request):
+    return HttpResponse() 

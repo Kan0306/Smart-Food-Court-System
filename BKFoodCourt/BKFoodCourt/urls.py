@@ -20,6 +20,8 @@ from users import views as users_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import re_path
+from maintenance_mode.views import maintenance_mode_off, maintenance_mode_on
 
 
 urlpatterns = [
@@ -43,7 +45,9 @@ urlpatterns = [
     path('profile/edit', users_views.edit_profile, name='edit-profile'),
     path('delete-item/<int:id>/',web_views.delete_item, name='delete-item'),
     path('update-item/<int:id>/',web_views.update_item, name='update-item'),
-    path('create-item/<int:id>/',web_views.create_item, name='create-item')
+    path('create-item/<int:id>/',web_views.create_item, name='create-item'),
+    re_path(r'^maintenance-mode/off/$', maintenance_mode_off, name='maintenance_mode_off'),
+    re_path(r'^maintenance-mode/on/$', maintenance_mode_on, name='maintenance_mode_on'),
 ]
 
 if settings.DEBUG:
