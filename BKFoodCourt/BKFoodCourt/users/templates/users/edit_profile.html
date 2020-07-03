@@ -1,0 +1,224 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Tài khoản </title>
+        <link rel = "icon" href = "{% static 'webapp/images/logo-icon.ico' %}"  type = "image/x-icon"> 
+        <link rel="stylesheet" type="text/css" href="{% static 'users/styles/profile.css' %}">
+        <link rel="stylesheet" href="{% static 'users/styles/bootstrap.min.css' %}">     
+	    <link rel="stylesheet" href="{% static 'users/styles/font-awesome.min.css' %}">  
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <!-- Start Contact info -->
+        <div class="line"></div>
+        <div class="contact-imfo-box">
+            <div class="container">
+                <p class="lead">
+                    <i class="fa fa-map-marker"></i>Đại học Bách Khoa - Cơ sở Dĩ An
+                </p>
+                <p class="lead">
+                    <i class="fa fa-phone"></i>(028)38-647-XXX
+                </p>
+                <p class="lead">
+                    <i class="fa fa-envelope"></i>foodcourt@hcmut.edu.vn
+                </p>
+                <div class="row account">
+                    <a id="acc" href="#">
+                        <p class="lead" onclick="showAccOptions()">{{ user.username }}</p>
+                        <div id ="op-active" class="acc-options">
+                            <ul>
+                                <li><a href="{% url 'profile' %}">Thông tin tài khoản</a></li>
+                                {% if user.is_superuser == True or user.is_staff == True %}
+								    <li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
+							    {% endif %}
+                                <li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </a>
+                    <i class="fa fa-user"></i>
+                </div>
+            </div>
+        </div>
+        <!-- End Contact info -->
+        
+        <div class="path">
+			<a href="{% url 'home-page' %}">Trang chủ</a> > <a href="{% url 'profile' %}"> Trang cá nhân</a>
+		</div>
+
+        <!--================ Start User Profile =================-->
+        <div class="profile-section">
+            <div class="container emp-profile">
+                <form method="post" style="padding-left: 3%">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="profile-head" style="padding-left: 5%">
+                                        <h5>
+                                            {{ user.username }}
+                                        </h5>
+                                        <h6>
+                                            {% if user.is_superuser == True %}
+                                                Quản trị viên
+                                            {% elif user.is_staff == True %}
+                                                Nhân viên IT
+                                            {% else %}
+                                                {% for group in request.user.groups.all %}
+                                                {% if group.name == 'Manager' %}
+                                                    Quản lý
+                                                {% elif group.name == 'Customer' %}
+                                                    Khách hàng
+                                                {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+                                        </h6>
+                                        <div class="row">
+                                            <p style="margin-left: 48%"><i class="fa fa-shopping-basket u-icon"></i>ĐÃ MUA: <b style="font-family: 'SegoeUI_Bold'; font-size: 15px;">{{ orders.count }}</b> đơn hàng</p>
+                                            <p style="margin-left: 10%"><i class="fa fa-heart u-icon"></i>ĐÃ THÍCH: <b style="font-family: 'SegoeUI_Bold'; font-size: 15px">0</b> món ăn</p>
+                                        </div>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 50px;">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Thông tin tài khoản</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Đơn hàng</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active edit-form" id="home" role="tabpanel" aria-labelledby="home-tab" style="padding-left: 5%">
+                                        <form method="POST" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <fieldset class="form-group">
+                                            {{ form|crispy }}
+                                            </fieldset>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-outline-info" style="color: #fff; background: #1488DB; border: none">Lưu thay đổi</button>
+                                            </div>
+                                        </form>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="padding-left: 5%">
+                                    <div class="card card-body">
+                                        <table class="table" style="font-size: 15px">
+                                            <tr>
+                                                <th>Mã đơn hàng</th>
+                                                <th>Thời gian đặt hàng</th>
+                                                <th>Tổng giá trị</th>
+                                                <th>Trạng thái</th>
+                                                <th></th>
+                                            </tr>
+                                            {% for i in orders %}
+                                                <tr>
+                                                    <td>{{ i.id }}</td>
+                                                    <td>{{ i.start_date }}</td>
+                                                    <td>{{ i.sum_price }}</td>
+                                                    <td>
+                                                        {% if i.status == 'ACCEPT' %}
+                                                            Đã thanh toán
+                                                        {% elif i.status == 'CONFIRMED' %}
+                                                            Đã xác nhận
+                                                        {% elif i.status == 'WAITING' %}
+                                                            Đang chuẩn bị
+                                                        {% elif i.status == 'READY' %}
+                                                            Sẵn sàng
+                                                        {% elif i.status == 'COMPLETED' %}
+                                                            Hoàn thành
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        <a href="#"><button class="btn btn-primary" style="width: 160px; background: #FDCF76; color: #000; border: 1px solid #FE7A19; font-family: 'SegoeUI_Semibold'">Xem chi tiết</button></a>
+                                                        {% if i.status != 'COMPLETED' %}
+                                                        <div style="padding-top: 10px;">
+                                                            <a href="#"><button class="btn btn-primary" style="width: 160px; background: #FE7A19; color: #fff; border: none; font-family: 'SegoeUI_Semibold'">Kiểm tra trạng thái</button></a>
+                                                        </div>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>                                           
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>           
+            </div>
+        </div>
+        <!--================ End User Profile =================-->
+
+        <!--================Footer =================-->
+        <section class="footer">
+        <div class="footer-above">
+		<div class="row">
+			<div class="footer-logo">
+				<a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""></a>
+			</div>
+			<div class="row footer-side">
+				<div class="catalogue-title">
+					<ul> 
+						<li>DANH MỤC</li>
+						<li>TRỢ GIÚP</li>
+						<li>THÔNG TIN</li>
+					</ul>
+				</div>
+				<div>
+					<ul> 
+						<li class="catalogue">
+							<ul>
+								<li><a href="{% url 'home-page' %}">Trang chủ</a></li>
+								<li><a href="{% url 'about' %}">Giới thiệu</a></li>
+								<li><a href="{% url 'main-menu' %}">Thực đơn</a></li>
+								<li><a href="{% url 'preference' %}">Ưu đãi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Hỗ trợ</a></li>
+								<li><a href="#">Liên hệ với chúng tôi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Chính sách bảo mật</a></li>
+								<li><a href="#">Điều khoản sử dụng</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="row">
+			<div class="col-xl-4 copyright">
+				Copyright © 2020 BK Food Court. All rights reserved.
+			</div>
+			<div class="col-xl-5">
+				<div class="up-button">
+					<a href="#"><img id="up-button-image" src="{% static 'webapp/images/Subtraction 3.png' %}"></a>
+				</div>
+			</div>
+			<div class="col-xl-3">
+				<ul class="list-inline f-social">
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/facebook (2).png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/google-plus.png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/twitter.png' %}"></a></li>
+				</ul>
+			</div>
+		</div>
+    </div>
+    </section>
+    <!--================Footer =================-->
+    <script src="{% static 'webapp/js/dropdown.js' %}"></script>
+    </body>
+</html>

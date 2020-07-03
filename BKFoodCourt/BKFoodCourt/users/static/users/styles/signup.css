@@ -1,0 +1,282 @@
+@charset "utf-8";
+@font-face
+{
+	font-family: 'SegoeUI_Regular';
+	src: url('../fonts/segoeui.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Semibold';
+	src: url('../fonts/seguisb.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Bold';
+	src: url('../fonts/segoeuib.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Italic';
+	src: url('../fonts/segoeuii.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_SemiItalic';
+	src: url('../fonts/seguisbi.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'Bebas_Bold';
+	src: url('../fonts/BebasNeueBold.ttf')  format('truetype');
+}
+.footer
+{
+    background: url(../images/background.png);
+    height: 311px;
+}
+.contact-imfo-box .container{
+	display: flex;
+    padding: 10px;
+	margin-left: 15px;
+	position: relative;
+}
+
+.contact-imfo-box{
+	background: #D9D9D9;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.contact-imfo-box i{
+	display: block;
+	float: left;
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	text-align: left;
+	color: #828282;
+	font-size: 10px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	border-radius: 50%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.contact-imfo-box p {
+    margin: 0px 0px 0px 20px;
+    color: #828282;
+	text-align: left;
+	line-height: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: "SegoeUI_Regular";
+	font-style: italic;
+}
+.lead {
+    font-size: 18px;
+    line-height: 30px;
+    color: #767676;
+    margin: 0px;
+	padding: 0;
+}
+.lead a:hover
+{
+	color: #fff;
+	text-decoration: none;
+}
+.contact-imfo-box .info
+{
+    position: absolute;
+	right: 0px;
+}
+.contact-imfo-box .info a:hover 
+{
+    text-decoration: none;
+}
+.contact-imfo-box .info p
+{
+    color: #1AC1DD;
+    padding-left: 45px;
+}
+
+.contact-imfo-box .info i
+{
+    color: #1AC1DD;
+    padding-left: 5px;
+    padding-top: 1px;
+    font-size: 15pt;
+}
+.line
+{
+	background: #1488DB;
+	position: relative;
+    padding: 2px;
+	margin: 0;
+}
+.signupform {
+    position: relative;
+    width: 500px; 
+    margin-left: 750px;
+    background-color:#ffffff; 
+    height: 670px; 
+    border-radius: 10px; 
+    padding: 5px; 
+    padding-left: 40px; 
+    padding-right: 40px;
+}
+.signinbtn {
+    width: 100%;
+    font-family: 'SegoeUI_Semibold';
+    font-size: 15px;
+    background-color: #FE7A19;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+}
+.signinbtn_tmp {
+    width: 420px;
+    position: relative;
+    font-family: 'SegoeUI_Semibold';
+    font-size: 15px;
+    background-color: #FE7A19;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin-top: -160px;
+    margin-left: 790px;
+}
+#login a:hover
+{
+    text-decoration: none;
+}
+.signupbtn {
+    width: 100%;
+    background-color: #FE7A19;
+    color: white;
+    font-family: 'SegoeUI_Semibold';
+    font-size: 15px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+.nen_cam_nhat {
+    height: 1020px;
+    width: 100%;
+    background: url('../images/nen_cam_nhat.png');
+}
+.nen_cam_dam {
+    padding-top: 40px;
+    margin-top: 50px;
+    height: 800px;
+    width: 100%;
+    background: url('../images/nen_cam_dam.png');
+}
+.dan_dong {
+    /*Class này tạo ra để dãn dòng; vì tui gà*/
+    padding: 15px;
+    margin: 0;
+}
+.flex-col-c {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	-ms-align-items: center;
+    align-items: center;
+}
+.flex-col-c a
+{
+    color: #000;
+}
+.flex-col-c a:hover
+{
+    color: #000;
+    text-decoration: none;
+}
+.footer-logo{
+	padding: 10px 80px;
+}
+
+.footer-above .text{
+	margin: 80px 20px;
+}
+
+.redirection-list{
+	margin: 0;
+}
+
+.redirection-list ul li{
+	display: inline;
+	margin: 60px;
+}
+
+.list-inline-item a img{
+	width: 30px;
+	left: 0%;
+	bottom: 0%;
+	margin-left: 20px;
+}
+
+.row div ul, .catalogue-title ul li{
+	list-style-type: none;
+	padding: 10px 50px;
+	font-family: "Bebas_Bold";
+	font-size: 20px;
+	color: #FE7A19;
+}
+
+.catalogue li{
+	display: inline;
+	padding: 20px;
+	font-family: "SegoeUI_Regular";
+	font-size: 15px;
+	color: #FFFFFF;
+}
+
+.catalogue
+{
+	margin-left: -150px;
+}
+
+.catalogue li a{
+	color: #FFFFFF;
+}
+.catalogue li a:hover{
+	color: #FDCF76;
+	text-decoration: none;
+}
+.footer-side{
+	margin-top: 40px;
+}
+
+
+.copyright{
+	color: #FE7A19;
+	position: relative;
+	left: 80px;
+	bottom: 0%;
+	padding-top: 30px;
+}
+
+#up-button-image{
+	display: block;
+	position: absolute;
+	left: 120px;
+	width: 25%;
+}

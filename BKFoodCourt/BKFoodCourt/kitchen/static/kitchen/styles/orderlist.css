@@ -1,0 +1,26 @@
+@charset "utf-8";
+@font-face
+{
+	font-family: 'SegoeUI_Regular';
+	src: url('../fonts/segoeui.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Semibold';
+	src: url('../fonts/seguisb.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Bold';
+	src: url('../fonts/segoeuib.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_SemiItalic';
+	src: url('../fonts/seguisbi.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'Bebas_Bold';
+	src: url('../fonts/BebasNeueBold.ttf')  format('truetype');
+}
