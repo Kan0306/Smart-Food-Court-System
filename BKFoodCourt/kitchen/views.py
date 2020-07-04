@@ -9,4 +9,5 @@ from webapp.decorators import allowed_users
 @login_required
 #@allowed_users(['Cook'])
 def order_list(request):
+    #orders = Order.get
     return render(request, 'kitchen/orderlist.html', {})

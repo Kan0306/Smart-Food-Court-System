@@ -168,7 +168,7 @@
                         {% if user.is_authenticated %}
                         {% for group in request.user.groups.all %}
                             {% if group.name == 'Customer' %}
-                                <button data-item={{ item.id }} data-action="add" class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                                <button data-item="{{ item.id }}" data-action="add" class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
                             {% endif %}
                             {% if group.name == 'Manager' %}
                                 {% if stall == request.user.manager.own_stall %}

@@ -78,10 +78,10 @@
                                     {% endif %}
                                 </h6>
                                 <div class="row">
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 100px;">	                                            <p style="margin-left: 48%"><i class="fa fa-shopping-basket u-icon"></i>ĐÃ MUA: <b style="font-family: 'SegoeUI_Bold'; font-size: 15px;">{{ orders.count }}</b> đơn hàng</p>
-                                                <p style="margin-left: 10%"><i class="fa fa-heart u-icon"></i>ĐÃ THÍCH: <b style="font-family: 'SegoeUI_Bold'; font-size: 15px">0</b> món ăn</p>
-                                            </div>
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 50px;">
+                                    <p style="margin-left: 48%; font-family: 'SegoeUI_Regular'; font-size: 15px; color: #000"><i class="fa fa-shopping-basket u-icon"></i>ĐÃ MUA: <b>{{ orders.count }}</b> đơn hàng</p>
+                                    <p style="margin-left: 10%; font-family: 'SegoeUI_Regular'; font-size: 15px; color: #000"><i class="fa fa-heart u-icon"></i>ĐÃ THÍCH: <b>0</b> món ăn</p>
+                                </div>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 50px;">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Thông tin tài khoản</a>
                                     </li>
@@ -94,7 +94,7 @@
                         
                     </div>
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-11">
                             <div class="tab-content profile-tab" id="myTabContent">
                                 <div class="tab-pane fade show active edit-form" id="home" role="tabpanel" aria-labelledby="home-tab" style="padding-left: 5%">
                                         <form method="POST" enctype="multipart/form-data">
