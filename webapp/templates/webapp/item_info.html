@@ -1,0 +1,263 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+	<title>Thông tin món ăn</title>  
+	<link rel = "icon" href = "{% static 'webapp/images/logo-icon.ico' %}"  type = "image/x-icon"> 
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+	<meta name="author" content="">
+       
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'webapp/styles/bootstrap.min.css' %}">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Purecss -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'webapp/styles/item_info.css' %}">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="{% static 'webapp/js/csrftoken.js' %}"></script>
+</head>
+    
+<body>
+    <!--=============== Start Contact info================ -->
+    <div class="line"></div>
+	 <div class="contact-imfo-box">
+		<div class="container">
+			<p class="lead">
+				<i class="fa fa-map-marker"></i>Đại học Bách Khoa - Cơ sở Dĩ An
+			</p>
+			<p class="lead">
+				<i class="fa fa-phone"></i>(028)38-647-XXX
+			</p>
+			<p class="lead">
+				<i class="fa fa-envelope"></i>foodcourt@hcmut.edu.vn
+			</p>
+			{% if user.is_authenticated %}
+			<div class="row account">
+				<a id="acc" href="#">
+					<p class="lead" onclick="showAccOptions()">{{ user.username }}</p>
+					<div id ="op-active" class="acc-options">
+						<ul>
+							{% if user.is_superuser == True or user.is_staff == True %}
+							<li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
+							{% endif %}
+							{% if user.is_authenticated %}
+							{% for group in request.user.groups.all %}
+								{% if group.name == 'Customer' %}
+									<li><a href="{% url 'profile' %}">Thông tin tài khoản</a></li>
+								{% endif %}
+								{% if group.name == 'Manager' %}
+								<li><a href="{{ request.user.manager.own_stall.get_absolute_url }}">Chỉnh sửa Menu</a></li>
+								{% endif %}
+							{% endfor %}
+							{% endif %}
+							<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
+						</ul>
+					</div>
+				</a>
+				<i class="fa fa-user"></i>
+			</div>
+			{% else %}
+            <div class="row account">
+				<a href="{% url 'login-page' %}">
+					<p>ĐĂNG KÝ/ĐĂNG NHẬP</p>
+				</a>
+			</div>
+			{% endif %}
+        </div>
+    </div>
+    <!--=============== End Contact info ===============-->
+
+	<!--=============== Start Header Menu Area ===============-->
+	<div class="head_background"></div>
+	<header>
+		<div id="menu_bar"></div>
+			<ul>
+				<li><a href="{% url 'home-page' %}">Trang chủ</a></li>
+				<li><a href="{% url 'about' %}">Giới thiệu</a></li>
+				<li><a href="{% url 'main-menu' %}" class="active">Thực đơn</a></li>
+				<li><a href="{% url 'preference' %}">Ưu đãi</a></li>
+			</ul>
+			<div class="search">
+				<form>
+					<input type="text" placeholder="  Tìm kiếm">
+					<button><img src="{% static 'webapp/images/search.png' %}"></button> 
+				</form>
+			</div>
+			<div class="logo_area">
+				<a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""></a>
+            </div>
+            
+    </header>
+    <!--=============== End Header Menu Area ===============-->
+
+    <!--=============== Start Track List Area ===============-->
+    <div class="track_lists">
+        <ul>
+        <li><a href="{% url 'home-page' %}">Trang chủ > </a></li>
+        <li><a href="{% url 'main-menu' %}" >Thực đơn > </a></li>
+        <li><a href="{{ stall.get_absolute_url }}"> {{stall.stallname}} > </a></li>
+        <li><a href="#">{{ item.name }}</a></li>
+        </ul>
+    </div>
+    {% if user.is_authenticated %}
+    	{% for group in request.user.groups.all %}
+    	    {% if group.name == 'Customer' %}
+    	        <div class="cart_icon">
+    	            <a href="{% url 'shopping-cart' %}"><img class='cart_pic' src="{% static 'webapp/images/shopping-cart.png' %}" style="position: absolute; width: 35px; left: 4px; top: 5px"/></a>
+    	            <span class="badge">
+						{% if order == 'none' %}
+							0
+						{% else %}
+							{{ order.sum_item }} 
+						{% endif %}
+					</span>
+    	        </div>
+    	    {% endif %}
+    	{% endfor %}
+    {% endif %}
+        
+    <!--=============== End Track List Area ===============-->
+    
+    <!--=============== Start Item Area ===================-->
+    <div class="item-area">
+        <div class="{% static 'webapp/images">
+            <img src="{{ item.image.url }}"  style="width: 600px; height: 402px; padding-right: 15px">
+            <div class="rate">
+                Đánh giá: 
+                <div class="number">4.9</div>
+                <img class="like" src="{% static 'webapp/images/heart (1).png' %}" width="20" height="20">
+                Đã thích(999)
+            </div>
+            <div class="star">
+                <img src="{% static 'webapp/images/star (1).png' %}" width="25" height="25">
+                <img src="{% static 'webapp/images/star (1).png' %}" width="25" height="25">
+                <img src="{% static 'webapp/images/star (1).png' %}" width="25" height="25">
+                <img src="{% static 'webapp/images/star (1).png' %}" width="25" height="25">
+                <img src="{% static 'webapp/images/star (1).png' %}" width="25" height="25">
+            </div>   
+            <div class="rate">
+                Chia sẻ: 
+                <a href="#" ><img class="sns" src="{% static 'webapp/images/facebook.png' %}" width="25" height="25"></a>
+                <a href="#" ><img class="sns" src="{% static 'webapp/images/messenger.png' %}" width="25" height="25"></a>
+                <a href="#" ><img class="sns" src="{% static 'webapp/images/twitter.png' %}" width="25" height="25"></a>
+            </div>     
+        </div>
+        
+        <div class="item-detail">
+            <div class="item-title">{{ item.name }}</div>
+            <div class="item-des">
+               {{ item.description }}
+            </div>
+            <div class="item-title1">
+                Giá:
+                <div class="item-price">
+                    {{ item.price }}
+                </div>
+			</div>
+			<div>
+			{% if user.is_authenticated %}
+			{% for group in request.user.groups.all %}
+				{% if group.name == 'Customer' %}
+				<button data-item={{ item.id }} data-action="add" class="order-button" id="add_cart">Thêm vào giỏ hàng</button>
+            <div class="order">
+                <a href="#">Đặt hàng ngay </a>
+			</div>
+			{% endif %}
+    	{% endfor %}
+	{% endif %}
+</div>
+        </div>
+    </div>
+    <!--=============== End Item Area   ===================-->
+
+    <!--================ Start Comment ===================-->
+    <div class="comment-area">
+        <div class="comment-tag">ĐÁNH GIÁ MÓN ĂN   </div>
+        <p style="text-align: center">Chưa có đánh giá nào.</p>
+    </div>
+    <div class="line"></div>
+    <!--================ End Comment ===================-->
+
+    <!--================ Start Other Items =============-->
+    
+
+    <!--================= End Other Items ==============-->
+
+    <!--================Footer =================-->
+	<div class="footer-above">
+		<div class="row">
+			<div class="footer-logo">
+				<a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""></a>
+			</div>
+			<div class="row footer-side">
+				<div class="catalogue-title">
+					<ul> 
+						<li>DANH MỤC</li>
+						<li>TRỢ GIÚP</li>
+						<li>THÔNG TIN</li>
+					</ul>
+				</div>
+				<div>
+					<ul> 
+						<li class="catalogue">
+							<ul>
+								<li><a href="{% url 'home-page' %}">Trang chủ</a></li>
+								<li><a href="{% url 'about' %}">Giới thiệu</a></li>
+								<li><a href="{% url 'main-menu' %}">Thực đơn</a></li>
+								<li><a href="{% url 'preference' %}">Ưu đãi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Hỗ trợ</a></li>
+								<li><a href="#">Liên hệ với chúng tôi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Chính sách bảo mật</a></li>
+								<li><a href="#">Điều khoản sử dụng</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="row">
+				<div class="col-xl-4 copyright">
+					Copyright © 2020 BK Food Court. All rights reserved.
+				</div>
+				<div class="col-xl-5">
+					<div class="up-button">
+						<a href="#"><img id="up-button-image" src="{% static 'webapp/images/Subtraction 3.png' %}"></a>
+					</div>
+				</div>
+				<div class="col-xl-3">
+					<ul class="list-inline f-social">
+						<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/facebook (2).png' %}"></a></li>
+						<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/google-plus.png' %}"></a></li>
+						<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/twitter.png' %}"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--================Footer =================-->
+	<script src="{% static 'webapp/js/order.js' %}"></script>
+	<script src="{% static 'webapp/js/dropdown.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+@charset "utf-8";
+@font-face
+{
+	font-family: 'SegoeUI_Regular';
+	src: url('../fonts/segoeui.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Semibold';
+	src: url('../fonts/seguisb.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Bold';
+	src: url('../fonts/segoeuib.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_SemiItalic';
+	src: url('../fonts/seguisbi.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'Bebas_Bold';
+	src: url('../fonts/BebasNeueBold.ttf')  format('truetype');
+}
+
+body
+{
+	margin: 0;
+	padding: 0;
+}
+.list-order
+{
+	display: flex;
+	padding: 0px;
+	background: #FE7A19;
+	height: 60px;
+	color: #fff;
+	line-height: 60px;
+}
+
+.list-order img
+{
+	width: 60px;
+	height: auto;
+	margin-left: 30px;
+}
+.list-order h1
+{
+	font-family: 'Bebas_Bold';
+	font-size: 30px;
+	margin-top: 5%;
+	padding-left: 10px;
+}
+.list-order h6
+{
+	font-family: 'SegoeUI_Semibold';
+	font-size: 15px;
+	margin-top: 5%;
+	padding-left: 20px;
+}
+.order-info
+{
+	padding-left: 40px;
+}
+.order-info h1
+{
+	vertical-align: bottom;
+	font-family: 'SegoeUI_Semibold';
+	color: #FE7A19;
+	font-size: 25px;
+}
+.order-info h2
+{
+	padding-top: 5px;
+	padding-left: 10px;
+	font-family: 'SegoeUI_Semibold';
+	color: #000;
+	font-size: 20px;
+}
+.order-info h3
+{
+	padding-top: 10px;
+	padding-left: 10px;
+	font-family: 'SegoeUI_Semibold';
+	color: #828282;
+	font-size: 15px;
+}
+.table a
+{
+	text-decoration-color: #1488DB;
+}
+.table select
+{
+	height: 30px;
+	border: none;
+	border-radius: 3px;
+	background: #D9D9D9;
+}
+.table option
+{
+	background: #fff;
+}
+.btn-ready
+{
+	background: #1488DB;
+	color: #fff;
+}
+.btn-ready:hover
+{
+	background: #87CEEB;
+}
+.btn-out:hover
+{
+	background: #828282;
+	color: #fff;
+}
+.total
+{
+	text-align: right;
+	padding-right: 25px;
+	padding-top: 50px;
+}
+.total h1
+{
+	padding-right: 5px;
+	font-size: 22px;
+	text-decoration: underline;
+	text-decoration-color:  #FDCF76;
+}
+.total table, .total .table td, .total .table tr
+{
+	border: none;
+}
+.total_price
+{
+	font-size: 18px;
+	color: #FE7A19;
+}
+.pagination {
+	display: inline-block;
+}
+  
+.pagination a {	
+	color: black;	
+	float: left;	
+	text-decoration: none;
+}
+
+.pagination a.active {	
+	background-color:  #FE7A19;
+	color: white;	
+	border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {	
+	background-color: #FDCF76;		
+	border-radius: 5px;
+	text-decoration: none;
+	color: #000;
+}

@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <!-- Site Metas -->
+        <title>Đơn hàng #118</title>
+        <link rel = "icon" href = "{% static 'webapp/images/logo-icon.ico' %}"  type = "image/x-icon">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'webapp/styles/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'webapp/styles/font-awesome.min.css' %}">  
+        <link rel="stylesheet" href="{% static 'kitchen/styles/orderlist.css' %}">
+        
+        <!-- Purecss -->
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    </head>
+    
+    <body>
+        <div class="list-order">
+            <div class="row">
+                <img src="{% static 'webapp/images/logo.png' %}"/>
+                <h1>DANH SÁCH ĐƠN HÀNG</h1>
+            </div>
+        </div>
+        <div class="order-info row" style="clear: both">
+            <h1>Đơn hàng #118</h1>
+            <h2>Tổng cộng: 28,000đ</h2>
+            <h2> / test</h2>
+            <h3> / 01/07/2020 09:20 </h3>
+        </div>
+        <hr/>
+        <div class="card card-body">
+            <table class="table">
+                <colgroup>
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 15%;">
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 10%;">
+                </colgroup>
+                <tr>
+                    <th>STT</th>
+                    <th>Món ăn</th>
+                    <th>Giá tiền</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><a href="#">Gà Sốt Phô Mai</a></td>
+                    <td>28,000đ</td>
+                    <td>1</td>
+                    <td class="right">28,000đ</td>
+                    <td>
+                        <input type="button" class="btn btn-ready" value="Sẵn sàng">
+                    </td>
+                    <td>
+                        <input type="button" class="btn btn-out" value="Hết hàng">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="total">
+            <h1><b>Tổng giá trị đơn hàng</b></h1>
+            <div class="row">
+                <div class="col-lg-4 col-sm-5 ml-auto">
+                    <table class="table table-clear">
+                            <tr>
+                                <td class="right">
+                                    <strong>Tạm tính:</strong>
+                                </td>
+                                <td class="right">28,000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="right">
+                                    <strong>Khuyến mãi:</strong>
+                                </td>
+                                <td class="right">0</td>
+                            </tr>
+                            <tr>
+                                <td class="right total_price">
+                                    <strong>Tổng cộng:</strong>
+                                </td>
+                                <td class="right total_price">
+                                    <strong>28,000đ</strong>
+                                </td>
+                            </tr>
+                    </table>
+                </div>
+        </div>
+        <!--<script src="{% static 'kitchen/js/select.js' %}"></script>-->
+        <!--<script>
+            var select_all = document.getElementById("all"); 
+            var checkboxes = document.getElementsByName("check"); 
+
+            select_all.addEventListener("change", function(e){
+                for (i = 0; i < checkboxes.length; i++) { 
+                    checkboxes[i].checked = select_all.checked;
+                }
+            });
+
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].addEventListener('change', function(e){ 
+                    if(this.checked == false){
+                        select_all.checked = false;
+                    }
+                    if(document.querySelectorAll('.checkbox:checked').length == checkboxes.length){
+                        select_all.checked = true;
+                    }
+                });
+            }
+        </script>-->
+    </body>
+</html>

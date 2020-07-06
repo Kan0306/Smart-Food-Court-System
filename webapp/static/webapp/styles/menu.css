@@ -1,0 +1,516 @@
+@charset "utf-8";
+/** ADD YOUR AWESOME CODES HERE **/
+@import url(animate.css);
+@import url(font-awesome.min.css);
+@import url(superslides.css);
+@import url(baguetteBox.min.css);
+
+@font-face
+{
+	font-family: 'SegoeUI_Regular';
+	src: url('../fonts/segoeui.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Semibold';
+	src: url('../fonts/seguisb.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Bold';
+	src: url('../fonts/segoeuib.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_SemiItalic';
+	src: url('../fonts/seguisbi.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'Bebas_Bold';
+	src: url('../fonts/BebasNeueBold.ttf')  format('truetype');
+}
+
+.logo_area
+{
+	position: absolute;
+	width: 219px;
+	height: 219px;
+	left: 20px;
+	top: -70px;
+}
+
+header
+{
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	top: 87px;
+	background: #FE7A19;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+header ul
+{
+	font-family: 'Bebas_Bold';
+	font-size: 20pt;
+	list-style-type: none;
+	text-align: center;
+}
+header ul li
+{
+	color: #fff;
+	display: inline-table;
+	width: 150px;
+	height: 90px;
+	line-height: 90px;
+}
+header ul li a
+{
+	color: #fff;
+	text-decoration: none;
+	display: block;
+}
+header .active, header ul li a:hover
+{
+	background: #ff4f00;
+	color: #000;
+	text-decoration: none;
+}
+header .search
+{
+	position: relative;
+	float: right;
+	top: -90px;
+}
+header input[type=text]
+{
+	border: none;
+	font-size: 13pt;
+	position: absolute;
+	right: 70px;
+	top: 15px;
+	width: 150px;
+	height: 33px;
+}
+header .search button
+{
+	float: right;
+	border: none;
+	position: absolute;
+	top: 15px;
+	right: 0;
+	background: #fff;
+	margin-right: 30px;
+	cursor: pointer;
+	width: 40px;
+	height: 33px;
+}
+
+body {
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.80857;
+    background: url('../images/background.png');
+    margin: 0;
+	padding: 0;
+	font-family: 'SegoeUI_Regular';
+}
+
+.contact-imfo-box .container{
+	display: flex;
+    padding: 10px;
+	margin-left: 15px;
+	position: relative;
+}
+
+.account {
+	position: absolute;
+	right: 0px;
+}
+
+.contact-imfo-box{
+	background: #D9D9D9;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.contact-imfo-box i{
+	display: block;
+	float: left;
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	text-align: left;
+	color: #828282;
+	font-size: 10px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	border-radius: 50%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.contact-imfo-box p {
+    margin: 0px 0px 0px 20px;
+    color: #828282;
+	text-align: left;
+	line-height: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: "SegoeUI_Regular";
+	font-style: italic;
+}
+.lead {
+    font-size: 18px;
+    line-height: 30px;
+    color: #767676;
+    margin: 0px;
+	padding: 0;
+}
+.lead a:hover
+{
+	color: #fff;
+	text-decoration: none;
+}
+.account a:hover
+{
+	text-decoration: none;
+}
+
+.acc-options
+{
+	display: none;
+	top: 7px;
+}
+.acc-options ul
+{
+	list-style-type: none;
+	text-align: right;	
+}
+.acc-options ul li
+{
+	font-family: 'SegoeUI_Semibold';
+	font-size: 13px;
+}
+.acc-options ul li a
+{
+	color: #000;
+}
+.acc-options ul li a:hover
+{
+	color: #1488DB;
+	text-decoration: none;
+}
+.stall-list{
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 30px;
+	top: 87px;
+}
+
+.stall-list i{
+	display: block;
+	float: left;
+	width: 50px;
+	height: 50px;
+	line-height: 30px;
+	text-align: left;
+	color: #FE7A19;
+	font-size: 20px;
+}
+
+.stall-list p, .stall-list a {
+    margin-left: 10px;
+    color: #FDCF76;
+    text-align: left;
+    font-weight: 600;
+	font-size: 20px;
+	text-decoration: none;
+    font-family: "SegoeUI_Regular";
+}
+
+.stall-list a:hover{
+	color: black;
+	text-decoration: none;
+}
+
+.main-menu{
+	position: relative;
+	text-align: center;
+}
+
+.right-column{
+    float:right;
+}
+
+.fa.fa-circle.right-column{
+	float: right;
+	margin-left: 30px;
+}
+
+.order-icon{
+	position: absolute;
+	top: 90px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.homepage-menu{
+	position: relative;
+	background: #FCE8DA;
+	margin-top: 50px;
+}
+
+.homepage-menu .path {
+	padding-left: 50px;
+	padding-top: 40px;
+	color: #FE7A19;
+	font-size: 18px;
+}
+.homepage-menu .path a:hover
+{
+	text-decoration: none;
+	color: #000;
+}
+.homepage-menu .path .cart_icon
+{
+	border: 1pt dashed;
+	border-color: #FE7A19;
+	border-radius: 25px;
+	background: #FDCF76;
+	margin-left: 1150px;
+	margin-top: -30px;
+	width: 50px;
+	height: 50px;
+	position: relative;
+}
+
+.homepage-menu a{
+	color: #FE7A19;
+}
+
+.cart_icon .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background:red;
+  color: #FFFFFF;
+}
+
+.stall-menu{
+	background: #FFFFFF;
+	margin-top: 80px;
+	position: relative;
+}
+
+.stall-menu .stall-name{
+	display: block;
+	position: absolute;
+	top: -1px;
+	padding-left: 40px;
+	padding-right: 150px;
+	/* margin-right: 200px; */
+	padding-top: auto;
+	padding-bottom: auto;
+	background: #FE7A19;
+	font-family: "Bebas_Bold";
+	font-size: 30px;
+	color: #FFFFFF;
+	text-transform: capitalize;
+}
+.stall-name:hover
+{
+	color: #FDCF76;
+	text-decoration: none;
+}
+
+.item{
+	display: flex;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	margin-left: 160px;
+	/* margin-right: auto; */
+	padding-left: 40px;
+	position: relative;
+}
+
+.food-image {
+	width: 500px;
+}
+.item .infomation
+{
+	position: relative;
+	background: #FDCF76;
+	width: 500px;
+}
+.description{
+	height: 100px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: 'SegoeUI_Semibold';
+}
+
+.food-name{
+	font-size: 20px;
+	font-weight: 800;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: 'SegoeUI_Bold';
+	
+}
+.food-name:hover
+{
+	text-decoration: none;
+	color: #000;
+}
+
+.food-price {
+	margin-top: -10px;
+	padding-bottom: 10px;
+	padding-left: 35px;
+	color: #FE7A19;
+	font-size: 30px;
+	font-family: 'SegoeUI_Bold';
+}
+.infomation .row, .up-button{
+	position: relative;
+}
+
+.order-button, .alert-button {
+	position: absolute;
+	right: 15px;
+	top: 5px;
+	font-family: "SegoeUI_Semibold";
+	background: #FE7A19;
+	color: #000;
+	border: none;
+	margin-left: 0;
+}
+
+
+.next-page {
+	text-align: center;
+	padding: 15px 30px;
+}
+.pagination {
+	display: inline-block;
+}
+  
+.pagination a {	
+	color: black;	
+	float: left;	
+	padding: 8px 16px;	
+	text-decoration: none;
+}
+
+.pagination a.active {	
+	background-color:  #FE7A19;
+	color: white;	
+	border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {	
+	background-color: #FDCF76;	
+	border-radius: 5px;
+	text-decoration: none;
+	color: #000;
+}
+
+.footer-logo{
+	padding: 10px 80px;
+}
+
+.footer-above .text{
+	margin: 80px 20px;
+}
+
+.footer-side{
+	margin-top: 40px;
+}
+
+.redirection-list{
+	margin: 0;
+}
+
+.redirection-list ul li{
+	display: inline;
+	margin: 60px;
+}
+
+.list-inline-item a img{
+	width: 30px;
+	left: 0%;
+	bottom: 0%;
+	margin-left: 20px;
+}
+
+.row div ul, .catalogue-title ul li{
+	list-style-type: none;
+	padding: 10px 50px;
+	font-family: "Bebas_Bold";
+	font-size: 20px;
+	color: #FE7A19;
+}
+.catalogue
+{
+	margin-left: -150px;
+}
+.catalogue li{
+	display: inline;
+	padding: 20px;
+	font-family: "SegoeUI_Regular";
+	font-size: 15px;
+	color: #FFFFFF;
+}
+
+.catalogue li a{
+	color: #FFFFFF;
+}
+.catalogue li a:hover{
+	color: #FDCF76;
+	text-decoration: none;
+}
+#menu a{
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	font-family: 'Bebas_Bold';
+	font-size: 35px;
+	list-style-type: none;
+	text-align: center;
+}
+
+.copyright{
+	color: #FE7A19;
+	position: relative;
+	left: 80px;
+	bottom: 0%;
+	padding-top: 30px;
+}
+
+.line{
+    background: #1488DB;
+    padding: 2px;
+    margin: 0;
+}
+
+#orange-half-circle{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 40%;
+}
+
+#up-button-image{
+	display: block;
+	position: absolute;
+	left: 100px;
+	width: 25%;
+}
+

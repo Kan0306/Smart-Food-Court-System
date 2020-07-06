@@ -1,0 +1,317 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+	<title>Hóa đơn thanh toán</title> 
+	<link rel = "icon" href = "{% static 'webapp/images/logo-icon.ico' %}"  type = "image/x-icon"> 
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+	<meta name="author" content="">
+	
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'webapp/styles/bootstrap.min.css' %}">     
+	<link rel="stylesheet" href="{% static 'webapp/styles/font-awesome.min.css' %}"> 
+	<link rel="stylesheet" href="{% static 'webapp/styles/bill.css' %}">  
+    <!-- Purecss -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+    
+<body>
+    <!-- Start Contact info -->
+    <div class="line"></div>
+	<div class="contact-imfo-box">
+		<div class="container">
+			<p class="lead">
+				<i class="fa fa-map-marker"></i>Đại học Bách Khoa - Cơ sở Dĩ An
+			</p>
+			<p class="lead">
+				<i class="fa fa-phone"></i>(028)38-647-XXX
+			</p>
+			<p class="lead">
+				<i class="fa fa-envelope"></i>foodcourt@hcmut.edu.vn
+			</p>
+            {% if user.is_authenticated %}
+			<div class="row account">
+				<a id="acc" href="#">
+					<p class="lead" onclick="showAccOptions()">{{ user.username }}</p>
+					<div id ="op-active" class="acc-options">
+						<ul>
+							<li><a href="{% url 'profile' %}">Thông tin tài khoản</a></li>
+							{% if user.is_superuser == True or user.is_staff == True %}
+								<li><a href="{% url 'admin:index' %}">Quản trị viên</a></li>
+							{% endif %}
+							<li><a href="{% url 'logout-page' %}?next={% url 'home-page' %}">Đăng xuất</a></li>
+						</ul>
+					</div>
+				</a>
+				<i class="fa fa-user"></i>
+			</div>
+			{% else %}
+            <div class="row account">
+				<a href="{% url 'login-page' %}">
+					<p>ĐĂNG KÝ/ĐĂNG NHẬP</p>
+				</a>
+			</div>
+			{% endif %}
+        </div>
+    </div>
+	<!-- End Contact info -->
+	
+	<!--================Header Menu=================-->
+	
+	<header>
+		<div id="menu_bar"></div>
+			<ul>
+				<li><a href="{% url 'home-page' %}">Trang chủ</a></li>
+				<li><a href="{% url 'about' %}">Giới thiệu</a></li>
+				<li><a href="{% url 'main-menu' %}">Thực đơn</a></li>
+				<li><a href="{% url 'preference' %}">Ưu đãi</a></li>					
+			</ul>
+			<div class="search">
+				<form method="GET" action="{% url 'search' %}">
+					<input type="text" name="query" placeholder="  Tìm kiếm">
+					<button type='submit'><img src="{% static 'webapp/images/search.png' %}"></button> 
+				</form>
+			</div>
+			<div class="logo_area">
+				<a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""></a>
+			</div>
+	</header>
+	<!--================Header=================-->
+	<div class="hoadonthanhtoan">
+            <img id="half_circle" src="{% static 'webapp/images/image 22.png' %}"/>
+            <div class="bill_icon">
+                <img src="{% static 'webapp/images/bill.png' %}" width="100px"/>
+            </div>
+            <div class="bill_name">
+                <a href="#">HÓA ĐƠN THANH TOÁN</a>
+            </div>
+    </div>
+
+	<!--==End Header==-->
+
+	<!--==Don hang==-->
+	<main class="bill">
+	<div class="donhang">
+            <div class="success">
+				<p>ĐƠN HÀNG #{{ orderId }}</p>
+				{% if error == 0 %}
+				<p style="color: rgb(255, 123, 0);">-{{ order.sum_price }}VNĐ</p>
+				<img src="{% static 'webapp/images/Group 204.png' %}" style="width:10%;">
+				{% elif error == "38" %}
+				<p class="failed">Tài khoản của bạn không đủ tiền. Vui lòng nạp thêm.</p>
+				<p class="failed">
+					<i class="fa fa-times-circle"></i>&nbsp;Thất bại
+				</p>
+				{% elif error == "49" %}
+				<p class="failed">Bạn đã hủy giao dịch.</p>
+				<p class="failed">
+					<i class="fa fa-times-circle"></i>&nbsp;Thất bại
+				</p>
+				{% elif error == "36" %}
+				<p class="failed">Thanh toán không thành công</p>
+				<p class="failed">
+					<i class="fa fa-times-circle"></i>&nbsp;Thất bại
+				</p>
+				{% endif %}
+			</div>
+	</div>
+	<div class="line"></div>
+	<!--==End Don hang==-->
+	{% if error == "0" %}
+	<!--==Thong tin don hang==-->
+	<div class="thongtindonhangcommon">
+		<div class="successcover">
+			<p style="background: #FE7A19; ">THÔNG TIN ĐƠN HÀNG</p>
+		</div>
+		<div class="thongtindonhang">
+			<p><u style="text-decoration-color: #FE7A19;">Thông tin đơn hàng</u></p>
+			<ul id="trai">
+				<li><p>Mã đơn hàng: </p></li>
+				<li><p>Thời gian hoàn tất đơn hàng:</p></li>
+			</ul>
+			<ul id="phai">
+				<li><p>{{ orderId }}</p></li>
+				<li><p>{{ order.start_date }}</p></li>
+			</ul>
+		</div>
+	
+		<div class="thongtindonhang">
+			<p><u style="text-decoration-color: #FE7A19;">Thông tin thanh toán</u></p>
+			<ul id="trai">
+				<li><p>Khách hàng: </p></li>
+				<li><p>Số điện thoại:</p></li>
+				<li><p>Email: </p></li>
+				<li><p>Tài khoản:</p></li>
+				<li><p>Phương thức thanh toán:</p></li>
+			</ul>
+			<ul id="phai">
+				<li><p>{{ order.order_by.customer.name }}</p></li>
+				<li><p>{{ order.order_by.customer.phone }}</p></li>
+				<li><p>{{ order.order_by.email}}</p></li>
+				<li><p>{{ order.order_by.username }}</p></li>
+				<li><p>Thanh toán bằng tài khoản</p></li>
+			</ul>
+		</div>
+		<div class="line"></div>
+	</div>
+	<!--==End thong tin don hang==-->
+
+	<!--==Chi tiet don hang==-->
+	<div class="chitietdonhangcommon">
+		<div class="successcover">
+			<p style="background: #FE7A19; ">CHI TIẾT ĐƠN HÀNG</p>
+		</div>
+ 		<div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 padding">
+     		<div class="card">
+         		<div class="card-header p-4">
+            		 <div class="float-right">
+             		</div>
+         		</div>
+        	 <div class="card-body">
+             	<div class="row mb-4">
+            	</div>
+             <div class="table-responsive-sm">
+                 <table class="table table-striped">
+                     <thead>
+                         <tr>
+                             <th>STT</th>
+                             <th>Tên món ăn</th>
+							 <th class="center">Giá tiền</th>
+							 <th class="center">Số lượng</th>
+                             <th class="right">Thành tiền</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+						{% for item in items %}
+                         <tr>
+                             <td class="center">{{ forloop.counter }}</td>
+                             <td class="left strong">{{ item.item.name }}</td>
+							 <td class="left"></td>
+							  <td class="left">{{ item.quantity }}</td>
+                             <td class="right">{{ item.get_sum }}</td>
+                         </tr>
+                        {% endfor %}
+                     </tbody>
+                 </table>
+             </div>
+             <div class="row">
+                 <div class="col-lg-4 col-sm-5">
+                 </div>
+                 <div class="col-lg-4 col-sm-5 ml-auto">
+                     <table class="table table-clear">
+                         <tbody>
+                             <tr>
+                                 <td class="left">
+                                     <strong>Tạm tính</strong>
+                                 </td>
+                                 <td class="right">{{ order.sum_price }}VNĐ</td>
+                             </tr>
+                             <tr>
+                                 <td class="left">
+                                     <strong>Khuyến mãi</strong>
+                                 </td>
+                                 <td class="right">0</td>
+                             </tr>
+                             <tr>
+                                 <td class="left total_price">
+                                     <strong>Tổng cộng</strong> </td>
+                                 <td class="right total_price">
+                                     <strong>{{ order.sum_price }}VNĐ</strong>
+                                 </td>
+                             </tr>
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ 
+ </div>
+	 <div class="line"></div>
+ 	{% endif %}
+	<!--==End chi tiet don hang==-->
+	
+	<div class="checkstate">
+            <div class="cover">
+				<a href="{{ order.get_status_url }}"><button>Kiểm tra trạng thái đơn hàng</button></a>
+            </div>
+	</div>>
+	</main>	
+
+	<!--================Footer =================-->
+	<div class="footer-above">
+		<div class="row">
+			<div class="footer-logo">
+				<a href="{% url 'home-page' %}"><img src="{% static 'webapp/images/logo.png' %}" alt=""></a>
+			</div>
+			<div class="row footer-side">
+				<div class="catalogue-title">
+					<ul> 
+						<li>DANH MỤC</li>
+						<li>TRỢ GIÚP</li>
+						<li>THÔNG TIN</li>
+					</ul>
+				</div>
+				<div>
+					<ul> 
+						<li class="catalogue">
+							<ul>
+								<li><a href="{% url 'home-page' %}">Trang chủ</a></li>
+								<li><a href="{% url 'about' %}">Giới thiệu</a></li>
+								<li><a href="{% url 'main-menu' %}">Thực đơn</a></li>
+								<li><a href="{% url 'preference' %}">Ưu đãi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Hỗ trợ</a></li>
+								<li><a href="#">Liên hệ với chúng tôi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Chính sách bảo mật</a></li>
+								<li><a href="#">Điều khoản sử dụng</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="row">
+			<div class="col-xl-4 copyright">
+				Copyright © 2020 BK Food Court. All rights reserved.
+			</div>
+			<div class="col-xl-5">
+				<div class="up-button">
+					<a href="#"><img id="up-button-image" src="{% static 'webapp/images/Subtraction 3.png' %}"></a>
+				</div>
+			</div>
+			<div class="col-xl-3">
+				<ul class="list-inline f-social">
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/facebook (2).png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/google-plus.png' %}"></a></li>
+					<li class="list-inline-item"><a href="#"><img src="{% static 'webapp/images/twitter.png' %}"></a></li>
+				</ul>
+			</div>
+		</div>
+    </div>
+	<!--================Footer =================-->
+	<script src="{% static 'webapp/js/dropdown.js' %}"></script>
+	</body>
+</html>
