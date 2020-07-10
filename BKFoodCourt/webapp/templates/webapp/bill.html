@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,7 +108,7 @@
             <div class="success">
 				<p>ĐƠN HÀNG #{{ orderId }}</p>
 				{% if error == 0 %}
-				<p style="color: rgb(255, 123, 0);">-{{ order.sum_price }}VNĐ</p>
+				<p style="color: rgb(255, 123, 0);">-{{ order.sum_price|intcomma }}<small>đ</small></p>
 				<img src="{% static 'webapp/images/Group 204.png' %}" style="width:10%;">
 				{% elif error == "38" %}
 				<p class="failed">Tài khoản của bạn không đủ tiền. Vui lòng nạp thêm.</p>
@@ -143,7 +144,7 @@
 			</ul>
 			<ul id="phai">
 				<li><p>{{ orderId }}</p></li>
-				<li><p>{{ order.start_date }}</p></li>
+				<li><p>{{ order.start_date|date:'d/m/Y H:i' }}</p></li>
 			</ul>
 		</div>
 	
@@ -161,7 +162,7 @@
 				<li><p>{{ order.order_by.customer.phone }}</p></li>
 				<li><p>{{ order.order_by.email}}</p></li>
 				<li><p>{{ order.order_by.username }}</p></li>
-				<li><p>Thanh toán bằng tài khoản</p></li>
+				<li><p>Thanh toán online</p></li>
 			</ul>
 		</div>
 		<div class="line"></div>
@@ -198,9 +199,9 @@
                          <tr>
                              <td class="center">{{ forloop.counter }}</td>
                              <td class="left strong">{{ item.item.name }}</td>
-							 <td class="left"></td>
+							 <td class="left">{{ item.item.price|intcomma }}</td>
 							  <td class="left">{{ item.quantity }}</td>
-                             <td class="right">{{ item.get_sum }}</td>
+                             <td class="right">{{ item.get_sum|intcomma }}</td>
                          </tr>
                         {% endfor %}
                      </tbody>
@@ -216,7 +217,7 @@
                                  <td class="left">
                                      <strong>Tạm tính</strong>
                                  </td>
-                                 <td class="right">{{ order.sum_price }}VNĐ</td>
+                                 <td class="right">{{ order.sum_price|intcomma }}đ</td>
                              </tr>
                              <tr>
                                  <td class="left">
@@ -228,7 +229,7 @@
                                  <td class="left total_price">
                                      <strong>Tổng cộng</strong> </td>
                                  <td class="right total_price">
-                                     <strong>{{ order.sum_price }}VNĐ</strong>
+                                     <strong>{{ order.sum_price|intcomma }}đ</strong>
                                  </td>
                              </tr>
                          </tbody>

@@ -131,9 +131,9 @@
                          <tr>
                              <td class="center">{{ forloop.counter }}</td>
                              <td class="left strong">{{ item.item.name }}</td>
-							 <td class="left"></td>
+							 <td class="left">{{ item.item.price|intcomma }}</td>
 							  <td class="left">{{ item.quantity }}</td>
-                             <td class="right">{{ item.get_sum }}</td>
+                             <td class="right">{{ item.get_sum|intcomma }}</td>
                          </tr>
                         {% endfor %}
                      </tbody>
@@ -149,7 +149,7 @@
                                  <td class="left">
                                      <strong>Tạm tính</strong>
                                  </td>
-                                 <td class="right">{{ order.sum_price }}VNĐ</td>
+                                 <td class="right">{{ order.sum_price|intcomma }}đ</td>
                              </tr>
                              <tr>
                                  <td class="left">
@@ -161,7 +161,7 @@
                                  <td class="left total_price">
                                      <strong>Tổng cộng</strong> </td>
                                  <td class="right total_price">
-                                     <strong>{{ order.sum_price }}VNĐ</strong>
+                                     <strong>{{ order.sum_price|intcomma }}đ</strong>
                                  </td>
                              </tr>
                          </tbody>

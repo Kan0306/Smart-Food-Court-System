@@ -50,7 +50,7 @@ body
 {
 	font-family: 'Bebas_Bold';
 	font-size: 30px;
-	margin-top: 5%;
+	margin-top: auto;
 	padding-left: 10px;
 }
 .table a
@@ -67,6 +67,29 @@ body
 .table option
 {
 	background: #fff;
+}
+.table .btn_out
+{
+	background: #d9d9d9;
+	font-style: italic;
+}
+.table .btn_out:hover
+{
+	background: #828282;
+	color: #fff;
+}
+.table .btn_ready
+{
+	background: #1488DB;
+	color: #fff;
+}
+.table .btn_ready:hover
+{
+	background: #87CEEB;
+}
+.right
+{
+	text-align: right;
 }
 .pagination {
 	display: inline-block;

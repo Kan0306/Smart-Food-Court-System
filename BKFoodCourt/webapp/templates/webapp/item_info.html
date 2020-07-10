@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,8 +133,12 @@
     
     <!--=============== Start Item Area ===================-->
     <div class="item-area">
-        <div class="{% static 'webapp/images">
-            <img src="{{ item.image.url }}"  style="width: 600px; height: 402px; padding-right: 15px">
+        <div>
+			{% if item.available == True %}
+			<img src="{{ item.image.url }}"  style="width: 600px; height: 402px; padding-right: 15px">
+			{% else %}
+					<img src="{{ item.image.url }}"  style="width: 600px; height: 402px; padding-right: 15px; filter: brightness(50%)">
+			{% endif %}
             <div class="rate">
                 Đánh giá: 
                 <div class="number">4.9</div>
@@ -163,21 +168,25 @@
             <div class="item-title1">
                 Giá:
                 <div class="item-price">
-                    {{ item.price }}
+					{{ item.price|intcomma }}<small>đ</small>
                 </div>
 			</div>
 			<div>
 			{% if user.is_authenticated %}
 			{% for group in request.user.groups.all %}
 				{% if group.name == 'Customer' %}
-				<button data-item={{ item.id }} data-action="add" class="order-button" id="add_cart">Thêm vào giỏ hàng</button>
-            <div class="order">
-                <a href="#">Đặt hàng ngay </a>
-			</div>
+				{% if item.available == True %}
+				<button class="order-button" data-item={{ item.id }} data-action="add"  id="add_cart" style="margin-top: 15%;">Thêm vào giỏ hàng</button>
+				<div class="order">
+					<a href="#">Đặt hàng ngay </a>
+				</div>
+				{% else %}
+				<button style="margin-top: 10%; height: 9vh; width: 30vw; margin-left: 50px; font-size: 20px; font-family: 'SegoeUI_Semibold'; color: #000; background: #D9D9D9; cursor: not-allowed">Hết hàng</button>
+				{% endif %}
 			{% endif %}
     	{% endfor %}
 	{% endif %}
-</div>
+			</div>
         </div>
     </div>
     <!--=============== End Item Area   ===================-->

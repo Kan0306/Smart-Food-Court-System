@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'maintenance_mode',
 
     # User install app
@@ -44,7 +45,7 @@ INSTALLED_APPS = [
     'webapp.apps.WebappConfig',
     'kitchen.apps.KitchenConfig',
     'crispy_forms',
-    'django_tables2'
+    'django_tables2',
 ]
 
 MIDDLEWARE = [

@@ -1,4 +1,6 @@
 {% load static %}
+{% load humanize %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -159,17 +161,27 @@
             {% else %}
             {% for item in page_obj %}
             <div class="items">
-                <div class="food-image"><img src="{{ item.image.url }}" style="width: 250px;height: 132px; text-align: center;"></div>
+                {% if item.available == True %}
+                <div class="food-image"><img src="{{ item.image.url }}" style="width: 322px;height: 170px; text-align: center;"></div>
+                {% else %}
+                <div class="food-image"><img src="{{ item.image.url }}" style="width: 322px;height: 170px; text-align: center; filter: brightness(50%)">
+                    <p>Hết hàng</p>
+                </div>
+                {% endif %}
                 <div class="infomation">
                     <a href="{{ item.get_absolute_url }}" class="food-name">{{ item.name }}</a>
                     <div class="description">{{ item.description }}</div>
                     <div class="row">
-                        <div class="food-price">{{ item.price }} </div>
+                        <div class="food-price">{{ item.price|intcomma }}<small>đ</small></div>
                         {% if user.is_authenticated %}
                         {% for group in request.user.groups.all %}
                             {% if group.name == 'Customer' %}
+                                {% if item.available == True %}
                                 <button data-item="{{ item.id }}" data-action="add" class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
-                            {% endif %}
+                                {% else %}
+                                <button class="out-button">Hết hàng</button>
+                                {% endif %}
+                                {% endif %}
                             {% if group.name == 'Manager' %}
                                 {% if stall == request.user.manager.own_stall %}
                                 <a role ="button" href="{%url 'update-item' item.id%}" style="position: absolute;margin-left: 0px;right: 15px;top:5px;width: 100px;height: 35px;text-align: center;text-decoration: none;background: #FE7A19;padding-top: 5px; color:#000;font-family: SegoeUI_Semibold;" >
@@ -182,7 +194,11 @@
 							{% endif %} 
                         {% endfor %}
 						{% else %}
-						<button class="alert-button"><i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+						    {% if item.available == True %}
+                                <button class="alert-button"><i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+                            {% else %}
+                                <button class="out-button">Hết hàng</button>
+                            {% endif %}
 						{% endif %}
                     </div>
                 </div>

@@ -421,7 +421,14 @@ header .search button
 .food-image{
 	text-align: center;
 }
-
+.food-image p
+{
+	margin-top: -30%;
+	position: relative;
+	color: #D9D9D9;
+	font-family: 'SegoeUI_Semibold';
+	font-size: 15px;
+}
 .infomation {
 	width: 100%;
 }
@@ -468,6 +475,18 @@ header .search button
 	color: #000;
 	border: none;
 	margin-left: 0;
+}
+.out-button
+{
+	position: absolute;
+	right: 15px;
+	top: 5px;
+	font-family: "SegoeUI_Semibold";
+	background: #D9D9D9;
+	color: #000;
+	border: none;
+	margin-left: 0;
+	cursor: not-allowed;
 }
 .next-page {
 	text-align: center;

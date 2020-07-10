@@ -667,7 +667,7 @@ body {
 }
 
 .order-button#add_cart {
-	border: 3px  #FE7A19;	
+	border: 3px solid #FE7A19;	
 	font-size: 23px;
 	font-family: 'SegoeUI_Semibold';
 	border-style: solid;
@@ -678,7 +678,18 @@ body {
 	height: 9vh;
 	width: 30vw;
 }
-
+.out-button {
+	border: none;	
+	font-size: 23px;
+	font-family: 'SegoeUI_Semibold';
+	border-style: solid;
+	background-color: #fff;
+	color: #000;
+	margin-top: 0px;
+	margin-left: 50px;
+	height: 9vh;
+	width: 30vw;
+}
 
 .item-quantity {
 	display: flex;

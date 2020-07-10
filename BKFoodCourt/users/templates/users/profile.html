@@ -146,7 +146,7 @@
                                             {% for i in orders %}
                                                 <tr>
                                                     <td>{{ i.id }}</td>
-                                                    <td>{{ i.start_date }}</td>
+                                                    <td>{{ i.start_date|date:'d/m/Y H:i' }}</td>
                                                     <td>{{ i.sum_price }}</td>
                                                     <td>
                                                         {% if i.status == 'ACCEPT' %}

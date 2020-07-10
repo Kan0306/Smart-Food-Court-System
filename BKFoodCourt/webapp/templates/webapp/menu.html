@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,20 +154,34 @@
 						{% else %}
 							<div class="item" style="padding-left: 200px;">
 						{% endif %}
-								<div class="food-image"><img src="{{ item.image.url }}" class="food-image"></div>
-								<div class="infomation">
+							{% if item.available == True %}
+								<div class="food-image"><img src="{{ item.image.url }}" style="width: 500px;height: 264px; text-align: center;"></div>
+							{% else %}
+								<div class="food-image"><img src="{{ item.image.url }}" style="width: 500px; height: 264px; text-align: center; filter: brightness(50%)">
+									<p>Hết hàng</p>
+								</div>
+							{% endif %}
+							<div class="infomation">
 									<a href="{{ item.get_absolute_url }}" class="food-name">{{ item.name }}</a>
 									<div class="description">{{ item.description }}</div>
 									<div class="row">
-										<div class="food-price">{{ item.price }}</div>
+										<div class="food-price">{{ item.price|intcomma }}<small>đ</small></div>
 										{% if user.is_authenticated %}
 										{% for group in request.user.groups.all %}
 											{% if group.name == 'Customer' %}
-												<button data-item={{ item.id }} data-action="add" class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+												{% if item.available == True %}
+													<button data-item="{{ item.id }}" data-action="add" class="order-button"> <i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+												{% else %}
+													<button class="out-button">Hết hàng</button>
+												{% endif %}
 											{% endif %}
 										{% endfor %}
 										{% else %}
-										<button class="alert-button"><i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+											{% if item.available == True %}
+												<button class="alert-button"><i class="fa fa-shopping-cart"></i> Đặt hàng</button>
+											{% else %}
+												<button class="out-button">Hết hàng</button>
+											{% endif %}
 										{% endif %}
 									</div>
 								</div>

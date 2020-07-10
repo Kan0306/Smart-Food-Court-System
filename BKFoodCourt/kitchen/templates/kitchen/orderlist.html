@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -9,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     
         <!-- Site Metas -->
-        <title>Danh sách đơn hàng</title>
+        <title>Danh sách đặt hàng</title>
         <link rel = "icon" href = "{% static 'webapp/images/logo-icon.ico' %}"  type = "image/x-icon">
         <meta name="keywords" content="">
         <meta name="description" content="">
@@ -25,14 +26,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+        <script src="{% static 'webapp/js/csrftoken.js' %}"></script>
     </head>
     
     <body>
         <div class="list-order">
             <div class="row">
                 <img src="{% static 'webapp/images/logo.png' %}"/>
-                <h1>DANH SÁCH ĐƠN HÀNG</h1>
+                <h1>DANH SÁCH ĐẶT HÀNG - {{ cook.own_stall }}</h1>
             </div>
         </div>
         <div class="pagination" style="margin: 30px 0 0 30px">
@@ -54,65 +55,47 @@
         </div>
         <div class="card card-body">
             <table class="table">
+                <colgroup>
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 15%;">
+                    <col span="1" style="width: 15%;">
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 10%;">
+                  </colgroup>
                 <tr>
                     <th>Mã đơn hàng</th>
-                    <th>Trạng thái</th>
-                    <th>Thời gian</th>
-                    <th>Khách hàng</th>
-                    <th>Tổng cộng</th>
+                    <th>Món ăn</th>
+                    <th></th>
+                    <th>Giá tiền</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th></th>
                 </tr>
+                {% for oitem in orderItem %}
+                {% if oitem.ready == False %}
                 <tr>
-                    <td><a href="#">#123</a></td>
+                    <td><a href="#">#{{ oitem.order.id }}</a></td>
+                    <td>{{ oitem.item.name }}</td>
+                    {% if oitem.item.available == True %}
                     <td>
-                        <select>
-                            <option value="0">Đã thanh toán</option>
-                            <option value="1">Xác nhận</option>
-                            <option value="2">Đang chuẩn bị</option>
-                            <option value="3">Sẵn sàng</option>
-                        </select>
+                        <button data-item={{ oitem.item.id }} data-action="out" class="btn btn_out out-of-order">Hết hàng</button>
                     </td>
-                    <td>July 1, 2020, 9:20 a.m.</td>
-                    <td>PoetChaos</td>
-                    <td>58,000đ</td>
-                </tr>
-                <tr>
-                    <td><a href="#">#124</a></td>
+                    {% else %}
+                    <td></td>
+                    {% endif %}
+                    <td>{{ oitem.item.price|intcomma }}đ</td>
+                    <td>{{ oitem.quantity }}</td>
+                    <td>{{ oitem.get_sum|intcomma }}đ</td>
                     <td>
-                        <select>
-                            <option value="0">Đã thanh toán</option>
-                            <option value="1">Xác nhận</option>
-                            <option value="2">Đang chuẩn bị</option>
-                            <option value="3">Sẵn sàng</option>
-                        </select>
+                        <button data-oitem={{ oitem.id }} data-action="ready" class="btn btn_ready is-ready">SẴN SÀNG</button>
                     </td>
-                    <td>July 1, 2020, 9:20 a.m.</td>
-                    <td>Nguyen Anh</td>
-                    <td>85,000đ</td>
                 </tr>
+                {% endif %}
+                {% endfor %}
             </table>
         </div>
-        <!--<script src="{% static 'kitchen/js/select.js' %}"></script>-->
-        <!--<script>
-            var select_all = document.getElementById("all"); 
-            var checkboxes = document.getElementsByName("check"); 
-
-            select_all.addEventListener("change", function(e){
-                for (i = 0; i < checkboxes.length; i++) { 
-                    checkboxes[i].checked = select_all.checked;
-                }
-            });
-
-
-            for (var i = 0; i < checkboxes.length; i++) {
-                checkboxes[i].addEventListener('change', function(e){ 
-                    if(this.checked == false){
-                        select_all.checked = false;
-                    }
-                    if(document.querySelectorAll('.checkbox:checked').length == checkboxes.length){
-                        select_all.checked = true;
-                    }
-                });
-            }
-        </script>-->
+        <script src="{% static 'kitchen/js/inform.js' %}"></script>
     </body>
 </html>

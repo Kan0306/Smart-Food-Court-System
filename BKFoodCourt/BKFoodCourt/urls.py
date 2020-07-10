@@ -50,7 +50,9 @@ urlpatterns = [
     path('checkout/<int:id>/', web_views.checkout, name='checkout'),
     re_path(r'^maintenance-mode/off/$', maintenance_mode_off, name='maintenance_mode_off'),
     re_path(r'^maintenance-mode/on/$', maintenance_mode_on, name='maintenance_mode_on'),
-     path('order-list/',cook_views.order_list, name='order-list'),
+    path('order-list/',cook_views.order_list, name='order-list'),
+    path('inform_ready/',cook_views.inform_ready, name='inform-ready'),
+    path('inform_out/',cook_views.inform_out, name='inform-out'),
 ]
 
 if settings.DEBUG:

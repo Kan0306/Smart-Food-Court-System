@@ -67,6 +67,7 @@ class OrderItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    ready = models.BooleanField(default=False)
 
     def get_sum(self):
         return self.item.price * self.quantity
