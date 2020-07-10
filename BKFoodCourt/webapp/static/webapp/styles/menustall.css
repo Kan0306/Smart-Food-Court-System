@@ -1,0 +1,607 @@
+@charset "utf-8";
+@font-face
+{
+	font-family: 'SegoeUI_Regular';
+	src: url('../fonts/segoeui.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Semibold';
+	src: url('../fonts/seguisb.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Bold';
+	src: url('../fonts/segoeuib.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_Italic';
+	src: url('../fonts/segoeuii.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'SegoeUI_SemiItalic';
+	src: url('../fonts/seguisbi.ttf')  format('truetype');
+}
+@font-face
+{
+	font-family: 'Bebas_Bold';
+	src: url('../fonts/BebasNeueBold.ttf')  format('truetype');
+}
+.contact-imfo-box .container{
+	display: flex;
+    padding: 10px;
+	margin-left: 15px;
+	position: relative;
+}
+
+.account {
+	position: absolute;
+	right: 0px;
+}
+
+.contact-imfo-box{
+	background: #D9D9D9;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.contact-imfo-box i{
+	display: block;
+	float: left;
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	text-align: left;
+	color: #828282;
+	font-size: 10px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	border-radius: 50%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.contact-imfo-box p {
+    margin: 0px 0px 0px 20px;
+    color: #828282;
+	text-align: left;
+	line-height: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: "SegoeUI_Regular";
+	font-style: italic;
+}
+.lead {
+    font-size: 18px;
+    line-height: 30px;
+    color: #767676;
+    margin: 0px;
+	padding: 0;
+}
+.lead a:hover
+{
+	color: #fff;
+	text-decoration: none;
+}
+.account a:hover
+{
+	text-decoration: none;
+}
+
+.acc-options
+{
+	display: none;
+	top: 7px;
+}
+.acc-options ul
+{
+	list-style-type: none;
+	text-align: right;	
+}
+.acc-options ul li
+{
+	font-family: 'SegoeUI_Semibold';
+	font-size: 13px;
+}
+.acc-options ul li a
+{
+	color: #000;
+}
+.acc-options ul li a:hover
+{
+	color: #1488DB;
+	text-decoration: none;
+}
+.line{
+	background: #1488DB;
+	position: relative;
+    padding: 2px;
+	margin: 0;
+}
+.head_background
+{
+	position: absolute;
+	left: 0%;
+	right: 0%;
+	top: 0%;
+	bottom: 9.6%;
+	margin-right: -80px;
+	background: url(../images/ym-bg.png) no-repeat center;
+	filter: brightness(30%);
+	z-index: -1;
+}
+.logo_area
+{
+	position: absolute;
+	width: 219px;
+	height: 219px;
+	left: 20px;
+	top: -70px;
+}
+html
+{
+	width: 1366px;
+}
+body
+{
+	margin: 0;
+	padding: 0;
+	font-family: 'SegoeUI_Regular';
+	background: url('../images/background.png');
+	
+}
+#half_circle
+{
+	position: relative;
+	margin-top: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 35%;
+}
+.stall_icon
+{
+	position: absolute;
+	top: 50px;
+	left: 630px;
+
+}
+.stall_name
+{
+	position: relative;
+	text-align: center;
+	font-family: 'Bebas_Bold';
+	top: -60px;
+	font-size: 35px;
+}
+.stall_name a
+{
+	text-decoration: none;
+	color: #fff;
+	display: block;
+}
+.stall_name a:hover
+{
+	text-decoration: none;
+	color: #fff;
+	cursor: pointer;
+}
+header
+{
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	top: 87px;
+	background: #FE7A19;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+header ul
+{
+	font-family: 'Bebas_Bold';
+	font-size: 20pt;
+	list-style-type: none;
+	text-align: center;
+}
+header ul li
+{
+	color: #fff;
+	display: inline-table;
+	width: 150px;
+	height: 90px;
+	line-height: 90px;
+}
+header ul li a
+{
+	color: #fff;
+	text-decoration: none;
+	display: block;
+}
+header .active, header ul li a:hover
+{
+	background: #ff4f00;
+	color: #000;
+	text-decoration: none;
+}
+header .search
+{
+	position: relative;
+	float: right;
+	top: -90px;
+}
+header input[type=text]
+{
+	border: none;
+	font-size: 13pt;
+	position: absolute;
+	right: 70px;
+	top: 15px;
+	width: 150px;
+	height: 33px;
+}
+header .search button
+{
+	float: right;
+	border: none;
+	background: #fff;
+	right: 0px;
+	top: 15px;
+	position: absolute;
+	margin-right: 30px;
+	cursor: pointer;
+	width: 40px;
+	height: 33px;
+}
+.back_area
+{
+	top: 160px;
+	position: relative;
+	padding: 50px 50px;
+	margin-top: -200px;
+	margin-bottom: 160px;
+	background: #FCE8DA;
+}
+.text_heading 
+{
+	margin-left: 30px;
+	font-size: 18px;
+	font-family: 'SegoeUI_Semibold';
+	color: #FE7A19;
+}
+.text_heading a
+{
+	color: #FE7A19;
+	text-decoration: none;
+}
+.text_heading a:hover
+{
+	text-decoration: none;
+	color: #FE7A19;
+}
+.text_heading .cart_icon
+{
+	border: 1pt dashed;
+	border-color: #FE7A19;
+	border-radius: 25px;
+	background: #FDCF76;
+	margin-left: 1150px;
+	margin-top: -40px;
+	width: 50px;
+	height: 50px;
+	position: relative;
+}
+.item_type
+{
+	margin-top: 50px;
+}
+.item_type button
+{
+	border: none;
+	font-family: 'SegoeUI_Bold';
+	font-size: 20px;
+	color: #fff;
+	background: #FE7A19;
+	text-align: center;
+	width: 250px;
+	padding: 15px;
+	margin-left: 50px;
+	cursor: pointer;
+}
+.item_type button:hover
+{
+	color: #FDCF76;
+}
+.filter
+{
+	position: relative;
+	max-width: 1200px;
+	height: 80px;
+	margin: 0 auto;
+	background: #fff;
+	line-height: 80px;
+	
+}
+#sortby
+{
+	margin-top: 50px;
+	padding-left: 40px;
+	font-size: 18px;
+	font-family: 'SegoeUI_Semibold';
+}
+.filter button
+{
+	border: 1.5pt dashed;
+	border-color: #1488DB;
+	margin-top: -75px;
+	margin-left: 50px;
+	background: #fff;
+	text-align: center;
+	width: 150px;
+	height: 50px;
+	line-height: 40px;
+	cursor: pointer;
+	font-size: 18px;
+	color: #1488DB;
+	font-family: 'SegoeUI_Regular';
+}
+.filter button:hover
+{
+	color: #fff;
+	background: #1488DB;
+	font-family: 'SegoeUI_Semibold';
+}
+.filter .alphabet
+{
+	display: none;
+	top: 7px;
+}
+.filter .alphabet ul
+{
+	list-style-type: none;
+	text-align: center;
+}
+.filter .alphabet ul li
+{
+	font-family: 'SegoeUI_Regular';
+	font-size: 16px;
+	color: #1488DB;
+}
+.filter .alphabet ul li:hover
+{
+	font-family: 'SegoeUI_Semibold';
+}
+.filter button:hover .alphabet
+{
+	display: block;
+	position: relative;
+	background: #fff;
+}
+.filter .price
+{
+	display: none;
+	top: 7px;
+}
+.filter .price ul
+{
+	list-style-type: none;
+	text-align: center;
+}
+.filter .price ul li
+{
+	font-family: 'SegoeUI_Regular';
+	font-size: 16px;
+	color: #1488DB;
+}
+.filter .price ul li:hover
+{
+	font-family: 'SegoeUI_Semibold';
+}
+.filter button:hover .price
+{
+	display: block;
+	position: relative;
+	background: #fff;
+}
+.filter .fa 
+{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.items 
+{
+	margin: 50px 100px 50px 50px;
+	display: flex;
+	background-color: #FFFFFF;
+}
+
+.food-image{
+	text-align: center;
+}
+.food-image p
+{
+	margin-top: -30%;
+	position: relative;
+	color: #D9D9D9;
+	font-family: 'SegoeUI_Semibold';
+	font-size: 15px;
+}
+.infomation {
+	width: 100%;
+}
+.description{
+	height: 100px;
+	font-size: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: 'SegoeUI_Semibold';
+}
+
+.food-name{
+	font-size: 20px;
+	font-weight: 800;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #000;
+	font-family: 'SegoeUI_Bold';
+}
+.food-name:hover
+{
+	text-decoration: none;
+	color: #FE7A19;
+}
+
+.food-price {
+	margin-top: -10px;
+	padding-bottom: 10px;
+	padding-left: 35px;
+	color: #FE7A19;
+	font-size: 30px;
+	font-family: 'SegoeUI_Bold';
+}
+.infomation .row, .up-button{
+	position: relative;
+}
+
+.order-button, .alert-button{
+	position: absolute;
+	right: 15px;
+	top: 5px;
+	font-family: "SegoeUI_Semibold";
+	background: #FE7A19;
+	color: #000;
+	border: none;
+	margin-left: 0;
+}
+.out-button
+{
+	position: absolute;
+	right: 15px;
+	top: 5px;
+	font-family: "SegoeUI_Semibold";
+	background: #D9D9D9;
+	color: #000;
+	border: none;
+	margin-left: 0;
+	cursor: not-allowed;
+}
+.next-page {
+	text-align: center;
+	padding: 15px 30px;
+}
+.pagination {
+	display: inline-block;
+}
+  
+.pagination a {	
+	color: black;	
+	float: left;	
+	padding: 8px 16px;	
+	text-decoration: none;
+}
+
+.pagination a.active {	
+	background-color:  #FE7A19;
+	color: white;	
+	border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {	
+	background-color: #FDCF76;		
+	border-radius: 5px;
+	text-decoration: none;
+	color: #000;
+}
+
+.footer-logo{
+	padding: 10px 80px;
+}
+
+.footer-above .text{
+	margin: 80px 20px;
+}
+
+.redirection-list{
+	margin: 0;
+}
+
+.redirection-list ul li{
+	display: inline;
+	margin: 60px;
+}
+
+.list-inline-item a img{
+	width: 30px;
+	left: 0%;
+	bottom: 0%;
+	margin-left: 20px;
+}
+
+.row div ul, .catalogue-title ul li{
+	list-style-type: none;
+	padding: 10px 50px;
+	font-family: "Bebas_Bold";
+	font-size: 20px;
+	color: #FE7A19;
+}
+
+.catalogue li{
+	display: inline;
+	padding: 20px;
+	font-family: "SegoeUI_Regular";
+	font-size: 15px;
+	color: #FFFFFF;
+}
+
+.catalogue
+{
+	margin-left: -150px;
+}
+
+.catalogue li a{
+	color: #FFFFFF;
+}
+.catalogue li a:hover{
+	color: #FDCF76;
+	text-decoration: none;
+}
+.footer-side{
+	margin-top: 40px;
+}
+
+#menu a{
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	font-family: 'Bebas_Bold';
+	font-size: 35px;
+	list-style-type: none;
+	text-align: center;
+}
+
+.copyright{
+	color: #FE7A19;
+	position: relative;
+	left: 80px;
+	bottom: 0%;
+	padding-top: 30px;
+}
+
+#up-button-image{
+	display: block;
+	position: absolute;
+	left: 100px;
+	width: 25%;
+}
+.cart_icon .badge {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	padding: 5px 10px;
+	border-radius: 50%;
+	background:red;
+	color: #FFFFFF;
+}

@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+	<title>Đăng ký</title>  
+	<link rel = "icon" href = "{% static 'webapp/images/logo-icon.ico' %}"  type = "image/x-icon">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+	<meta name="author" content="">
+	
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'users/styles/bootstrap.min.css' %}">   
+	<link rel="stylesheet" href="{% static 'users/styles/font-awesome.min.css' %}">     
+    <!-- Purecss -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <!-- Site CSS -->
+    <!-- <link rel="stylesheet" href="css/style.css">     -->
+    <!-- Responsive CSS -->
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'users/styles/signup.css' %}">
+	
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+    
+<body>
+    <!-- Start Contact info -->
+    <div class="line"></div>
+	<div class="contact-imfo-box">
+		<div class="container">
+			<p class="lead">
+				<i class="fa fa-map-marker"></i>Đại học Bách Khoa - Cơ sở Dĩ An
+			</p>
+			<p class="lead">
+				<i class="fa fa-phone"></i>(028)38-647-XXX
+			</p>
+			<p class="lead">
+				<i class="fa fa-envelope"></i>foodcourt@hcmut.edu.vn
+			</p>
+            <div class="row info">
+				<a href="#">
+					<p>Trợ giúp</p>
+				</a>
+				<i class="fa fa-info-circle"></i>
+			</div>
+        </div>
+    </div>
+	<!-- End Contact info -->
+    
+	<!--+++++++++++ BEGIN SIGN UP FORM +++++++++++++-->
+	
+	<div class="nen_cam_nhat">
+		<div class="dan_dong"></div>
+		<div class="nen_cam_dam">
+			<div class="dan_dong"></div>
+
+			<!--Chèn logo-->
+			<img src="{% static 'users/images/large-logo.png' %}" alt="HCMUT Smart Food Court" 
+			style="width: 400px; height: 400px; float: left; margin-top: 120px; margin-left: 150px;">
+
+			<form  class="signupform" action="." method='POST'>
+				{% csrf_token %}
+				<h1 style="text-align: left; font-family: 'Bebas_Bold'"><b><u style="text-decoration-color: #FE7A19">ĐĂNG KÝ</u></b></h1>
+				<br>
+				<span>Tên đăng nhập:<b style="color: red;">*</b></span>
+				<br>
+				<input type="text" name="name" placeholder="Nhập tên đăng nhập của bạn" required
+				style="padding-bottom: 7px;padding-top: 7px;width: 100%;margin-top: 4px;margin-bottom: 10px;padding-left: 5px;">
+				<br>
+				<span>Số điện thoại:<b style="color: red;">*</b></span>
+				<br>
+				<input type="tel" name="phoneNumber" placeholder="Số điện thoại của bạn" required
+				style="padding-bottom: 7px;padding-top: 7px;width: 100%;margin-top: 4px;margin-bottom: 10px;padding-left: 5px;">
+				<br>
+				<span>Email:<b style="color: red;">*</b></span>
+				<br>
+				<input type="email" name="email" placeholder="Địa chỉ email của bạn" required
+				style="padding-bottom: 7px;padding-top: 7px;width: 100%;margin-top: 4px;margin-bottom: 10px;padding-left: 5px;">
+				<br>
+				
+				<span>Mật khẩu:<b style="color: red;">*</b></span>
+				<br>
+				<input type="password" name="password" id="password" placeholder="Nhập mật khẩu của bạn" required 
+				style="padding-bottom: 7px;padding-top: 7px;width: 100%;margin-top: 4px;margin-bottom: 10px;padding-left: 5px;">
+				<br>
+				<span>Nhập lại mật khẩu:<b style="color: red;">*</b></span>
+				<br>
+				<input type="password" name="authpassword" id="confirm_password" placeholder="Nhập lại mật khẩu của bạn" required 
+				style="padding-bottom: 7px;padding-top: 7px;width: 100%;margin-top: 4px;margin-bottom: 10px;padding-left: 5px;">
+				<input type="checkbox" value="agree" name="agree1" required style="margin-top: 5px">
+				Tôi đã đọc và đồng ý với <a href="#" style="color: #1488DB">điều khoản sử dụng</a>.
+				</input>
+				<div class="clearfix">
+					<button type="submit" style="margin-top: 15px;" class="signupbtn">ĐĂNG KÝ</button>
+				</div>				
+
+				<script>
+				var password = document.getElementById("password")
+				, confirm_password = document.getElementById("confirm_password");
+
+				function validatePassword(){
+				if(password.value != confirm_password.value) {
+					confirm_password.setCustomValidity("Mật khẩu không khớp!!");
+				} else {
+					confirm_password.setCustomValidity('');
+				}
+				}
+
+				password.onchange = validatePassword;
+				confirm_password.onkeyup = validatePassword;
+				
+				</script>
+			</form>
+			<div class="flex-col-c" style="margin-left: 630px; margin-top: -120px; position: relative;">
+				<span style="color: rgb(134, 134, 134); padding-top: 20px"> - HOẶC - </span>
+				<span style="display: inline-block; vertical-align: middle; margin: 10px 0;">Đã có tài khoản:
+				<a href="{% url 'login-page' %}"><button type="submit" style="font-family: 'SegoeUI_Semibold'; font-size: 15px; padding: 3px; display: inline-block; vertical-align: middle; margin: 10px 0; background-color: white;
+					border-radius: 30px;border-color: #FE7A19;    border-style: solid; width: 130px;">Đăng nhập</button></a>
+				</span>
+			</div>
+			<div class="dan_dong"></div>
+			<div class="line" style="margin-top: 90px; margin-bottom: 20px; padding: 5px"></div>
+			<div class="dan_dong"></div>
+		</div>
+	</div>
+
+	<!--+++++++++++ END SIGN UP FORM +++++++++++++-->
+	
+	<!--/////////// Bắt đầu làm cái nền và logo /////////////////-->
+
+	
+
+
+	<!--/////////// Làm xong cái nền và logo /////////////////-->
+
+	<!--================Footer =================-->
+	<section class="footer">
+	<div class="footer-above">
+		<div class="row">
+			<div class="footer-logo">
+				<a href="{$ url 'home-page' %}"><img src="{% static 'users/images/logo.png' %}" alt=""></a>
+			</div>
+			<div class="row footer-side">
+				<div class="catalogue-title">
+					<ul> 
+						<li>DANH MỤC</li>
+						<li>TRỢ GIÚP</li>
+						<li>THÔNG TIN</li>
+					</ul>
+				</div>
+				<div>
+					<ul> 
+						<li class="catalogue">
+							<ul>
+								<li><a href="{$ url 'home-page' %}">Trang chủ</a></li>
+								<li><a href="{$ url 'about' %}">Giới thiệu</a></li>
+								<li><a href="{$ url 'main-menu' %}">Thực đơn</a></li>
+								<li><a href="{$ url 'preference' %}">Ưu đãi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Hỗ trợ</a></li>
+								<li><a href="#">Liên hệ với chúng tôi</a></li>
+							</ul>
+						</li>
+						<li class="catalogue">
+							<ul>
+								<li><a href="#">Chính sách bảo mật</a></li>
+								<li><a href="#">Điều khoản sử dụng</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="row">
+			<div class="col-xl-4 copyright">
+				Copyright © 2020 BK Food Court. All rights reserved.
+			</div>
+			<div class="col-xl-5">
+				<div class="up-button">
+					<a href="#"><img id="up-button-image" src="{% static 'users/images/Subtraction 3.png' %}"></a>
+				</div>
+			</div>
+			<div class="col-xl-3">
+				<ul class="list-inline f-social">
+					<li class="list-inline-item"><a href="https://fb.com/biennguyen93"><img src="{% static 'users/images/facebook (2).png' %}"></a></li>
+					<li class="list-inline-item"><a href="https://bom.to/XDFsqS"><img src="{% static 'users/images/google-plus.png' %}"></a></li>
+					<li class="list-inline-item"><a href="https://twitter.com/biennguyen93"><img src="{% static 'users/images/twitter.png' %}"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</section>
+	<!--================Footer =================-->
+</body>
+</html>
