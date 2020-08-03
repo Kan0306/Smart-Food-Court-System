@@ -68,13 +68,11 @@ def menu(request):
     else:
         order = "none"
     stalls = Menu.objects.all()
-    items = Item.objects.all()
     paginator = Paginator(stalls, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
         'stalls' : stalls,
-        'items' : items,
         'order' : order,
         'page_obj': page_obj
     }

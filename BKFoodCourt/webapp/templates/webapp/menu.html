@@ -147,8 +147,7 @@
 			<div id="{{ stall.id }}" class="carousel slide" data-ride="carousel">				
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner">
-					{% for item in items %}
-						{% if item.belongs_to_stall.stallname == stall.stallname %}
+					{% for item in stall.item_set.all %}
 						{% if forloop.first %}
 							<div class="item active" style="padding-left: 200px;">
 						{% else %}
@@ -186,7 +185,6 @@
 									</div>
 								</div>
 							</div>
-						{% endif %}
 					{% endfor %}
 				</div>
 				
