@@ -75,37 +75,39 @@
         <section class="back_area">
             <div class="order_status">
                 <p class="order_code">Đơn hàng #{{ order.id }}</p>
-                <div class="progress">
-                    <ul>
-                    {% if order.status == "ACCEPT" or order.status == "CONFIRMED" or order.status == "WAITING" or order.status == "READY" %}
-                        <li class="active">
-                    {% else %}
-                        <li>
-                    {% endif %}
-                            <p>Thanh toán đơn hàng</p>
-                        </li>
-                    {% if order.status == "CONFIRMED" or order.status == "WAITING" or order.status == "READY" %}
-                        <li class="active">
-                    {% else %}
-                        <li>
-                    {% endif %}
-                            <p>Tiếp nhận đơn hàng</p>
-                        </li>
-                    {% if order.status == "WAITING"  %}
-                        <li class="active">
-                    {% else %}
-                        <li>
-                    {% endif %}
-                            <p>Đang chuẩn bị</p>
-                        </li>
-                    {% if order.status == "READY" %}
-                        <li class="active">
-                    {% else %}
-                        <li>
-                    {% endif %}
-                            <p>Đơn hàng sẵn sàng</p>
-                        </li>
-                    </ul>
+                <button onClick="window.location.reload()" class="btn" style="background-color: #FE7A19; margin-left: 95%; margin-top: -6%; height: 30px; width: 30px; border-radius: 50%"><i class="fa fa-refresh" style="font-size: 20px; color: #fff; margin-left: -6px; margin-top: -2px"></i></button>
+                <div class="card card-body">
+                    <table class="table">
+                        <colgroup>
+                            <col span="1" style="width: 10%;">
+                            <col span="1" style="width: 25%;">
+                            <col span="1" style="width: 20%;">
+                            <col span="1" style="width: 20%;">
+                            <col span="1" style="width: 20%;">
+                          </colgroup>
+                        <tr>
+                            <th>Món ăn</th>
+                            <th></th>
+                            <th>Số lượng</th>
+                            <th>Cửa hàng</th>
+                            <th style="text-align: right">Trạng thái</th>
+                        </tr>
+                        {% for item in items %}
+                        <tr>
+                            <td>
+                                <img src="{{ item.item.image.url }}"  style="width: 100px">
+                            </td>
+                            <td>{{ item.item.name }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.item.belongs_to_stall }}</td>
+                            {% if item.ready == True %}
+                            <td style="text-align: right; color: green"><b>SẴN SÀNG</b> <i class="fa fa-check-circle"></i></td>
+                            {% else %}
+                            <td style="text-align: right; color: red"><b>CHƯA SẴN SÀNG</b> <i class="fa fa-times-circle"></i></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
                 <div class="line"></div>
         </section>

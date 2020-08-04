@@ -128,31 +128,7 @@
                 {% endfor %}
                 {% endif %}
             </div>
-            <div class="filter">
-                <p id="sortby">Sắp xếp theo</p>
-                <div class="row">
-                    <button style="margin-left: 230px">Bán chạy</button>
-                    <button>Mới nhất</button>
-                    <button style="width: 200px; text-align: right">Thứ tự chữ cái
-                        <i class="fa fa-angle-down"></i>
-                        <div class="alphabet">
-                            <ul>
-                                <li>Từ A-Z</li>
-                                <li>Từ Z-A</li>
-                            </ul>
-                        </div>
-                    </button>
-                    <button style="width: 280px; text-align: right;">Giá
-                        <i class="fa fa-angle-down"></i>
-                        <div class="price">
-                            <ul>
-                                <li>Giá từ thấp đến cao</li>
-                                <li>Giá từ cao đến thấp</li>
-                            </ul>
-                        </div>
-                    </button>
-                </div>
-            </div>
+            
 
             {% if none == 'True' %}
             <div style="text-align: center; margin: 80px">
@@ -294,6 +270,5 @@
     <script src="{% static 'webapp/js/dropdown.js' %}"></script>
     <script src="{% static 'webapp/js/order.js' %}"></script>
 	<script src="{% static 'webapp/js/unauthenticated_alert.js' %}"></script>
-    
     </body>
 </html>

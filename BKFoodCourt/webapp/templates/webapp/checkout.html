@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,14 +96,15 @@
                 <img src="{% static 'webapp/images/bill.png' %}" width="100px"/>
             </div>
             <div class="bill_name">
-                <a href="#">ĐƠN HÀNG #{ order.id }</a>
+                <a href="#">ĐƠN HÀNG #{{ order.id }}</a>
             </div>
     </div>
 
 	<!--==End Header==-->
 
 	<!--==Chi tiet don hang==-->
-	<div class="chitietdonhangcommon">
+	<div class="bill" style="height: 900px">
+		<div class="donhang" style="position: relative; height: 500px; margin-top: -5%">
 		<div class="successcover">
 			<p style="background: #FE7A19; ">CHI TIẾT ĐƠN HÀNG</p>
 		</div>
@@ -170,19 +172,17 @@
              </div>
          </div>
      </div>
- </div>
- 
- </div>
-	 <div class="line"></div>
-	<!--==End chi tiet don hang==-->
-	
+	</div>
+	</div>
+	<div class="line"></div>
 	<div class="checkstate">
-            <div class="cover">
-				<a href="{{ order.get_absolute_url }}"><button>Thanh toán</button></a>
-            </div>
-	</div>>
-	</main>	
-
+		<div class="cover">
+			<a href="{{ order.get_absolute_url }}"><button>Thanh toán</button></a>
+		</div>
+	</div>
+	
+ </div>
+	 
 	<!--================Footer =================-->
 	<div class="footer-above">
 		<div class="row">

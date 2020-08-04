@@ -6,6 +6,7 @@ from webapp.models import Order
 from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
 from webapp.decorators import allowed_users
 # Create your views here.
 
@@ -36,7 +37,7 @@ def register(request):
 @allowed_users(['Customer'])
 def profile(request):
     customers = request.user.customer
-    orders = Order.objects.filter(order_by=request.user)
+    orders = Order.objects.filter(Q(order_by=request.user),~Q(status='ONGOING'))
     context = {
         'customers': customers,
         'orders': orders, 
@@ -47,7 +48,7 @@ def profile(request):
 @allowed_users(['Customer'])
 def edit_profile(request):
     customers = request.user.customer
-    orders = Order.objects.filter(order_by=request.user)
+    orders = Order.objects.filter(Q(order_by=request.user),~Q(status='ONGOING'))
     form = UserForm(instance=customers)
     if request.method == 'POST':
         form = UserForm(data=request.POST, files=request.FILES, instance=customers)

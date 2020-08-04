@@ -6,7 +6,7 @@ import json, urllib.request, hmac, hashlib, uuid, socket
 import urllib.parse as urlparse
 from urllib.parse import parse_qs
 from django.urls import reverse
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import json
 import random
 from datetime import datetime
@@ -14,6 +14,7 @@ from .forms import ItemForm
 from .decorators import allowed_users
 from users.models import Manager
 from maintenance_mode.decorators import force_maintenance_mode_off, force_maintenance_mode_on
+from django.db.models import Min, Max, Q
 # Create your views here.
 
 @login_required
@@ -54,8 +55,10 @@ def bill(request, id):
 @allowed_users(['Customer'])
 def order_status(request, id):
     order = get_object_or_404(Order, id=id)
+    items = order.orderitem_set.all()
     context = {
-        'order': order
+        'order': order,
+        'items': items
     }
     return render(request, 'webapp/orderstatus.html', context)
 
@@ -68,13 +71,11 @@ def menu(request):
     else:
         order = "none"
     stalls = Menu.objects.all()
-    items = Item.objects.all()
     paginator = Paginator(stalls, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
         'stalls' : stalls,
-        'items' : items,
         'order' : order,
         'page_obj': page_obj
     }
@@ -86,7 +87,7 @@ def menustall(request, id):
         order, created = Order.objects.get_or_create(order_by=request.user, status="ONGOING")
     else:
         order = "none"
-    items = Item.objects.filter(belongs_to_stall=stall)
+    items = Item.objects.filter(belongs_to_stall=stall).annotate(cheapest=Max('price')).order_by('-cheapest').reverse()
     query_list = items
     query = request.GET.get('query')
     if query:
@@ -105,7 +106,6 @@ def menustall(request, id):
         'page_obj': page_obj
     }
     return render(request, 'webapp/menustall.html', context)
-
 
 def about(request):  
     return render(request, 'webapp/about.html', {})

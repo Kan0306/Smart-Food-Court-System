@@ -147,8 +147,7 @@
 			<div id="{{ stall.id }}" class="carousel slide" data-ride="carousel">				
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner">
-					{% for item in items %}
-						{% if item.belongs_to_stall.stallname == stall.stallname %}
+					{% for item in stall.item_set.all %}
 						{% if forloop.first %}
 							<div class="item active" style="padding-left: 200px;">
 						{% else %}
@@ -162,8 +161,8 @@
 								</div>
 							{% endif %}
 							<div class="infomation">
-									<a href="{{ item.get_absolute_url }}" class="food-name">{{ item.name }}</a>
-									<div class="description">{{ item.description }}</div>
+									<a href="{{ item.get_absolute_url }}" class="food-name" style="font-size: 18pt">{{ item.name }}</a>
+									<div class="description" style="font-size: 12pt;">{{ item.description }}</div>
 									<div class="row">
 										<div class="food-price">{{ item.price|intcomma }}<small>đ</small></div>
 										{% if user.is_authenticated %}
@@ -186,7 +185,6 @@
 									</div>
 								</div>
 							</div>
-						{% endif %}
 					{% endfor %}
 				</div>
 				
